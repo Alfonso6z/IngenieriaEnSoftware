@@ -25,5 +25,8 @@ class Encuestas extends CI_Controller{
 		$this->codigofacilito_model->creaDept($data);
 		$this->load->view('encuestas/inicio');
 	}
+	public function altadereactivos(){
+		$this->load->view('encuestas/administrador/altadereactivos');
+	}
 }
 ?>
