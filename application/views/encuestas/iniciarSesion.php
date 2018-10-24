@@ -30,7 +30,7 @@
       		<?= form_input($nombre) ?></h5>
       		<h5 class = "text-center"><?=  form_label('Contraseña: ','contrasena') ?>
       		<?= form_password($contrasena) ?></h5>
-      		<h5 class = "text-center"><?= form_submit('','Iniciar',"class='btn btn-success'")?>
+      		<h5 class = "text-center"><?= form_submit('','Iniciar',"class='btn btn-warning'")?>
 			<?= form_close() ?></h5>
       </div>
       <div class="text-right">
