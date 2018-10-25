@@ -28,5 +28,9 @@ class Encuestas extends CI_Controller{
 	public function altadereactivos(){
 		$this->load->view('encuestas/administrador/altadereactivos');
 	}
+	public function guardareactivos(){
+		$this->load->view('encuestas/administrador/guardareactivos');
+
+	}
 }
 ?>
