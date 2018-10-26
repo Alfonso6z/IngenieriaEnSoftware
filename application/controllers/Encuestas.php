@@ -25,6 +25,9 @@ class Encuestas extends CI_Controller{
 		$this->encuestas_model->creaDept($data);
 		$this->load->view('encuestas/inicio');
 	}
+	public function registrarse(){
+		$this->load->view('encuestas/registro');
+	}
 	public function altadereactivos(){
 		$this->load->view('encuestas/administrador/altadereactivos');
 	}
@@ -33,6 +36,16 @@ class Encuestas extends CI_Controller{
 			'pregunta' => $this->input->post('pregunta'),
 		);
 		$this->encuestas_model->insertaPregunta($data);
+		$this->load->view('encuestas/inicio');
+	}
+	public function recibirDatosRegistro(){
+		$data = array(
+			'nombre' => $this->input->post('nombre'),
+			'apellido' => $this->input->post('apellido'),
+			'email' => $this->input->post('email'),
+			'contrasena' => $this->input->post('contrasena')
+		);
+		$this->encuestas_model->insertarRegistro($data);
 		$this->load->view('encuestas/inicio');
 	}
 }

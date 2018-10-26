@@ -12,6 +12,9 @@ class Encuestas_model extends CI_Model {
 	function insertaPregunta($data){
 		$this->db->insert('reactivos',array('pregunta'=>$data['pregunta']));
 	}
+	function insertarRegistro($data){
+		$this->db->insert('login',array('user'=>$data['nombre'],'password'=>$data['contrasena'],'apellido'=>$data['apellido'],'email'=>$data['email']));
+	}
 }
 
 ?>

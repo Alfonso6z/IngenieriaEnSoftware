@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 25-10-2018 a las 21:56:45
--- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
--- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 26-10-2018 a las 19:50:37
+-- Versión del servidor: 10.1.35-MariaDB
+-- Versión de PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -29,17 +31,20 @@ SET time_zone = "+00:00";
 CREATE TABLE `login` (
   `idLogin` int(11) NOT NULL,
   `user` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
-  `password` varchar(20) COLLATE latin1_spanish_ci NOT NULL
+  `password` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
+  `apellido` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
+  `email` varchar(25) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `login`
 --
 
-INSERT INTO `login` (`idLogin`, `user`, `password`) VALUES
-(1, 'Admin', '2134'),
-(2, 'Administrador', '123456'),
-(3, 'Analista', '879456');
+INSERT INTO `login` (`idLogin`, `user`, `password`, `apellido`, `email`) VALUES
+(1, 'Admin', '2134', '', ''),
+(2, 'Administrador', '123456', '', ''),
+(3, 'Analista', '879456', '', ''),
+(4, 'Mari', 'oaksjd', 'Garcia', 'marigb@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -83,12 +88,15 @@ ALTER TABLE `reactivos`
 -- AUTO_INCREMENT de la tabla `login`
 --
 ALTER TABLE `login`
-  MODIFY `idLogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idLogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT de la tabla `reactivos`
 --
 ALTER TABLE `reactivos`
   MODIFY `idReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
