@@ -1,6 +1,8 @@
 <?= form_open('/encuestas/guardareactivos') ?>
 <?php
-  $var=site_url('encuestas/iniciaSesion',NULL);
+  $pregunta=array(
+    'name' => 'pregunta','placeholder' => ' Escribe Pregunta');
+  $var=site_url('encuestas/inicio',NULL);
 ?>
 <html>
   <head>
@@ -21,14 +23,11 @@
         <h3>Wolfgang</h3>
      </header>
         <div class="jumbotron">
-        <h3 class = "text-center">Escribe tu pregunta</h3>
         <div class="form-group">
-          <form action="" method="POST" ></form>
-          <textarea required="TRUE" name="pregunta" rows="7" cols="83" ></textarea>
-          <br><br>
-          <div class="text-center"><button type="submit" class="btn btn-primary">Enviar</button>
-          </div>
-        <?= form_close() ?></h5>
+          <h3 class = "text-center"><?=  form_label('Alta Reactivo ','pregunta') ?></h3>
+          <h3 class = "text-center"><?= form_textarea($pregunta) ?></h3>
+          <h5 class = "text-center"><?= form_submit('','Enviar',"class='btn btn-primary'")?>
+      <?= form_close() ?></h5>
       </div>
     </div>
       <div class="text-right">
