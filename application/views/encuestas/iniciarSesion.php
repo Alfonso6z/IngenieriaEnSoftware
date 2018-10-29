@@ -26,7 +26,7 @@
         <h3>Wolfgang</h3>
       </header>
       <div class="jumbotron">
-      		<h3 class = "text-center">Inicio de Seción</h3>
+      		<h3 class = "text-center">Inicio de Sesión</h3>
       		<h5 class = "text-center"><?=  form_label('Usuario: ','nombre') ?>
       		<?= form_input($nombre) ?></h5>
       		<h5 class = "text-center"><?=  form_label('Contraseña: ','contrasena') ?>
