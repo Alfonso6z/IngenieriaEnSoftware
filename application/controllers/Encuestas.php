@@ -17,13 +17,17 @@ class Encuestas extends CI_Controller{
 	public function iniciaSesion(){
 		$this->load->view('encuestas/iniciarSesion');
 	}
-	public function recibirDatos(){
+	public function login(){
 		$data = array(
 			'nombre' => $this->input->post('nombre'),
 			'contrasena' => $this->input->post('contrasena')
 		);
-		$this->encuestas_model->creaDept($data);
-		$this->load->view('encuestas/inicio');
+		if($this->encuestas_model->login($data)){
+			$this->load->view('encuestas/inicio');
+		}else{
+			$this->load->view('encuestas/iniciarSesion');
+		}
+		
 	}
 	public function registrarse(){
 		$this->load->view('encuestas/registro');
