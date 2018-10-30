@@ -29,6 +29,7 @@ class Encuestas extends CI_Controller{
 		}
 		
 	}
+
 	public function registrarse(){
 		$this->load->view('encuestas/registro');
 	}
@@ -52,5 +53,16 @@ class Encuestas extends CI_Controller{
 		$this->encuestas_model->insertarRegistro($data);
 		$this->load->view('encuestas/inicio');
 	}
+
+	public function vista_alta()
+	{
+	   $this->load->view('encuestas/administrador/altaEstudio');
+	}
+
+	public function vista_estudios()
+	{
+		//$data['recuperar']= $this->estudios_model->obtenerDatos();
+		$this->load->view('encuestador/vistaEstudio');
+ }  
 }
 ?>
