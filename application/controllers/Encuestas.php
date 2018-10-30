@@ -61,8 +61,11 @@ class Encuestas extends CI_Controller{
 
 	public function vista_estudios()
 	{
-		//$data['recuperar']= $this->estudios_model->obtenerDatos();
-		$this->load->view('encuestador/vistaEstudio');
+		$data["recuperar"]= $this->encuestas_model->obtenerDatos();
+		$this->load->view('encuestador/vistaEstudio',$data);
  }  
+
+
+
 }
 ?>

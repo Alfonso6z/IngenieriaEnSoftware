@@ -22,6 +22,11 @@ class Encuestas_model extends CI_Model {
 	function insertarRegistro($data){
 		$this->db->insert('login',array('user'=>$data['nombre'],'password'=>md5($data['contrasena']),'apellido'=>$data['apellido'],'email'=>$data['email']));
 	}
+
+	function obtenerDatos(){
+		$query = $this->db->get("estudios");
+		return $query;
+	}
 }
 
 ?>

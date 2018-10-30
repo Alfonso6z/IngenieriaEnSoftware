@@ -37,14 +37,27 @@
 
 		</tr>
 	<tr>
-<?
-
- 
-foreach ($recuperar as $row) { ?>
-	 <? echo $row->nombreEstudio; ?>
-	 <? echo $row->descripción; ?>
-<?} ?>
+<?php
+if ($recuperar->num_rows() > 0)
+{
+    foreach ($recuperar->result() as $row ) 
+    {
+?>
+	<tr>
+		<td><?php echo $row->nombreEstudios; ?></td>
+		<td><?php echo $row->descripcion; ?></td>
 	</tr>
+ <?php	
+  }
+}
+else{
+	?>
+	<tr>
+		<td> colspan="3">"No encontrada"</td>
+	</tr>
+	<?php
+}
+?>
 </table>
 </div>
 
