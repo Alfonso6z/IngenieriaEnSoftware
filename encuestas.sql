@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-10-2018 a las 19:50:37
--- Versión del servidor: 10.1.35-MariaDB
--- Versión de PHP: 7.2.9
+-- Tiempo de generación: 31-10-2018 a las 02:12:06
+-- Versión del servidor: 10.1.36-MariaDB
+-- Versión de PHP: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `login` (
   `idLogin` int(11) NOT NULL,
   `user` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
-  `password` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
+  `password` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
   `apellido` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
   `email` varchar(25) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -41,10 +41,10 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`idLogin`, `user`, `password`, `apellido`, `email`) VALUES
-(1, 'Admin', '2134', '', ''),
 (2, 'Administrador', '123456', '', ''),
 (3, 'Analista', '879456', '', ''),
-(4, 'Mari', 'oaksjd', 'Garcia', 'marigb@gmail.com');
+(4, 'Mari', 'oaksjd', 'Garcia', 'marigb@gmail.com'),
+(7, 'Emmanuel', 'e10adc3949ba59abbe56e057f20f883e', 'Prado', 'prado1117@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -88,7 +88,7 @@ ALTER TABLE `reactivos`
 -- AUTO_INCREMENT de la tabla `login`
 --
 ALTER TABLE `login`
-  MODIFY `idLogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idLogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `reactivos`
