@@ -39,6 +39,14 @@
           <?= form_input($email) ?></h5>
       		<h5 class = "text-center"><?=  form_label('Contraseña: ','contrasena') ?>
       		<?= form_password($contrasena) ?></h5>
+          <div class = "text-center">
+            <select name= "tipoUsuario" id="tipoUsuario">
+              <option value="select"selected>Selecciona tipo de usuario</option>
+              <option value="Ad">Administrador</option>
+              <option value="Ad">Administrador de Estudio</option>
+              <option value="En">Encuestador</option>
+              <option value="An">Analista</option>    
+            </select></div>
       		<h5 class = "text-center"><?= form_submit('','Registrarse',"class='btn btn-warning'")?>
 			<?= form_close() ?></h5>
       </div>

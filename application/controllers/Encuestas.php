@@ -48,7 +48,8 @@ class Encuestas extends CI_Controller{
 			'nombre' => $this->input->post('nombre'),
 			'apellido' => $this->input->post('apellido'),
 			'email' => $this->input->post('email'),
-			'contrasena' => $this->input->post('contrasena')
+			'contrasena' => $this->input->post('contrasena'),
+			'tipoUsuario' => $this->input->post('tipoUsuario')
 		);
 		$this->encuestas_model->insertarRegistro($data);
 		$this->load->view('encuestas/inicio');
