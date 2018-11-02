@@ -7,7 +7,7 @@ class AdminSistema_model extends CI_Model {
 		$this->load->database();
 	}
 	function insertarRegistro($data){
-		$this->db->insert('login',array('user'=>$data['nombre'],'password'=>md5($data['contrasena']),'apellido'=>$data['apellido'],'email'=>$data['email']));
+		$this->db->insert('login',array('user'=>$data['nombre'],'password'=>md5($data['contrasena']),'apellido'=>$data['apellido'],'email'=>$data['email'],'tipoUsuario'=>$data['rol']));
 	}
 }
 

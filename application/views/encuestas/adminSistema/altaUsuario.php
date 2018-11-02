@@ -27,7 +27,7 @@ $apell = $this->session->userdata('apellido');
       <header class="page-header">
      <h3>Wolfgang   <?php echo "$rol" ?>: <?php echo "$user" ?>  <?php echo "$apell" ?></h3>
         <ul class = "nav nav-pills pull-left">
-          <li class ="active" class="dropdown">
+          <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuarios
           <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -41,18 +41,19 @@ $apell = $this->session->userdata('apellido');
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tipo De Usuario
           <span class="caret"></span></a>
             <ul class="dropdown-menu">
-            <li><a href="<?php echo $altaEstudio; ?>">Registrar</a></li>
+            <li><a href="">Registrar</a></li>
             <li><a href="#">Modificar</a></li>
             <li><a href="#">Eliminar</a></li>
            </ul>
           </li>
         </ul>
         <ul class = "nav nav-pills pull-right">
-          <li><a href="<?php echo $inicio; ?>">Inicio</a></li>
+          <li class ="active"><a href="<?php echo $inicio; ?>">Inicio</a></li>
           <li><a href="<?php echo $cerrarSesion; ?>">Cerrar Sesión</a></li>
         </ul>
       </header>
     </div>
+
   <body>
     <div class="container">
       <div class="jumbotron">
@@ -65,7 +66,15 @@ $apell = $this->session->userdata('apellido');
           <?= form_input($email) ?></h5>
       		<h5 class = "text-center"><?=  form_label('Contraseña: ','contrasena') ?>
       		<?= form_password($contrasena) ?></h5>
-      		<h5 class = "text-center"><?= form_submit('','Registrarse',"class='btn btn-success'")?>
+          <div class = "text-center">
+            <select name= "tipoUsuario" id="tipoUsuario">
+              <option value="select"selected>Selecciona tipo de usuario</option>
+              <option value="Ad">Administrador</option>
+              <option value="Ad">Administrador de Estudio</option>
+              <option value="En">Encuestador</option>
+              <option value="An">Analista</option>    
+            </select></div>
+      		<h5 class = "text-center"><?= form_submit('','Registrarse',"class='btn btn-warning'")?>
 			<?= form_close() ?></h5>
       </div>
       <div class="text-right">
