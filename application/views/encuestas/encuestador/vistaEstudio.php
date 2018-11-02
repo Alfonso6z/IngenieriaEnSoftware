@@ -44,7 +44,7 @@ if ($recuperar->num_rows() > 0)
     {
 ?>
 	<tr>
-		<td><?php echo $row->nombreEstudios; ?></td>
+		<td><?php echo $row->nombre; ?></td>
 		<td><?php echo $row->descripcion; ?></td>
 	</tr>
  <?php	

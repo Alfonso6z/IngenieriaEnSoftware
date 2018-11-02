@@ -1,4 +1,4 @@
-<?= form_open('/encuestas/recibirDatosRegistro')?>
+<?= form_open('/adminSistema/recibirDatosUsuario')?>
 <?php
 	$nombre=array(
 		'name' => 'nombre','placeholder' => ' Nombre de Usuario');
@@ -8,8 +8,12 @@
     'name' => 'email','placeholder' => ' Em@il');
 	$contrasena = array(
 		'name' => 'contrasena','placeholder' => ' Contraseña');
-	$var=site_url('encuestas/inicio',NULL);
-  $var2=site_url('encuestas/iniciaSesion',NULL);
+$altaUsuario=site_url('adminSistema/altaUsuarios',NULL);
+$cerrarSesion=site_url('login/logout',NULL);
+$inicio=site_url('adminSistema',NULL);
+$rol = $this->session->userdata('rol');
+$user = $this->session->userdata('user');
+$apell = $this->session->userdata('apellido');
 ?>
 <html>
   <head>
@@ -19,16 +23,38 @@
      <!-- Theme opcional -->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   </head>
+  <div class="container">
+      <header class="page-header">
+     <h3>Wolfgang   <?php echo "$rol" ?>: <?php echo "$user" ?>  <?php echo "$apell" ?></h3>
+        <ul class = "nav nav-pills pull-left">
+          <li class ="active" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuarios
+          <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+            <li><a href="<?php echo $altaUsuario; ?>">Registrar</a></li>
+            <li><a href="#">Modificar</a></li>
+            <li><a href="#">Eliminar</a></li>
+            <li><a href="#">Cambio De Password</a></li>
+          </ul>
+          </li>
+          <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tipo De Usuario
+          <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+            <li><a href="<?php echo $altaEstudio; ?>">Registrar</a></li>
+            <li><a href="#">Modificar</a></li>
+            <li><a href="#">Eliminar</a></li>
+           </ul>
+          </li>
+        </ul>
+        <ul class = "nav nav-pills pull-right">
+          <li><a href="<?php echo $inicio; ?>">Inicio</a></li>
+          <li><a href="<?php echo $cerrarSesion; ?>">Cerrar Sesión</a></li>
+        </ul>
+      </header>
+    </div>
   <body>
     <div class="container">
-      <header class="page-header">
-        <ul class = "nav nav-pills pull-right">
-          <li><a href=" <?php echo $var; ?>">Inicio</a></li>
-          <li ><a href=" <?php echo $var2; ?>">Iniciar Sesión</a></li>
-          <li class="active"><a href="">Registrarse</a></li>
-        </ul>
-        <h3>Wolfgang</h3>
-      </header>
       <div class="jumbotron">
       		<h3 class = "text-center">Crea tu cuenta</h3>
       		<h5 class = "text-center"><?=  form_label('Usuario: ','nombre') ?>
@@ -39,7 +65,7 @@
           <?= form_input($email) ?></h5>
       		<h5 class = "text-center"><?=  form_label('Contraseña: ','contrasena') ?>
       		<?= form_password($contrasena) ?></h5>
-      		<h5 class = "text-center"><?= form_submit('','Registrarse',"class='btn btn-warning'")?>
+      		<h5 class = "text-center"><?= form_submit('','Registrarse',"class='btn btn-success'")?>
 			<?= form_close() ?></h5>
       </div>
       <div class="text-right">

@@ -1,11 +1,10 @@
-<?= form_open('/encuestas/login')?>
+<?= form_open('/login/validaLogin')?>
 <?php
 	$nombre=array(
 		'name' => 'nombre','placeholder' => ' Nombre de Usuario');
 	$contrasena = array(
 		'name' => 'contrasena','placeholder' => ' Contraseña');
-	$var=site_url('encuestas/inicio');
-  $var2=site_url('encuestas/registrarse')
+	$var=site_url('login');
 ?>
 <html>
   <head>
@@ -21,7 +20,6 @@
         <ul class = "nav nav-pills pull-right">
           <li><a href=" <?php echo $var; ?>">Inicio</a></li>
           <li class = "active"><a href="">Iniciar Sesión</a></li>
-          <li><a href="<?php echo $var2; ?>">Registrarse</a></li>
         </ul>
         <h3>Wolfgang</h3>
       </header>

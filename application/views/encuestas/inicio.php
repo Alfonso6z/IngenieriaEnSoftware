@@ -1,7 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-$var=site_url('encuestas/iniciaSesion',NULL);
-$var2=site_url('encuestas/registrarse')
+$var=site_url('login/iniciaSesion',NULL);
 ?><!DOCTYPE html>
 <html>
 
@@ -18,7 +17,6 @@ $var2=site_url('encuestas/registrarse')
         <ul class = "nav nav-pills pull-right">
           <li class ="active"><a href="">Inicio</a></li>
           <li><a href=" <?php echo $var; ?>">Iniciar Sesión</a></li>
-          <li><a href="<?php echo $var2; ?>">Registrarse</a></li>
         </ul>
         <h3>Wolfgang</h3>
       </header>
