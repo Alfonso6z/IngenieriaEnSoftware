@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 05-11-2018 a las 12:43:30
--- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
--- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 06-11-2018 a las 08:01:53
+-- Versión del servidor: 10.1.36-MariaDB
+-- Versión de PHP: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,6 +21,25 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `encuestas`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cuestionarios`
+--
+
+CREATE TABLE `cuestionarios` (
+  `IDcuestionario` int(11) NOT NULL,
+  `cuenombre` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `cuestionarios`
+--
+
+INSERT INTO `cuestionarios` (`IDcuestionario`, `cuenombre`) VALUES
+(4, 'Cuestionario 1'),
+(5, 'Cuestionario 2');
 
 -- --------------------------------------------------------
 
@@ -72,33 +93,33 @@ INSERT INTO `login` (`idLogin`, `user`, `password`, `apellido`, `email`, `rol`) 
 
 CREATE TABLE `reactivos` (
   `idReactivo` int(11) NOT NULL,
-  `pregunta` varchar(100) COLLATE latin1_spanish_ci NOT NULL
+  `pregunta` varchar(100) COLLATE latin1_spanish_ci NOT NULL,
+  `cuestionario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `reactivos`
 --
 
-INSERT INTO `reactivos` (`idReactivo`, `pregunta`) VALUES
-(1, '¿Cual es tu nombre?'),
-(2, '¿Tu nombre?'),
-(3, '¿Tu apellido?');
+INSERT INTO `reactivos` (`idReactivo`, `pregunta`, `cuestionario`) VALUES
+(1, 'cuál es tu nombre?', 0),
+(2, 'cuál es tu nombre?', 0);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Roles`
+-- Estructura de tabla para la tabla `roles`
 --
 
-CREATE TABLE `Roles` (
+CREATE TABLE `roles` (
   `idRol` varchar(20) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Volcado de datos para la tabla `Roles`
+-- Volcado de datos para la tabla `roles`
 --
 
-INSERT INTO `Roles` (`idRol`) VALUES
+INSERT INTO `roles` (`idRol`) VALUES
 ('AdminEncuesta'),
 ('AdminSistema'),
 ('Analista'),
@@ -107,6 +128,12 @@ INSERT INTO `Roles` (`idRol`) VALUES
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `cuestionarios`
+--
+ALTER TABLE `cuestionarios`
+  ADD PRIMARY KEY (`IDcuestionario`);
 
 --
 -- Indices de la tabla `estudios`
@@ -118,39 +145,62 @@ ALTER TABLE `estudios`
 -- Indices de la tabla `login`
 --
 ALTER TABLE `login`
-  ADD PRIMARY KEY (`idLogin`);
+  ADD PRIMARY KEY (`idLogin`),
+  ADD KEY `rol` (`rol`);
 
 --
 -- Indices de la tabla `reactivos`
 --
 ALTER TABLE `reactivos`
-  ADD PRIMARY KEY (`idReactivo`);
+  ADD PRIMARY KEY (`idReactivo`),
+  ADD KEY `cuestionario` (`cuestionario`);
 
 --
--- Indices de la tabla `Roles`
+-- Indices de la tabla `roles`
 --
-ALTER TABLE `Roles`
-  ADD PRIMARY KEY (`idRol`);
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`idRol`),
+  ADD KEY `idRol` (`idRol`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
+-- AUTO_INCREMENT de la tabla `cuestionarios`
+--
+ALTER TABLE `cuestionarios`
+  MODIFY `IDcuestionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de la tabla `estudios`
 --
 ALTER TABLE `estudios`
   MODIFY `idEstudio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT de la tabla `login`
 --
 ALTER TABLE `login`
   MODIFY `idLogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
 --
 -- AUTO_INCREMENT de la tabla `reactivos`
 --
 ALTER TABLE `reactivos`
-  MODIFY `idReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `login`
+--
+ALTER TABLE `login`
+  ADD CONSTRAINT `login_ibfk_1` FOREIGN KEY (`rol`) REFERENCES `roles` (`idRol`);
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

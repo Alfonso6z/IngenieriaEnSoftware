@@ -31,6 +31,15 @@ class AdminEncuesta extends CI_Controller{
 		$this->AdminEncuesta_model->insertaEstudio($data);
 		$this->load->view('encuestas/adminEncuesta/inicioAdminEncuesta');
 	}
+	public function altaCuestionario(){
+		$this->load->view('encuestas/adminEncuesta/altaCuestionario');
+	}
+	public function recibirDatosCuestionario(){
+		$data = array('nombre'=> $this->input->post('nombre'));
+		$this->AdminEncuesta_model->insertaCuestionario($data);
+		$this->load->view('encuestas/adminEncuesta/altaReactivo');
+	}
+
 	public function altaReactivo(){
 		$this->load->view('encuestas/adminEncuesta/altaReactivo');
 	}
@@ -45,4 +54,7 @@ class AdminEncuesta extends CI_Controller{
 		$data["recuperar"]= $this->AdminEncuesta_model->obtenerDatos();
 		$this->load->view('encuestas/encuestador/vistaEstudio',$data);
  	}  
+
+
+
 }
