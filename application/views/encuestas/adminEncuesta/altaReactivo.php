@@ -1,22 +1,23 @@
-<?= form_open('adminEncuesta/altaReactivo') ?>
+<?= form_open("adminEncuesta/recibirDatosReactivo") ?>
 <?php
-  $pregunta=array(
+$pregunta=array(
     'name' => 'pregunta','placeholder' => ' Escribe una pregunta');
+$Regresar=site_url('adminEncuesta/altaCuestionario',NULL);
+$cuenombre = array('name' => 'nombre','placeholder' => 'Nombre');
+$descripcion = array('name' => 'descripcion','placeholder' => 'Descripción del estudio');
 $altaEstudio=site_url('adminEncuesta/altaEstudio',NULL);
 $altaReactivo=site_url('adminEncuesta/altaReactivo',NULL);
 $cerrarSesion=site_url('login/logout',NULL);
-$Regresar=site_url('adminEncuesta/altaCuestionario');
+$inicio=site_url('adminEncuesta',NULL);
 $rol = $this->session->userdata('rol');
 $user = $this->session->userdata('user');
 $apell = $this->session->userdata('apellido');
 ?>
 <html>
-  <head>
-    <title>Alta de reactivos</title>
-    <!-- Insertamos el archivo CSS compilado y comprimido -->
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-     <!-- Theme opcional -->
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <head><!-- Insertamos el archivo CSS compilado y comprimido -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+   <!-- Theme opcional -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   </head>
   <div class="container">
       <header class="page-header">
@@ -50,34 +51,36 @@ $apell = $this->session->userdata('apellido');
           </li>
         </ul>
         <ul class = "nav nav-pills pull-right">
+          <li class ="active"><a href="<?php echo $inicio; ?>">Inicio</a></li>
           <li><a href="<?php echo $cerrarSesion; ?>">Cerrar Sesión</a></li>
         </ul>
       </header>
     </div>
-     </header>
-        <div class="jumbotron">
-          <div class="center-block"> 
-    <table class="table table-bordered">
-    <thead class="thead-dark">
-  <tr>
-        <div class="form-group">
-          <h3 class = "text-center"><?=  form_label('Alta Reactivo ','pregunta') ?></h3>
+  <div class="jumbotron">
+    <?php if(isset($error)){?>
+      <div class="alert alert-danger alert-dismissible"> 
+        <h5 class="text-center"><a class="close" data-dismiss='alert' arial-label="close">&times;</a><strong class="text-center"><?php echo $error; ?></strong></h5><h5 class="text-center"><?= validation_errors('‼ ');?></h5>
+      </div>
+    <?php } ?>
+        <?php if(isset($correcto)){?>
+      <div class="alert alert-success alert-dismissible"> 
+        <h5 class="text-center"><a class="close" data-dismiss='alert' arial-label="close">&times;</a><strong class="text-center"><?php echo $correcto; ?></strong></h5><h5 class="text-center"><?= validation_errors('☻');?></h5>
+      </div>
+    <?php } ?>
+    <tr>
+       <div class="form-group">
+          <h3 class = "text-center"><?=  form_label('Alta Reactivo ','pregunta') ?></h3>    
           <h3 class = "text-center" required><?= form_textarea($pregunta) ?></h3>
-          <h5 class = "text-center"><?= form_submit('','Enviar',"class='btn btn-primary'")?><a href="<?php echo $Regresar; ?>" class="btn btn-primary" role="button"> Regresar</a>
-        <?= form_close() ?></h5>
+        </div>
+        <h5 class = "text-center"><?= form_submit('','Enviar',"class='btn btn-primary'")  ?>  <a href="<?php echo $Regresar; ?>" class="btn btn-primary" role="button"> Regresar </a><?= form_close() ?>
+        </h5>
 
-      </div>
-    </div>
-      <div class="text-right">
-        <p>&copy;Valverde Cruz Marisol</p>
-      </div>
-    <!--Insertamos jQuery dependencia de Bootstrap-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/boo>tstrap-datepicker.js"></script>
+    </tr>
+  </div>   
+<p>&copy; Valverde Cruz Marisol </p>
+<!--Insertamos jQuery dependencia de Bootstrap-->
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
      <!--Insertamos el archivo JS compilado y comprimido -->
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
-     </script>
-  </body>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
 </html>

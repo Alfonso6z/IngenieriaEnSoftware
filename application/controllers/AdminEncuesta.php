@@ -9,6 +9,7 @@ class AdminEncuesta extends CI_Controller{
 		$this->load->helper('url');
 		$this->load->model('AdminEncuesta_model');
 		$this->load->library('session');
+		$this->load->library('form_validation');
 		if (!$this->session->userdata("login")){
 			redirect(site_url('login',NULL));
 		}
@@ -35,6 +36,18 @@ class AdminEncuesta extends CI_Controller{
 		$this->load->view('encuestas/adminEncuesta/altaCuestionario');
 	}
 	public function recibirDatosCuestionario(){
+		$this->form_validation->set_rules('pregunta', 'Pregunta', 'required|min_length[3]|trim');
+		$this->form_validation->set_message('required','');
+		if($this->form_validation->run()!=false){ //Si la validación es correcta
+                $data = array(
+					'pregunta' => $this->input->post('pregunta'));
+                $datos['correcto'] = 'Pregunta agregada con éxito' ;
+                $this->AdminEncuesta_model->insertaReactivo($data);
+                $this->load->view('encuestas/adminEncuesta/altaReactivo',$datos);
+             }else{                    
+             	$datos['error'] = 'Debe escribir una pregunta válida' ;
+                $this->load->view('encuestas/adminEncuesta/altaReactivo',$datos);
+             }
 		$data = array('nombre'=> $this->input->post('nombre'));
 		$this->AdminEncuesta_model->insertaCuestionario($data);
 		$this->load->view('encuestas/adminEncuesta/altaReactivo');
@@ -44,10 +57,20 @@ class AdminEncuesta extends CI_Controller{
 		$this->load->view('encuestas/adminEncuesta/altaReactivo');
 	}
 	public function recibirDatosReactivo(){
-		$data = array(
-			'pregunta' => $this->input->post('pregunta'));
-		$this->AdminEncuesta_model->insertaReactivo($data);
-		$this->load->view('encuestas/adminEncuesta/inicioAdminEncuesta');
+		
+		$this->form_validation->set_rules('pregunta', 'Pregunta', 'required|min_length[3]|trim');
+		$this->form_validation->set_message('required','');
+		if($this->form_validation->run()!=false){ //Si la validación es correcta
+                $data = array(
+					'pregunta' => $this->input->post('pregunta'));
+                $datos['correcto'] = 'Pregunta agregada con éxito' ;
+                $this->AdminEncuesta_model->insertaReactivo($data);
+                $this->load->view('encuestas/adminEncuesta/altaReactivo',$datos);
+             }else{                    
+             	$datos['error'] = 'Debe escribir una pregunta válida' ;
+                $this->load->view('encuestas/adminEncuesta/altaReactivo',$datos);
+             }
+		
 	}
 	public function vista_estudios()
 	{
