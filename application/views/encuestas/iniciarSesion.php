@@ -1,7 +1,7 @@
 <?= form_open('/login/validaLogin')?>
 <?php
-	$nombre=array(
-		'name' => 'nombre','placeholder' => ' Nombre de Usuario');
+	$email=array(
+		'name' => 'email','placeholder' => ' email de Usuario');
 	$contrasena = array(
 		'name' => 'contrasena','placeholder' => ' Contraseña');
 	$var=site_url('login');
@@ -31,8 +31,8 @@
           </div>
         <?php } ?>
       		<h3 class = "text-center">Inicio de Sesión</h3>
-      		<h5 class = "text-center"><?=  form_label('Usuario: ','nombre') ?>
-      		<?= form_input($nombre) ?></h5>
+      		<h5 class = "text-center"><?=  form_label('Email ','email') ?>
+      		<?= form_input($email) ?></h5>
       		<h5 class = "text-center"><?=  form_label('Contraseña: ','contrasena') ?>
       		<?= form_password($contrasena) ?></h5>
       		<h5 class = "text-center"><?= form_submit('','Iniciar',"class='btn btn-primary'")?>

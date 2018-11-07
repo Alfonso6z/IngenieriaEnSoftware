@@ -7,7 +7,7 @@ class Login_model extends CI_Model {
 		$this->load->database();
 	}
 	public function login($data){
-		$this->db->where('user',$data['nombre']);
+		$this->db->where('email',$data['email']);
 		$this->db->where('password',md5($data['contrasena']));
 		$q = $this->db->get('login');
 		if($q->num_rows()>0){
