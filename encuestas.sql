@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-11-2018 a las 08:01:53
+-- Tiempo de generación: 07-11-2018 a las 06:28:41
 -- Versión del servidor: 10.1.36-MariaDB
 -- Versión de PHP: 7.2.11
 
@@ -32,14 +32,6 @@ CREATE TABLE `cuestionarios` (
   `IDcuestionario` int(11) NOT NULL,
   `cuenombre` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `cuestionarios`
---
-
-INSERT INTO `cuestionarios` (`IDcuestionario`, `cuenombre`) VALUES
-(4, 'Cuestionario 1'),
-(5, 'Cuestionario 2');
 
 -- --------------------------------------------------------
 
@@ -94,16 +86,8 @@ INSERT INTO `login` (`idLogin`, `user`, `password`, `apellido`, `email`, `rol`) 
 CREATE TABLE `reactivos` (
   `idReactivo` int(11) NOT NULL,
   `pregunta` varchar(100) COLLATE latin1_spanish_ci NOT NULL,
-  `cuestionario` int(11) NOT NULL
+  `IDcuestionario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
-
---
--- Volcado de datos para la tabla `reactivos`
---
-
-INSERT INTO `reactivos` (`idReactivo`, `pregunta`, `cuestionario`) VALUES
-(1, 'cuál es tu nombre?', 0),
-(2, 'cuál es tu nombre?', 0);
 
 -- --------------------------------------------------------
 
@@ -153,7 +137,7 @@ ALTER TABLE `login`
 --
 ALTER TABLE `reactivos`
   ADD PRIMARY KEY (`idReactivo`),
-  ADD KEY `cuestionario` (`cuestionario`);
+  ADD KEY `preguntaCuestionario` (`IDcuestionario`) USING BTREE;
 
 --
 -- Indices de la tabla `roles`
@@ -170,7 +154,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `cuestionarios`
 --
 ALTER TABLE `cuestionarios`
-  MODIFY `IDcuestionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `IDcuestionario` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `estudios`
@@ -188,7 +172,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT de la tabla `reactivos`
 --
 ALTER TABLE `reactivos`
-  MODIFY `idReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idReactivo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas

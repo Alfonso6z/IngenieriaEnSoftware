@@ -11,6 +11,8 @@ class AdminEncuesta_model extends CI_Model {
 	}
 	function insertaCuestionario($data){
 		$this->db->insert('cuestionarios', array('cuenombre'=>$data['nombre']) );
+		$query = $this->db->insert_id();
+		return $query;
 	}
 	function insertaReactivo($data){
 		$this->db->insert('reactivos',array('pregunta'=>$data['pregunta']));

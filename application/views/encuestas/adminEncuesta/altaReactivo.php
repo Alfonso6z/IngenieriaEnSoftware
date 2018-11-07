@@ -3,8 +3,6 @@
 $pregunta=array(
     'name' => 'pregunta','placeholder' => ' Escribe una pregunta');
 $Regresar=site_url('adminEncuesta/altaCuestionario',NULL);
-$cuenombre = array('name' => 'nombre','placeholder' => 'Nombre');
-$descripcion = array('name' => 'descripcion','placeholder' => 'Descripción del estudio');
 $altaEstudio=site_url('adminEncuesta/altaEstudio',NULL);
 $altaReactivo=site_url('adminEncuesta/altaReactivo',NULL);
 $cerrarSesion=site_url('login/logout',NULL);
@@ -12,6 +10,7 @@ $inicio=site_url('adminEncuesta',NULL);
 $rol = $this->session->userdata('rol');
 $user = $this->session->userdata('user');
 $apell = $this->session->userdata('apellido');
+$id=$recuperar;
 ?>
 <html>
   <head><!-- Insertamos el archivo CSS compilado y comprimido -->
@@ -36,7 +35,7 @@ $apell = $this->session->userdata('apellido');
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cuestionario
           <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="<?php echo $altaReactivo;?>">Alta</a></li>
+                <li><a href="<?php echo $Regresar;?>">Alta</a></li>
                 <li><a href="#">Modificar</a></li>
                 <li><a href="#">Eliminar</a></li>
             </ul>
@@ -56,7 +55,8 @@ $apell = $this->session->userdata('apellido');
         </ul>
       </header>
     </div>
-  <div class="jumbotron">
+  <div class="jumbotron"> 
+    <h3><?php echo $id?></h3>
     <?php if(isset($error)){?>
       <div class="alert alert-danger alert-dismissible"> 
         <h5 class="text-center"><a class="close" data-dismiss='alert' arial-label="close">&times;</a><strong class="text-center"><?php echo $error; ?></strong></h5><h5 class="text-center"><?= validation_errors('‼ ');?></h5>
