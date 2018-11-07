@@ -3,6 +3,7 @@
 $cuenombre = array('name' => 'nombre','placeholder' => 'Nombre');
 $descripcion = array('name' => 'descripcion','placeholder' => 'Descripción del estudio');
 $altaEstudio=site_url('adminEncuesta/altaEstudio',NULL);
+$altaCuestionario=site_url('adminEncuesta/altaCuestionario',NULL);
 $altaReactivo=site_url('adminEncuesta/altaReactivo',NULL);
 $cerrarSesion=site_url('login/logout',NULL);
 $inicio=site_url('adminEncuesta',NULL);
@@ -31,6 +32,15 @@ $apell = $this->session->userdata('apellido');
           </li>
           <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cuestionario
+          <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="<?php echo $altaCuestionario;?>">Alta</a></li>
+                <li><a href="#">Modificar</a></li>
+                <li><a href="#">Eliminar</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Reactivos
           <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li><a href="<?php echo $altaReactivo;?>">Alta</a></li>

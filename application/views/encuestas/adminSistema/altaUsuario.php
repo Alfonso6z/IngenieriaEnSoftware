@@ -41,7 +41,7 @@ $apell = $this->session->userdata('apellido');
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tipo De Usuario
           <span class="caret"></span></a>
             <ul class="dropdown-menu">
-            <li><a href="">Registrar</a></li>
+            <li><a href="#">Registrar</a></li>
             <li><a href="#">Modificar</a></li>
             <li><a href="#">Eliminar</a></li>
            </ul>
