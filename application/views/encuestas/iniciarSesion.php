@@ -24,6 +24,12 @@
         <h3>Wolfgang</h3>
       </header>
       <div class="jumbotron">
+         <?php if(isset($error)){?>
+          <div class="alert alert-danger alert-dismissible">
+            <h6 class= "text-center"><a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong class = "text-center"><?php echo $error; ?></strong></h6>
+            <h5 class = "text-center"> <?= validation_errors('*');?></h5>
+          </div>
+        <?php } ?>
       		<h3 class = "text-center">Inicio de Sesión</h3>
       		<h5 class = "text-center"><?=  form_label('Usuario: ','nombre') ?>
       		<?= form_input($nombre) ?></h5>

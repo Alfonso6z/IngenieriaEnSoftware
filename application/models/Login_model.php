@@ -11,11 +11,10 @@ class Login_model extends CI_Model {
 		$this->db->where('password',md5($data['contrasena']));
 		$q = $this->db->get('login');
 		if($q->num_rows()>0){
-			return $q->row();
+			return $q->row(); 
 		}else{
 			return false;
 		}
 	}
 }
-
 ?>

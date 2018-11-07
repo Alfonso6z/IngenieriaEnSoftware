@@ -29,8 +29,8 @@ class Login extends CI_Controller {
 		);
 		$res = $this->login_model->login($data);
 		if(!$res){
-			$this->session->set_flashdata('login_failed','El usuario y/o contraseña son incorrectos');
-			$this->load->view('encuestas/iniciarSesion');
+			$datosL["error"]="Datos Incorrectos";
+			$this->load->view('encuestas/iniciarSesion',$datosL);
 		}
 		else{
 			$datos = array(
