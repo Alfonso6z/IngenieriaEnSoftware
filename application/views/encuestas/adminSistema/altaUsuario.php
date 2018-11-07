@@ -57,6 +57,18 @@ $apell = $this->session->userdata('apellido');
   <body>
     <div class="container">
       <div class="jumbotron">
+        <?php if(isset($error)){?>
+          <div class="alert alert-danger alert-dismissible">
+            <h5 class= "text-center"><a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong class = "text-center"><?php echo $error; ?></strong></h5>
+            <h5 class = "text-center"> <?= validation_errors('*');?></h5>
+          </div>
+        <?php } ?>
+        <?php if(isset($correcto)){?>
+          <div class="alert alert-success alert-dismissible">
+            <h5 class= "text-center"><a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong class = "text-center"><?php echo $correcto; ?></strong></h5>
+            <h5 class = "text-center"> <?= validation_errors('*');?></h5>
+          </div>
+        <?php } ?>
       		<h3 class = "text-center">Crea tu cuenta</h3>
       		<h5 class = "text-center"><?=  form_label('Usuario: ','nombre') ?>
       		<?= form_input($nombre) ?></h5>
@@ -68,13 +80,14 @@ $apell = $this->session->userdata('apellido');
       		<?= form_password($contrasena) ?></h5>
           <div class = "text-center">
             <select name= "tipoUsuario" id="tipoUsuario">
-              <option value="select"selected>Selecciona tipo de usuario</option>
-              <option value="Ad">Administrador</option>
-              <option value="Ad">Administrador de Estudio</option>
-              <option value="En">Encuestador</option>
-              <option value="An">Analista</option>    
+              <option value="select" selected>Selecciona tipo de usuario</option>
+              <?php
+                foreach ($roles as $i){
+                   echo '<option value="'. $i->idRol .'">'. $i->idRol .'</option>';
+                 } 
+              ?>
             </select></div>
-      		<h5 class = "text-center"><?= form_submit('','Registrarse',"class='btn btn-warning'")?>
+      		<h5 class = "text-center"><?= form_submit('Registrarse','Registrarse',"class='btn btn-success'")?>
 			<?= form_close() ?></h5>
       </div>
       <div class="text-right">
