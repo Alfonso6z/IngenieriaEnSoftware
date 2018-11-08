@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2018 a las 04:17:00
--- Versión del servidor: 10.1.36-MariaDB
--- Versión de PHP: 7.2.11
+-- Servidor: localhost:3306
+-- Tiempo de generación: 08-11-2018 a las 11:03:01
+-- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
+-- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -39,8 +37,7 @@ CREATE TABLE `cuestionarios` (
 --
 
 INSERT INTO `cuestionarios` (`IDcuestionario`, `cuenombre`, `idEstudio`) VALUES
-(2, 'Encuesta de Satisfac', 1),
-(3, 'Autoevaluación', 2);
+(1, 'Partidos politicos', 1);
 
 -- --------------------------------------------------------
 
@@ -59,8 +56,7 @@ CREATE TABLE `estudios` (
 --
 
 INSERT INTO `estudios` (`idEstudio`, `nombre`, `descripcion`) VALUES
-(1, 'Servicio al cliente', 'Recopilación de las opiniones de los usuarios acerca de nuestro servicio.'),
-(2, 'Alumnos en riesgo de reprobación', 'Identificar a tiempo a niños en riesgo de reprobar trimestre');
+(1, 'Politica', 'Se desea conocer la opinion publica acerca de los partidos politicos.');
 
 -- --------------------------------------------------------
 
@@ -82,9 +78,11 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`idLogin`, `user`, `password`, `apellido`, `email`, `rol`) VALUES
-(1, 'Alfonso', 'e10adc3949ba59abbe56e057f20f883e', 'González', 'agzdn666@outlook.es', 'AdminSistema'),
-(14, 'Marisol', 'e10adc3949ba59abbe56e057f20f883e', 'Valverde', 'hlpmarisol20@gmail.com', 'AdminEncuesta'),
-(18, 'Emmanuel', 'e10adc3949ba59abbe56e057f20f883e', 'Prado', 'pokito@gmail.com', 'AdminSistema');
+(1, 'Alfosno', 'e10adc3949ba59abbe56e057f20f883e', 'González Zempoalteca', 'agzdn666@outlook.es', 'AdminSistema'),
+(2, 'Maribel', '916a913f131c52615470330a144861f4', 'Garcia', 'marigb040593@gmail.com', 'Analista'),
+(3, 'unedgaro', '202cb962ac59075b964b07152d234b70', 'corrria', 'abc@hotmail.com', 'Encuestador'),
+(4, 'Eliseo', 'e10adc3949ba59abbe56e057f20f883e', 'Matrinez', 'eliseo@gmail.com', 'AdminEncuesta'),
+(5, 'Marisol', 'e10adc3949ba59abbe56e057f20f883e', 'Valverde', 'hplmarisol20@gmail.com', 'AdminEncuesta');
 
 -- --------------------------------------------------------
 
@@ -103,9 +101,10 @@ CREATE TABLE `reactivos` (
 --
 
 INSERT INTO `reactivos` (`idReactivo`, `pregunta`, `IDcuestionario`) VALUES
-(1, '¿Cómo describiría el servicio recibido por los empleados?', 2),
-(2, '1¿Qué materias se te dificultan más?', 3),
-(3, '2¿Entregaste todos tus trabajos en esa materia?', 3);
+(1, '¿Cual es el partido politico de su preferencia?', 1),
+(2, '¿Votaste en las elecciones pasadas?', 1),
+(3, '¿Cual seria el partido politico que desearia quitar de la plantilla electoral?', 1),
+(4, '¿Cuantos partidos politicos existen actualmente en Mexico?', 1);
 
 -- --------------------------------------------------------
 
@@ -173,26 +172,22 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `cuestionarios`
 --
 ALTER TABLE `cuestionarios`
-  MODIFY `IDcuestionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `IDcuestionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `estudios`
 --
 ALTER TABLE `estudios`
-  MODIFY `idEstudio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `idEstudio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `login`
 --
 ALTER TABLE `login`
-  MODIFY `idLogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
+  MODIFY `idLogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `reactivos`
 --
 ALTER TABLE `reactivos`
-  MODIFY `idReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `idReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Restricciones para tablas volcadas
 --
@@ -214,7 +209,6 @@ ALTER TABLE `login`
 --
 ALTER TABLE `reactivos`
   ADD CONSTRAINT `reactivos_ibfk_1` FOREIGN KEY (`IDcuestionario`) REFERENCES `cuestionarios` (`IDcuestionario`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
