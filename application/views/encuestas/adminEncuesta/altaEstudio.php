@@ -77,6 +77,7 @@ $apell = $this->session->userdata('apellido');
     </div>
         <?php } ?>
     <h3 class = "text-center">Alta Estudio</h3>
+    <h3 class = "text-center"><?= form_label('Alta de Estudios');?></h3>
     <h4 class = "text-center">
     <?= form_label('Nombre: ', 'nombre') ?><br>
     <?= form_input($nombre) ?></h4>

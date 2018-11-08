@@ -47,36 +47,40 @@ class AdminEncuesta extends CI_Controller{
 		
 	}
 	public function altaCuestionario(){
-		$this->load->view('encuestas/adminEncuesta/altaCuestionario');
+		$data['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
+		$this->load->view('encuestas/adminEncuesta/altaCuestionario',$data);
 	}
 	public function recibirDatosCuestionario(){
+		$idEstudio['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
 		$this->form_validation->set_rules('nombre', 'Nombre', 'required|min_length[1]|trim');
 		$this->form_validation->set_message('required','');
 		if($this->form_validation->run()!=false){ //Si la validación es correcta
-                $data = array('nombre'=> $this->input->post('nombre'));
-                $recuperar['recuperar'] = $this->AdminEncuesta_model->insertaCuestionario($data);
-                $this->load->view('encuestas/adminEncuesta/altaReactivo',$recuperar);
+                $data = array('nombre'=> $this->input->post('nombre'),
+                	'idEstudio' => $this->input->post('idEstudio'));
+                $datos['correcto'] = 'Se creó el cuestionario';
+                $this->AdminEncuesta_model->insertaCuestionario($data);
+                $this->load->view('encuestas/adminEncuesta/altaCuestionario',$idEstudio+$datos);
              }else{                    
              	$datos['error'] = 'Escriba un nombre' ;
                 $this->load->view('encuestas/adminEncuesta/altaCuestionario',$datos);
              }
-       	$data = array('nombre'=> $this->input->post('nombre'));
-        $recuperar['recuperar'] = $this->AdminEncuesta_model->insertaCuestionario($data);
 	}
 
 	public function altaReactivo(){
-		$this->load->view('encuestas/adminEncuesta/altaReactivo');
+		$data['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
+		$this->load->view('encuestas/adminEncuesta/altaReactivo',$data);
 	}
 	public function recibirDatosReactivo(){
-		
+		$IDcuestionario['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
 		$this->form_validation->set_rules('pregunta', 'Pregunta', 'required|min_length[3]|trim');
 		$this->form_validation->set_message('required','');
 		if($this->form_validation->run()!=false){ //Si la validación es correcta
                 $data = array(
-					'pregunta' => $this->input->post('pregunta'));
+					'pregunta' => $this->input->post('pregunta'),
+                	'IDcuestionario' => $this->input->post('IDcuestionario'));
                 $datos['correcto'] = 'Pregunta agregada con éxito' ;
                 $this->AdminEncuesta_model->insertaReactivo($data);
-                $this->load->view('encuestas/adminEncuesta/altaReactivo',$datos);
+                $this->load->view('encuestas/adminEncuesta/altaReactivo',$IDcuestionario+$datos);
              }else{                    
              	$datos['error'] = 'Debe escribir una pregunta válida' ;
                 $this->load->view('encuestas/adminEncuesta/altaReactivo',$datos);
