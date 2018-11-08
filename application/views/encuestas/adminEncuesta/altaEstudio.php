@@ -64,6 +64,18 @@ $apell = $this->session->userdata('apellido');
       </header>
     </div>
   <div class="jumbotron">
+      <?php if(isset($error)){?>
+    <div class="alert alert-danger alert-dismissible">
+      <h5 class= "text-center"><a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong class = "text-center"><?php echo $error; ?></strong></h5>
+      <h5 class = "text-center"> <?= validation_errors('*');?></h5>
+    </div>
+  <?php } ?>
+  <?php if(isset($correcto)){?>
+    <div class="alert alert-success alert-dismissible">
+      <h5 class= "text-center"><a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong class = "text-center"><?php echo $correcto; ?></strong></h5>
+      <h5 class = "text-center"> <?= validation_errors('*');?></h5>
+    </div>
+        <?php } ?>
     <h3 class = "text-center">Alta Estudio</h3>
     <h4 class = "text-center">
     <?= form_label('Nombre: ', 'nombre') ?><br>

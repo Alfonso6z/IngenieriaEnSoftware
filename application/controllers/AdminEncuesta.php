@@ -25,12 +25,26 @@ class AdminEncuesta extends CI_Controller{
 		$this->load->view('encuestas/adminEncuesta/altaEstudio');
 	}
 	public function recibirDatosEstudio(){
-		$data = array(
+		$this->form_validation->set_rules('nombre', 'nombre', 'required|min_length[1]|alpha|trim');
+		$this->form_validation->set_rules('descripcion', 'descripcion', 'required|min_length[1]|alpha|trim');
+
+		$this->form_validation->set_message('alpha','El campo %s debe estar compuesto solo por letras sin tildes');
+		$this->form_validation->set_message('min_length[1]','El campo %s esta vacio ');
+		if($this->form_validation->run()!=false){ 
+			$data = array(
 			'nombre' => $this->input->post('nombre'),
-			'descripcion' => $this->input->post('descripcion')
-		);
-		$this->AdminEncuesta_model->insertaEstudio($data);
-		$this->load->view('encuestas/adminEncuesta/inicioAdminEncuesta');
+			'descripcion' => $this->input->post('descripcion'));
+			$datos["correcto"]="Se Ha Registrado el Estudio Con Éxito";
+			$this->AdminEncuesta_model->insertaEstudio($data);
+			$this->load->view('encuestas/adminEncuesta/altaEstudio',$datos);
+		}else{
+			$datos["error"]="Error Al Registrar";
+            $this->load->view('encuestas/adminEncuesta/altaEstudio',$datos);
+
+		}
+
+		
+		
 	}
 	public function altaCuestionario(){
 		$this->load->view('encuestas/adminEncuesta/altaCuestionario');
