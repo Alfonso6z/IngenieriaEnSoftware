@@ -1,6 +1,6 @@
 <?= form_open("adminEncuesta/recibirDatosCuestionario") ?>
 <?php
-$cuenombre = array('name' => 'nombre','placeholder' => 'Nombre');
+$cuenombre = array('name' => 'nombre','placeholder' => 'Nombre', 'maxlength'=>'20');
 $descripcion = array('name' => 'descripcion','placeholder' => 'Descripción del estudio');
 $altaEstudio=site_url('adminEncuesta/altaEstudio',NULL);
 $altaCuestionario=site_url('adminEncuesta/altaCuestionario',NULL);

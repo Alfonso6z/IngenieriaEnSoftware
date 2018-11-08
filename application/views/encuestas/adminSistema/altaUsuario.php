@@ -3,11 +3,11 @@
 	$nombre=array(
 		'name' => 'nombre','placeholder' => ' Nombre de Usuario','maxlength'=>'20');
   $apellido=array(
-    'name' => 'apellido','placeholder' => ' Apellido');
+    'name' => 'apellido','placeholder' => ' Apellido','maxlength'=>'20');
   $email=array(
-    'name' => 'email','placeholder' => ' Em@il');
+    'name' => 'email','placeholder' => ' Em@il','maxlength'=>'25');
 	$contrasena = array(
-		'name' => 'contrasena','placeholder' => ' Contraseña');
+		'name' => 'contrasena','placeholder' => ' Contraseña','maxlength'=>'25');
 $altaUsuario=site_url('adminSistema/altaUsuarios',NULL);
 $cerrarSesion=site_url('login/logout',NULL);
 $inicio=site_url('adminSistema',NULL);
