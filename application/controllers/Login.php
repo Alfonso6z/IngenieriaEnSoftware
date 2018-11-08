@@ -24,7 +24,7 @@ class Login extends CI_Controller {
 	}
 	public function validaLogin(){
 		$data = array(
-			'nombre' => $this->input->post('nombre'),
+			'email' => $this->input->post('email'),
 			'contrasena' => $this->input->post('contrasena')
 		);
 		$res = $this->login_model->login($data);

@@ -3,6 +3,7 @@
 $cuenombre = array('name' => 'nombre','placeholder' => 'Nombre');
 $descripcion = array('name' => 'descripcion','placeholder' => 'Descripción del estudio');
 $altaEstudio=site_url('adminEncuesta/altaEstudio',NULL);
+$altaCuestionario=site_url('adminEncuesta/altaCuestionario',NULL);
 $altaReactivo=site_url('adminEncuesta/altaReactivo',NULL);
 $cerrarSesion=site_url('login/logout',NULL);
 $inicio=site_url('adminEncuesta',NULL);
@@ -31,6 +32,15 @@ $apell = $this->session->userdata('apellido');
           </li>
           <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cuestionario
+          <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="<?php echo $altaCuestionario;?>">Alta</a></li>
+                <li><a href="#">Modificar</a></li>
+                <li><a href="#">Eliminar</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Reactivos
           <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li><a href="<?php echo $altaReactivo;?>">Alta</a></li>
@@ -64,7 +74,16 @@ $apell = $this->session->userdata('apellido');
         <h5 class="text-center"><a class="close" data-dismiss='alert' arial-label="close">&times;</a><strong class="text-center"><?php echo $correcto; ?></strong></h5><h5 class="text-center"><?= validation_errors('☻');?></h5>
       </div>
     <?php } ?>
-     <h3 class = "text-center">Alta de Cuestionario</h3>
+     <h3 class = "text-center"> <?= form_label('Alta de Cuestionario'); ?></h3>
+     <div class = "text-center">
+            <select name= "idEstudio" id="idEstudio">
+              <option  value="" selected >Selecciona Estudio</option>
+              <?php
+                foreach ($idEstudio as $i){
+                   echo '<option value="'. $i->idEstudio .'">'. $i->nombre .'</option>';
+                 } 
+              ?>
+            </select></div>
     <h4 class = "text-center">
     <?= form_input($cuenombre) ?></h4>
     <h4 class = "text-center">

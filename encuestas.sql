@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2018 a las 06:28:41
+-- Tiempo de generación: 08-11-2018 a las 04:17:00
 -- Versión del servidor: 10.1.36-MariaDB
 -- Versión de PHP: 7.2.11
 
@@ -30,8 +30,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cuestionarios` (
   `IDcuestionario` int(11) NOT NULL,
-  `cuenombre` varchar(20) NOT NULL
+  `cuenombre` varchar(20) NOT NULL,
+  `idEstudio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `cuestionarios`
+--
+
+INSERT INTO `cuestionarios` (`IDcuestionario`, `cuenombre`, `idEstudio`) VALUES
+(2, 'Encuesta de Satisfac', 1),
+(3, 'Autoevaluación', 2);
 
 -- --------------------------------------------------------
 
@@ -50,8 +59,8 @@ CREATE TABLE `estudios` (
 --
 
 INSERT INTO `estudios` (`idEstudio`, `nombre`, `descripcion`) VALUES
-(1, 'Hola', 'jajjaja'),
-(2, 'Admin', 'ñhljkjhlkjhlkjhlkjhlkjhlkjhlkjh');
+(1, 'Servicio al cliente', 'Recopilación de las opiniones de los usuarios acerca de nuestro servicio.'),
+(2, 'Alumnos en riesgo de reprobación', 'Identificar a tiempo a niños en riesgo de reprobar trimestre');
 
 -- --------------------------------------------------------
 
@@ -89,6 +98,15 @@ CREATE TABLE `reactivos` (
   `IDcuestionario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `reactivos`
+--
+
+INSERT INTO `reactivos` (`idReactivo`, `pregunta`, `IDcuestionario`) VALUES
+(1, '¿Cómo describiría el servicio recibido por los empleados?', 2),
+(2, '1¿Qué materias se te dificultan más?', 3),
+(3, '2¿Entregaste todos tus trabajos en esa materia?', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -117,7 +135,8 @@ INSERT INTO `roles` (`idRol`) VALUES
 -- Indices de la tabla `cuestionarios`
 --
 ALTER TABLE `cuestionarios`
-  ADD PRIMARY KEY (`IDcuestionario`);
+  ADD PRIMARY KEY (`IDcuestionario`),
+  ADD KEY `idEstudio` (`idEstudio`);
 
 --
 -- Indices de la tabla `estudios`
@@ -137,7 +156,7 @@ ALTER TABLE `login`
 --
 ALTER TABLE `reactivos`
   ADD PRIMARY KEY (`idReactivo`),
-  ADD KEY `preguntaCuestionario` (`IDcuestionario`) USING BTREE;
+  ADD KEY `IDcuestionario` (`IDcuestionario`);
 
 --
 -- Indices de la tabla `roles`
@@ -154,7 +173,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `cuestionarios`
 --
 ALTER TABLE `cuestionarios`
-  MODIFY `IDcuestionario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDcuestionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `estudios`
@@ -172,17 +191,29 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT de la tabla `reactivos`
 --
 ALTER TABLE `reactivos`
-  MODIFY `idReactivo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
+-- Filtros para la tabla `cuestionarios`
+--
+ALTER TABLE `cuestionarios`
+  ADD CONSTRAINT `cuestionarios_ibfk_1` FOREIGN KEY (`idEstudio`) REFERENCES `estudios` (`idEstudio`);
+
+--
 -- Filtros para la tabla `login`
 --
 ALTER TABLE `login`
   ADD CONSTRAINT `login_ibfk_1` FOREIGN KEY (`rol`) REFERENCES `roles` (`idRol`);
+
+--
+-- Filtros para la tabla `reactivos`
+--
+ALTER TABLE `reactivos`
+  ADD CONSTRAINT `reactivos_ibfk_1` FOREIGN KEY (`IDcuestionario`) REFERENCES `cuestionarios` (`IDcuestionario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
