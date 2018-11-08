@@ -53,7 +53,10 @@ class AdminEncuesta extends CI_Controller{
 	public function recibirDatosCuestionario(){
 		$idEstudio['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
 		$this->form_validation->set_rules('nombre', 'Nombre', 'required|min_length[1]|trim');
-		$this->form_validation->set_message('required','');
+		$this->form_validation->set_rules('idEstudio', 'Selecçiona Estudio', 'required|min_length[1]|trim');
+
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+		$this->form_validation->set_message('min_length[1]','El campo %s debe tener al menos 3 caracteres');
 		if($this->form_validation->run()!=false){ //Si la validación es correcta
                 $data = array('nombre'=> $this->input->post('nombre'),
                 	'idEstudio' => $this->input->post('idEstudio'));
