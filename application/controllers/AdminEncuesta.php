@@ -25,8 +25,8 @@ class AdminEncuesta extends CI_Controller{
 		$this->load->view('encuestas/adminEncuesta/altaEstudio');
 	}
 	public function recibirDatosEstudio(){
-		$this->form_validation->set_rules('nombre', 'nombre', 'required|min_length[1]|alpha|trim');
-		$this->form_validation->set_rules('descripcion', 'descripcion', 'required|min_length[1]|alpha|trim');
+		$this->form_validation->set_rules('nombre', 'nombre', 'required|min_length[1]|trim');
+		$this->form_validation->set_rules('descripcion', 'descripcion', 'required|min_length[1]|trim');
 
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 
