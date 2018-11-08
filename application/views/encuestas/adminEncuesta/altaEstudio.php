@@ -1,7 +1,7 @@
 <?= form_open("adminEncuesta/recibirDatosEstudio") ?>
 <?php
-$nombre = array('name' => 'nombre','placeholder' => 'Nombre del estudio');
-$descripcion = array('name' => 'descripcion','placeholder' => 'Descripción del estudio');
+$nombre = array('name' => 'nombre','placeholder' => 'Nombre del estudio','maxlength'=>'50');
+$descripcion = array('name' => 'descripcion','placeholder' => 'Descripción del estudio', 'maxlength'=>'200');
 $altaEstudio=site_url('adminEncuesta/altaEstudio',NULL);
 $altaCuestionario=site_url('adminEncuesta/altaCuestionario',NULL);
 $altaReactivo=site_url('adminEncuesta/altaReactivo',NULL);
@@ -79,7 +79,7 @@ $apell = $this->session->userdata('apellido');
     <h3 class = "text-center"><strong>Alta Estudio</strong></h3>
     <h4 class = "text-center">
     <?= form_label('Nombre: ', 'nombre') ?><br>
-    <?= form_input($nombre) ?></h4>
+    <?= form_input($nombre)  ?></h4>
     <h4 class = "text-center">
     <?= form_label('Descripción del estudio: ', 'descripcion')?><br>
     <h4 class = "text-center"><?= form_textarea($descripcion) ?></h4>

@@ -1,7 +1,7 @@
 <?= form_open("adminEncuesta/recibirDatosReactivo") ?>
 <?php
 $pregunta=array(
-    'name' => 'pregunta','placeholder' => ' Escribe una pregunta');
+    'name' => 'pregunta','placeholder' => ' Escribe una pregunta', 'maxlength'=>'100');
 $altaCuestionario=site_url('adminEncuesta/altaCuestionario',NULL);
 $altaEstudio=site_url('adminEncuesta/altaEstudio',NULL);
 $altaReactivo=site_url('adminEncuesta/altaReactivo',NULL);
