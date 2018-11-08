@@ -74,7 +74,16 @@ $apell = $this->session->userdata('apellido');
         <h5 class="text-center"><a class="close" data-dismiss='alert' arial-label="close">&times;</a><strong class="text-center"><?php echo $correcto; ?></strong></h5><h5 class="text-center"><?= validation_errors('☻');?></h5>
       </div>
     <?php } ?>
-     <h3 class = "text-center">Alta de Cuestionario</h3>
+     <h3 class = "text-center"> <?= form_label('Alta de Cuestionario'); ?></h3>
+     <div class = "text-center">
+            <select name= "idEstudio" id="idEstudio">
+              <option  value="select"  selected >Selecciona Estudio</option>
+              <?php
+                foreach ($idEstudio as $i){
+                   echo '<option value="'. $i->idEstudio .'">'. $i->nombre .'</option>';
+                 } 
+              ?>
+            </select></div>
     <h4 class = "text-center">
     <?= form_input($cuenombre) ?></h4>
     <h4 class = "text-center">

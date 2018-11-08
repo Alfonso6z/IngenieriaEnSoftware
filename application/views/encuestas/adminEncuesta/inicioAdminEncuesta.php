@@ -68,7 +68,7 @@ $apell = $this->session->userdata('apellido');
   <body>
     <div class="container">
       <div class="jumbotron">
-        <h1>Ingenieria en Software</h1>
+        <h1>Ingeniería en Software</h1>
         <p>Vista Administrador de Encuestas<p>
       </div>
       <div class="text-right">

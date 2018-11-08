@@ -10,7 +10,6 @@ $inicio=site_url('adminEncuesta',NULL);
 $rol = $this->session->userdata('rol');
 $user = $this->session->userdata('user');
 $apell = $this->session->userdata('apellido');
-$id=$recuperar;
 ?>
 <html>
   <head><!-- Insertamos el archivo CSS compilado y comprimido -->
@@ -65,7 +64,6 @@ $id=$recuperar;
       </header>
     </div>
   <div class="jumbotron"> 
-    <h3><?php echo $id?></h3>
     <?php if(isset($error)){?>
       <div class="alert alert-danger alert-dismissible"> 
         <h5 class="text-center"><a class="close" data-dismiss='alert' arial-label="close">&times;</a><strong class="text-center"><?php echo $error; ?></strong></h5><h5 class="text-center"><?= validation_errors('‼ ');?></h5>
@@ -77,11 +75,22 @@ $id=$recuperar;
       </div>
     <?php } ?>
     <tr>
-       <div class="form-group">
-          <h3 class = "text-center"><?=  form_label('Alta Reactivo ','pregunta') ?></h3>    
+      <div class="form-group">
+          <h3 class = "text-center"><?=  form_label('Alta Reactivo ','pregunta') ?></h3>  
+          <div class = "text-center">
+            <select name= "IDcuestionario" id="IDcuestionario">
+              <option value="select" selected>Selecciona el cuestionario</option>
+              <?php
+                foreach ($IDcuestionario as $i){
+                   echo '<option value="'. $i->IDcuestionario .'">'. $i->cuenombre .'</option>';
+                 } 
+              ?>
+            </select></div>
+       
           <h3 class = "text-center" required><?= form_textarea($pregunta) ?></h3>
         </div>
-        <h5 class = "text-center"><?= form_submit('','Enviar',"class='btn btn-primary'")  ?>  <a href="<?php echo $Regresar; ?>" class="btn btn-primary" role="button"> Regresar </a><?= form_close() ?>
+        <h5 class = "text-center"><?= form_submit('','Aceptar',"class='btn btn-success'")  ?> 
+        <?= form_close() ?>
         </h5>
 
     </tr>
