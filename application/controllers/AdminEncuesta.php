@@ -28,8 +28,8 @@ class AdminEncuesta extends CI_Controller{
 		$this->form_validation->set_rules('nombre', 'nombre', 'required|min_length[1]|alpha|trim');
 		$this->form_validation->set_rules('descripcion', 'descripcion', 'required|min_length[1]|alpha|trim');
 
-		$this->form_validation->set_message('alpha','El campo %s debe estar compuesto solo por letras sin tildes');
-		$this->form_validation->set_message('min_length[1]','El campo %s esta vacio ');
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+
 		if($this->form_validation->run()!=false){ 
 			$data = array(
 			'nombre' => $this->input->post('nombre'),
@@ -41,10 +41,7 @@ class AdminEncuesta extends CI_Controller{
 			$datos["error"]="Error Al Registrar";
             $this->load->view('encuestas/adminEncuesta/altaEstudio',$datos);
 
-		}
-
-		
-		
+		}	
 	}
 	public function altaCuestionario(){
 		$data['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
@@ -52,11 +49,11 @@ class AdminEncuesta extends CI_Controller{
 	}
 	public function recibirDatosCuestionario(){
 		$idEstudio['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
+
 		$this->form_validation->set_rules('nombre', 'Nombre', 'required|min_length[1]|trim');
 		$this->form_validation->set_rules('idEstudio', 'Selecçiona Estudio', 'required|min_length[1]|trim');
 
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
-		$this->form_validation->set_message('min_length[1]','El campo %s debe tener al menos 3 caracteres');
 		if($this->form_validation->run()!=false){ //Si la validación es correcta
                 $data = array('nombre'=> $this->input->post('nombre'),
                 	'idEstudio' => $this->input->post('idEstudio'));
@@ -65,7 +62,7 @@ class AdminEncuesta extends CI_Controller{
                 $this->load->view('encuestas/adminEncuesta/altaCuestionario',$idEstudio+$datos);
              }else{                    
              	$datos['error'] = 'Escriba un nombre' ;
-                $this->load->view('encuestas/adminEncuesta/altaCuestionario',$datos);
+                $this->load->view('encuestas/adminEncuesta/altaCuestionario',$idEstudio+$datos);
              }
 	}
 
@@ -74,19 +71,21 @@ class AdminEncuesta extends CI_Controller{
 		$this->load->view('encuestas/adminEncuesta/altaReactivo',$data);
 	}
 	public function recibirDatosReactivo(){
-		$IDcuestionario['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
+		$IDcues['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
 		$this->form_validation->set_rules('pregunta', 'Pregunta', 'required|min_length[3]|trim');
-		$this->form_validation->set_message('required','');
+		$this->form_validation->set_rules('IDcuestionario', 'Selecciona Estudio', 'required|min_length[1]|trim');
+
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
 		if($this->form_validation->run()!=false){ //Si la validación es correcta
                 $data = array(
 					'pregunta' => $this->input->post('pregunta'),
                 	'IDcuestionario' => $this->input->post('IDcuestionario'));
                 $datos['correcto'] = 'Pregunta agregada con éxito' ;
                 $this->AdminEncuesta_model->insertaReactivo($data);
-                $this->load->view('encuestas/adminEncuesta/altaReactivo',$IDcuestionario+$datos);
+                $this->load->view('encuestas/adminEncuesta/altaReactivo',$IDcues+$datos);
              }else{                    
              	$datos['error'] = 'Debe escribir una pregunta válida' ;
-                $this->load->view('encuestas/adminEncuesta/altaReactivo',$datos);
+                $this->load->view('encuestas/adminEncuesta/altaReactivo',$IDcues+$datos);
              }
 		
 	}

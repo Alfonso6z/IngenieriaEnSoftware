@@ -79,7 +79,7 @@ $apell = $this->session->userdata('apellido');
           <h3 class = "text-center"><?=  form_label('Alta Reactivo ','pregunta') ?></h3>  
           <div class = "text-center">
             <select name= "IDcuestionario" id="IDcuestionario">
-              <option value="select" selected>Selecciona el cuestionario</option>
+              <option value="" selected>Selecciona el cuestionario</option>
               <?php
                 foreach ($IDcuestionario as $i){
                    echo '<option value="'. $i->IDcuestionario .'">'. $i->cuenombre .'</option>';
