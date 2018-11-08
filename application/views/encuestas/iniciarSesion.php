@@ -1,9 +1,9 @@
 <?= form_open('/login/validaLogin')?>
 <?php
 	$email=array(
-		'name' => 'email','placeholder' => ' email de Usuario');
+		'name' => 'email','placeholder' => ' email de Usuario','maxlength'=>'25');
 	$contrasena = array(
-		'name' => 'contrasena','placeholder' => ' Contraseña');
+		'name' => 'contrasena','placeholder' => ' Contraseña','maxlength'=>'25');
 	$var=site_url('login');
 ?>
 <html>
