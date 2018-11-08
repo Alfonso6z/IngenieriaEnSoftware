@@ -1,5 +1,6 @@
+<?= form_open('/adminSistema/recibirDatosTipoUsuario')?>
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+$nombre=array('name' => 'nombre','placeholder' => ' Tipo De Usuario','maxlength'=>'20');
 $altaUsuario=site_url('adminSistema/altaUsuarios',NULL);
 $altaTipoUsuario=site_url('adminSistema/altaTipoUsuario',NULL);
 $cerrarSesion=site_url('login/logout',NULL);
@@ -7,11 +8,10 @@ $inicio=site_url('adminSistema',NULL);
 $rol = $this->session->userdata('rol');
 $user = $this->session->userdata('user');
 $apell = $this->session->userdata('apellido');
-?><!DOCTYPE html>
+?>
 <html>
   <head>
-    <title>Administrador de Sistema</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alta Tipo Usuario</title>
     <!-- Insertamos el archivo CSS compilado y comprimido -->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
      <!-- Theme opcional -->
@@ -47,11 +47,27 @@ $apell = $this->session->userdata('apellido');
         </ul>
       </header>
     </div>
+
   <body>
     <div class="container">
       <div class="jumbotron">
-        <h1>Ingenieria en Software</h1>
-        <p>Vista Administrador de Sistema<p>
+        <?php if(isset($error)){?>
+          <div class="alert alert-danger alert-dismissible">
+            <h5 class= "text-center"><a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong class = "text-center"><?php echo $error; ?></strong></h5>
+            <h5 class = "text-center"> <?= validation_errors('*');?></h5>
+          </div>
+        <?php } ?>
+        <?php if(isset($correcto)){?>
+          <div class="alert alert-success alert-dismissible">
+            <h5 class= "text-center"><a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong class = "text-center"><?php echo $correcto; ?></strong></h5>
+            <h5 class = "text-center"> <?= validation_errors('*');?></h5>
+          </div>
+        <?php } ?>
+      		<h3 class = "text-center">Alta Tipo De Usuario</h3>
+      		<h5 class = "text-center"><?=  form_label('Tipo De Usuario','nombre') ?>
+      		<?= form_input($nombre) ?></h5>
+      		<h5 class = "text-center"><?= form_submit('Registrar','Registrar',"class='btn btn-success'")?>
+			<?= form_close() ?></h5>
       </div>
       <div class="text-right">
         <p>&copy;Alfonso González Zempoalteca</p>

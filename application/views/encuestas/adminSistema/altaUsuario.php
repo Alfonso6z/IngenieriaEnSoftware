@@ -9,6 +9,7 @@
 	$contrasena = array(
 		'name' => 'contrasena','placeholder' => ' Contraseña','maxlength'=>'25');
 $altaUsuario=site_url('adminSistema/altaUsuarios',NULL);
+$altaTipoUsuario=site_url('adminSistema/altaTipoUsuario',NULL);
 $cerrarSesion=site_url('login/logout',NULL);
 $inicio=site_url('adminSistema',NULL);
 $rol = $this->session->userdata('rol');
@@ -41,7 +42,7 @@ $apell = $this->session->userdata('apellido');
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tipo De Usuario
           <span class="caret"></span></a>
             <ul class="dropdown-menu">
-            <li><a href="#">Registrar</a></li>
+            <li><a href="<?php echo $altaTipoUsuario; ?>">Registrar</a></li>
             <li><a href="#">Modificar</a></li>
             <li><a href="#">Eliminar</a></li>
            </ul>

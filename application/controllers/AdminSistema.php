@@ -62,4 +62,25 @@ class AdminSistema extends CI_Controller{
 		
 		
 	}
+
+	public function altaTipoUsuario(){
+		$this->load->view('encuestas/adminSistema/altaTipoUsuario');
+	}
+
+	public function recibirDatosTipoUsuario(){
+		$this->form_validation->set_rules('nombre', 'Tipo de Usuario', 'required|is_unique[roles.idRol]|trim');
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+		$this->form_validation->set_message('is_unique','El %s ya esta registrado');
+		if($this->form_validation->run()!=false){
+			$datos["correcto"]="Se Ha Registrado Con Éxito";
+			$data = array('nombre' => $this->input->post('nombre'));
+			$this->adminSistema_model->insertarTipoUsuario($data);
+			$this->load->view('encuestas/adminSistema/altaTipoUsuario',$datos);
+		}else{
+			$datos["error"]="Error Al Registrar";
+            	$this->load->view('encuestas/adminSistema/altaTipoUsuario',$datos);
+		}
+
+
+	}
 }

@@ -18,6 +18,10 @@ class AdminSistema_model extends CI_Model {
 			return $roles->result();
 		}
 	}
+
+	function insertarTipoUsuario($data){
+		$this->db->insert('roles',array('idRol'=>$data['nombre']));
+	}
 }
 
 ?>
