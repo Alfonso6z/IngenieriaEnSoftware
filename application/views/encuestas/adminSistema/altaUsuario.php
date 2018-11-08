@@ -1,7 +1,7 @@
 <?= form_open('/adminSistema/recibirDatosUsuario')?>
 <?php
 	$nombre=array(
-		'name' => 'nombre','placeholder' => ' Nombre de Usuario');
+		'name' => 'nombre','placeholder' => ' Nombre de Usuario','maxlength'=>'20');
   $apellido=array(
     'name' => 'apellido','placeholder' => ' Apellido');
   $email=array(
