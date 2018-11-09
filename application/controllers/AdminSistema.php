@@ -66,7 +66,7 @@ class AdminSistema extends CI_Controller{
 	public function altaTipoUsuario(){
 		$this->load->view('encuestas/adminSistema/altaTipoUsuario');
 	}
-
+	
 	public function recibirDatosTipoUsuario(){
 		$this->form_validation->set_rules('nombre', 'Tipo de Usuario', 'required|is_unique[roles.idRol]|trim');
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
@@ -80,7 +80,25 @@ class AdminSistema extends CI_Controller{
 			$datos["error"]="Error Al Registrar";
             	$this->load->view('encuestas/adminSistema/altaTipoUsuario',$datos);
 		}
-
-
 	}
+
+	public function altaTipoReactivo(){
+		$this->load->view('encuestas/adminSistema/altaTipoReactivo');
+	}
+
+	public function recibirDatosTipoReactivo(){
+		$this->form_validation->set_rules('nombre', 'Tipo de Reactivo', 'required|is_unique[tiporeactivo.nombre]|trim');
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+		$this->form_validation->set_message('is_unique','El reactivo %s ya esta registrado');
+		if($this->form_validation->run()!=false){
+			$datos["correcto"]="Agregado con éxito";
+			$data = array('nombre' => $this->input->post('nombre'));
+			$this->adminSistema_model->insertarTipoReactivo($data);
+			$this->load->view('encuestas/adminSistema/altaTipoReactivo',$datos);
+		}else{
+			$datos["error"]="Error de reactivo";
+            	$this->load->view('encuestas/adminSistema/altaTipoReactivo',$datos);
+		}
+	}
+
 }

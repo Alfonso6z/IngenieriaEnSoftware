@@ -22,6 +22,10 @@ class AdminSistema_model extends CI_Model {
 	function insertarTipoUsuario($data){
 		$this->db->insert('roles',array('idRol'=>$data['nombre']));
 	}
+
+	function insertarTipoReactivo($data){
+		$this->db->insert('tiporeactivo',array('nombre'=>$data['nombre']));
+	}
 }
 
 ?>

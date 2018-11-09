@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 08-11-2018 a las 11:03:01
--- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
--- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 09-11-2018 a las 06:15:04
+-- Versión del servidor: 10.1.36-MariaDB
+-- Versión de PHP: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -126,6 +128,17 @@ INSERT INTO `roles` (`idRol`) VALUES
 ('Analista'),
 ('Encuestador');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tiporeactivo`
+--
+
+CREATE TABLE `tiporeactivo` (
+  `idTipoReactivo` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Índices para tablas volcadas
 --
@@ -165,6 +178,12 @@ ALTER TABLE `roles`
   ADD KEY `idRol` (`idRol`);
 
 --
+-- Indices de la tabla `tiporeactivo`
+--
+ALTER TABLE `tiporeactivo`
+  ADD PRIMARY KEY (`idTipoReactivo`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -173,21 +192,31 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `cuestionarios`
   MODIFY `IDcuestionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT de la tabla `estudios`
 --
 ALTER TABLE `estudios`
   MODIFY `idEstudio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT de la tabla `login`
 --
 ALTER TABLE `login`
   MODIFY `idLogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT de la tabla `reactivos`
 --
 ALTER TABLE `reactivos`
   MODIFY `idReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `tiporeactivo`
+--
+ALTER TABLE `tiporeactivo`
+  MODIFY `idTipoReactivo` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- Restricciones para tablas volcadas
 --
@@ -209,6 +238,7 @@ ALTER TABLE `login`
 --
 ALTER TABLE `reactivos`
   ADD CONSTRAINT `reactivos_ibfk_1` FOREIGN KEY (`IDcuestionario`) REFERENCES `cuestionarios` (`IDcuestionario`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

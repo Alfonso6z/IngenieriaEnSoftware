@@ -3,6 +3,7 @@
 $nombre=array('name' => 'nombre','placeholder' => ' Tipo De Usuario','maxlength'=>'20');
 $altaUsuario=site_url('adminSistema/altaUsuarios',NULL);
 $altaTipoUsuario=site_url('adminSistema/altaTipoUsuario',NULL);
+$altaTipoReactivo=site_url('adminSistema/altaTipoReactivo',NULL);
 $cerrarSesion=site_url('login/logout',NULL);
 $inicio=site_url('adminSistema',NULL);
 $rol = $this->session->userdata('rol');
@@ -36,6 +37,15 @@ $apell = $this->session->userdata('apellido');
           <span class="caret"></span></a>
             <ul class="dropdown-menu">
             <li><a href="<?php echo $altaTipoUsuario; ?>">Registrar</a></li>
+            <li><a href="#">Modificar</a></li>
+            <li><a href="#">Eliminar</a></li>
+           </ul>
+          </li>
+          <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tipo De Reactivo
+          <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+            <li><a href="<?php echo $altaTipoReactivo; ?>">Alta</a></li>
             <li><a href="#">Modificar</a></li>
             <li><a href="#">Eliminar</a></li>
            </ul>

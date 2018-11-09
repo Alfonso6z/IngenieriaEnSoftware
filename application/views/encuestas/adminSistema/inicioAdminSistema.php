@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 $altaUsuario=site_url('adminSistema/altaUsuarios',NULL);
 $altaTipoUsuario=site_url('adminSistema/altaTipoUsuario',NULL);
+$altaTipoReactivo=site_url('adminSistema/altaTipoReactivo',NULL);
 $cerrarSesion=site_url('login/logout',NULL);
 $inicio=site_url('adminSistema',NULL);
 $rol = $this->session->userdata('rol');
@@ -25,17 +26,27 @@ $apell = $this->session->userdata('apellido');
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuarios
           <span class="caret"></span></a>
             <ul class="dropdown-menu">
-            <li><a href="<?php echo $altaUsuario; ?>">Registrar</a></li>
+            <li><a href= "<?php echo $altaUsuario; ?>" >Registrar</a></li>
             <li><a href="#">Modificar</a></li>
             <li><a href="#">Eliminar</a></li>
             <li><a href="#">Cambio De Password</a></li>
           </ul>
+          </li>        
+           <li class="dropdown">
+           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tipo De Usuario
+           <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+            <li><a href= "<?php echo $altaTipoUsuario; ?>" >Registrar</a></li>
+            <li><a href="#">Modificar</a></li>
+            <li><a href="#">Eliminar</a></li>
+           </ul>
           </li>
+
           <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tipo De Usuario
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tipo De Reactivo
           <span class="caret"></span></a>
             <ul class="dropdown-menu">
-            <li><a href="<?php echo $altaTipoUsuario; ?>">Registrar</a></li>
+            <li><a href="<?php echo $altaTipoReactivo; ?>">Alta</a></li>
             <li><a href="#">Modificar</a></li>
             <li><a href="#">Eliminar</a></li>
            </ul>
