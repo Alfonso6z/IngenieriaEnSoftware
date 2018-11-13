@@ -10,6 +10,7 @@ class AdminSistema extends CI_Controller{
 		$this->load->helper('url');
 		$this->load->model('adminSistema_model');
 		$this->load->library('session');
+		$this->load->view('encuestas/adminSistema/headerAdminSistema');
 		if (!$this->session->userdata("login")){
 			redirect(site_url('login',NULL));
 		}
@@ -67,6 +68,9 @@ class AdminSistema extends CI_Controller{
 		$this->load->view('encuestas/adminSistema/altaTipoUsuario');
 	}
 	
+	public function actualizaTipoUsuario(){
+		$this->load->view('encuestas/adminSistema/actualizaTipoUsuario');
+	}
 	public function recibirDatosTipoUsuario(){
 		$this->form_validation->set_rules('nombre', 'Tipo de Usuario', 'required|is_unique[roles.idRol]|trim');
 		$this->form_validation->set_message('required','El campo %s es obligatorio');

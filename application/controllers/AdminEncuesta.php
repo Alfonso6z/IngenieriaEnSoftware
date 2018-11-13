@@ -10,6 +10,7 @@ class AdminEncuesta extends CI_Controller{
 		$this->load->model('AdminEncuesta_model');
 		$this->load->library('session');
 		$this->load->library('form_validation');
+		$this->load->view('encuestas/adminEncuesta/headerAdminEncuesta');
 		if (!$this->session->userdata("login")){
 			redirect(site_url('login',NULL));
 		}
