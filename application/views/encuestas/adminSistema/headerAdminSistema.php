@@ -6,7 +6,7 @@ $actualizaTipoUsuario=site_url('adminSistema/actualizaTipoUsuario',NULL);
 $altaTipoReactivo=site_url('adminSistema/altaTipoReactivo',NULL);
 $cerrarSesion=site_url('login/logout',NULL);
 $inicio=site_url('adminSistema',NULL);
-$rol = $this->session->userdata('rol');
+$rol = $this->session->userdata('rol'); 
 $user = $this->session->userdata('user');
 $apell = $this->session->userdata('apellido');
 ?><!DOCTYPE html>

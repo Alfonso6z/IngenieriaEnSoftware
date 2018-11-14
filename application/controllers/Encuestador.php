@@ -11,6 +11,7 @@ class Encuestador extends CI_Controller {
 		$this->load->helper('url');
 		//$this->load->model('adminSistema_model');
 		$this->load->library('session');
+		$this->load->view('encuestas/encuestador/headerEncuestador');
 		if (!$this->session->userdata("login")){
 			redirect(site_url('login',NULL));
 		}
@@ -19,6 +20,6 @@ class Encuestador extends CI_Controller {
 		}
 	}
 	public function index(){
-		$this->load->view('encuestas/encuestador/vistaEstudioParticular');
+		$this->load->view('encuestas/encuestador/inicioEncuestador');
 	}
 }

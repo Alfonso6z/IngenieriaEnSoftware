@@ -7,7 +7,7 @@
      <!-- Theme opcional -->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   </head>
-  <body>
+  <body> 
     <div class="container">
       <div class="jumbotron">
         <h1>Ingenieria en Software</h1>

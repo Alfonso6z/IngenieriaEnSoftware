@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset="utf-8">
-    <title>Luis del Valle - Desarrollo Software</title>
+    <title>Encuestador</title>
     <!-- Insertamos el archivo CSS compilado y comprimido -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Theme opcional -->
