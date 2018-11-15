@@ -15,6 +15,9 @@ class AdminEncuesta_model extends CI_Model {
 	function insertaReactivo($data){
 		$this->db->insert('reactivos',array('pregunta'=>$data['pregunta'], 'IDcuestionario'=>$data['IDcuestionario']));
 	}
+	function insertaRespuesta($data){
+		$this->db->insert('respuestas',array('resnombre'=>$data['respuesta'], 'idReactivo'=>$data['idReactivo']));
+	}
 	function obtenerDatos(){
 		$query = $this->db->get("estudios");
 		return $query;
@@ -35,6 +38,15 @@ class AdminEncuesta_model extends CI_Model {
 			return $cuestionarios->result();
 		}
 	}
+	function getReactivo(){
+		$this->db->order_by('pregunta','asc');
+		$reactivos = $this->db->get('reactivos');
+
+		if ($reactivos->num_rows() > 0){
+			return $reactivos->result();
+		}
+	}
+
 
 }
 

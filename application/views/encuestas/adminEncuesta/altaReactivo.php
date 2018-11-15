@@ -33,13 +33,20 @@ $pregunta=array(
                } 
             ?>
           </select></div>
-     
+              <br><div class = "text-center">
+        <select name= "TipoReactivo" id="TipoReactivo">
+          <option value="select" selected>Selecciona tipo de reactivo</option>
+          <?php
+            foreach ($tiporeactivo as $i){
+               echo '<option value="'. $i->nombre .'">'. $i->nombre .'</option>';
+          } 
+          ?>
+       </select></div>
         <h3 class = "text-center" required><?= form_textarea($pregunta) ?></h3>
       </div>
       <h5 class = "text-center"><?= form_submit('','Aceptar',"class='btn btn-success'")  ?> 
       <?= form_close() ?>
       </h5>
-
   </tr>
 </div>   
 <p>&copy; Valverde Cruz Marisol </p>

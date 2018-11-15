@@ -1,3 +1,4 @@
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -90,6 +91,32 @@ class AdminEncuesta extends CI_Controller{
              }
 		
 	}
+
+	public function altaRespuesta(){
+		$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
+		$this->load->view('encuestas/adminEncuesta/altaRespuesta',$data);
+	}
+	public function recibirDatosRespuesta(){
+		$idReactivo['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
+		$this->form_validation->set_rules('respuesta', 'Respuesta', 'required|min_length[1]|trim');
+		$this->form_validation->set_rules('idReactivo', 'Selecciona Pregunta', 'required|min_length[1]|trim');
+
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+		if($this->form_validation->run()!=false){ //Si la validación es correcta
+                $data = array(
+					'respuesta' => $this->input->post('respuesta'),
+                	'idReactivo' => $this->input->post('idReactivo'));
+                $datos['correcto'] = 'Respuesta agregada con éxito' ;
+                $this->AdminEncuesta_model->insertaRespuesta($data);
+                $this->load->view('encuestas/adminEncuesta/altaRespuesta',$idReactivo+$datos);
+             }else{                    
+             	$datos['error'] = 'Debe escribir una respuesta válida' ;
+                $this->load->view('encuestas/adminEncuesta/altaRespuesta',$idReactivo+$datos);
+             }
+		
+	}
+
+
 	public function vista_estudios()
 	{
 		$data["recuperar"]= $this->AdminEncuesta_model->obtenerDatos();

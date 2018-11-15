@@ -19,6 +19,16 @@ class AdminSistema_model extends CI_Model {
 		}
 	}
 
+
+	function getTreactivos(){
+		$this->db->order_by('nombre','asc');
+		$tiporeactivo = $this->db->get('tiporeactivo');
+
+		if ($tiporeactivo->num_rows() > 0){
+			return $tiporeactivo->result();
+		}
+	}
+
 	function insertarTipoUsuario($data){
 		$this->db->insert('roles',array('idRol'=>$data['nombre']));
 	}
