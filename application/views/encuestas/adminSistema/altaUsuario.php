@@ -1,59 +1,15 @@
 <?= form_open('/adminSistema/recibirDatosUsuario')?>
 <?php
 	$nombre=array(
-		'name' => 'nombre','placeholder' => ' Nombre de Usuario');
+		'name' => 'nombre','placeholder' => ' Nombre de Usuario','maxlength'=>'20');
   $apellido=array(
-    'name' => 'apellido','placeholder' => ' Apellido');
+    'name' => 'apellido','placeholder' => ' Apellido','maxlength'=>'20');
   $email=array(
-    'name' => 'email','placeholder' => ' Em@il');
+    'name' => 'email','placeholder' => ' Em@il','maxlength'=>'25');
 	$contrasena = array(
-		'name' => 'contrasena','placeholder' => ' Contraseña');
-$altaUsuario=site_url('adminSistema/altaUsuarios',NULL);
-$cerrarSesion=site_url('login/logout',NULL);
-$inicio=site_url('adminSistema',NULL);
-$rol = $this->session->userdata('rol');
-$user = $this->session->userdata('user');
-$apell = $this->session->userdata('apellido');
+		'name' => 'contrasena','placeholder' => ' Contraseña','maxlength'=>'25');
 ?>
 <html>
-  <head>
-    <title>Registrarse</title>
-    <!-- Insertamos el archivo CSS compilado y comprimido -->
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-     <!-- Theme opcional -->
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-  </head>
-  <div class="container">
-      <header class="page-header">
-     <h3>Wolfgang   <?php echo "$rol" ?>: <?php echo "$user" ?>  <?php echo "$apell" ?></h3>
-        <ul class = "nav nav-pills pull-left">
-          <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuarios
-          <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-            <li><a href="<?php echo $altaUsuario; ?>">Registrar</a></li>
-            <li><a href="#">Modificar</a></li>
-            <li><a href="#">Eliminar</a></li>
-            <li><a href="#">Cambio De Password</a></li>
-          </ul>
-          </li>
-          <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tipo De Usuario
-          <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-            <li><a href="#">Registrar</a></li>
-            <li><a href="#">Modificar</a></li>
-            <li><a href="#">Eliminar</a></li>
-           </ul>
-          </li>
-        </ul>
-        <ul class = "nav nav-pills pull-right">
-          <li class ="active"><a href="<?php echo $inicio; ?>">Inicio</a></li>
-          <li><a href="<?php echo $cerrarSesion; ?>">Cerrar Sesión</a></li>
-        </ul>
-      </header>
-    </div>
-
   <body>
     <div class="container">
       <div class="jumbotron">

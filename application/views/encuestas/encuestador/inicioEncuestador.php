@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head> 
-    <title>Administrador de Encuestas</title>
+  <head>
+    <title>Encuestas Encuestador</title>
      <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Insertamos el archivo CSS compilado y comprimido -->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -12,10 +12,10 @@
     <div class="container">
       <div class="jumbotron">
         <h1>Ingeniería en Software</h1>
-        <p>Vista Administrador de Encuestas<p>
+        <p>Vista Encuestas Encuestador<p>
       </div>
       <div class="text-right">
-        <p>&copy;Alfonso González Zempoalteca</p>
+        <p>&copy;Unedgaro</p>
       </div>
     </div>
     <!--Insertamos jQuery dependencia de Bootstrap-->

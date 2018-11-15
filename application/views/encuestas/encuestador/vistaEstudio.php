@@ -1,3 +1,10 @@
+<?php
+$rol = $this->session->userdata('rol');
+$user = $this->session->userdata('user');
+$apell = $this->session->userdata('apellido');
+$cerrarSesion=site_url('login/logout',NULL);
+$inicio=site_url('adminEncuesta',NULL);
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,60 +19,42 @@
 
 <body>
 
-<div class="container">
-<header class="page-header">
-	<ul class="nav nav-pills pull-right">
-	<li class="active"><a href="#">Inicio</a></li>	
-    <li class="active"><a href="#">Estudios en particular</a></li>
-    <li class="active"><a href="#">Responder reactivos</a></li>
-	</ul>
-	 <h3>Wolfgang</h3>
-</header>
-</div>
 
 <br>
 
 <div class="jumbotron">
-<h1 class = "text-center">Estudios asignados</h1>
+<h2 class = "text-center">Estudios asignados</h2>
 <br>
-<div class="center-block"> 
+<div class="text-center">
+<div class="text">
 		<table class="table table-bordered">
 		<thead class="thead-dark">
 		<tr>
-			<th scope="col">Nombre</th>
-			<th scope="col">Descripción</th>
+			<th class="text-center"scope="col">Nombre</th>
+			<th class="text-center"scope="col">Descripción</th>
 
 		</tr>
-	<tr>
-<?php
-if ($recuperar->num_rows() > 0)
-{
-    foreach ($recuperar->result() as $row ) 
-    {
-?>
-	<tr>
-		<td><?php echo $row->nombre; ?></td>
-		<td><?php echo $row->descripcion; ?></td>
-	</tr>
- <?php	
-  }
-}
-else{
-	?>
-	<tr>
-		<td> colspan="3">"No encontrada"</td>
-	</tr>
-	<?php
-}
-?>
+	
+</thead>
+		 <?php
+              foreach ($idEstudio as $i){ ?>
+              	<tr>
+                 <td> <?php echo  $i->nombre; ?></td>
+                 <td> <?php echo $i->descripcion;?></td>
+            </tr>
+            <?php   } 
+
+            ?>
 </table>
+</div>
+</div>
 </div>
 
 
-
 <br>
-			
-<p>&copy; Universidad Autonoma Metropolitana 2018 </p>
+
+
+<p>&copy; Eliseo Mirafuentes Martínez </p>
  <!--Insertamos jQuery dependencia de Bootstrap-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->

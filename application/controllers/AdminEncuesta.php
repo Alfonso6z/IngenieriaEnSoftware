@@ -10,6 +10,7 @@ class AdminEncuesta extends CI_Controller{
 		$this->load->model('AdminEncuesta_model');
 		$this->load->library('session');
 		$this->load->library('form_validation');
+		$this->load->view('encuestas/adminEncuesta/headerAdminEncuesta');
 		if (!$this->session->userdata("login")){
 			redirect(site_url('login',NULL));
 		}
@@ -91,9 +92,9 @@ class AdminEncuesta extends CI_Controller{
 	}
 	public function vista_estudios()
 	{
-		$data["recuperar"]= $this->AdminEncuesta_model->obtenerDatos();
-		$this->load->view('encuestas/encuestador/vistaEstudio',$data);
- 	}  
+		$data['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
+		$this->load->view('encuestas/adminEncuesta/altaCuestionario',$data);
+	} 
 
 
 
