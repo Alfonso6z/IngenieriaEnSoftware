@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-11-2018 a las 06:15:04
--- Versión del servidor: 10.1.36-MariaDB
--- Versión de PHP: 7.2.11
+-- Tiempo de generación: 15-11-2018 a las 19:36:04
+-- Versión del servidor: 10.1.35-MariaDB
+-- Versión de PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -111,6 +111,26 @@ INSERT INTO `reactivos` (`idReactivo`, `pregunta`, `IDcuestionario`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `respuestas`
+--
+
+CREATE TABLE `respuestas` (
+  `idRespuesta` int(11) NOT NULL,
+  `resnombre` varchar(20) NOT NULL,
+  `idReactivo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `respuestas`
+--
+
+INSERT INTO `respuestas` (`idRespuesta`, `resnombre`, `idReactivo`) VALUES
+(1, 'si', 2),
+(2, '6', 4);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `roles`
 --
 
@@ -171,6 +191,12 @@ ALTER TABLE `reactivos`
   ADD KEY `IDcuestionario` (`IDcuestionario`);
 
 --
+-- Indices de la tabla `respuestas`
+--
+ALTER TABLE `respuestas`
+  ADD PRIMARY KEY (`idRespuesta`);
+
+--
 -- Indices de la tabla `roles`
 --
 ALTER TABLE `roles`
@@ -210,6 +236,12 @@ ALTER TABLE `login`
 --
 ALTER TABLE `reactivos`
   MODIFY `idReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `respuestas`
+--
+ALTER TABLE `respuestas`
+  MODIFY `idRespuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tiporeactivo`
