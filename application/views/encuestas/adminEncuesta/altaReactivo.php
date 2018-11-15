@@ -33,6 +33,9 @@ $pregunta=array(
                } 
             ?>
           </select></div>
+<<<<<<< HEAD
+     
+=======
               <br><div class = "text-center">
         <select name= "TipoReactivo" id="TipoReactivo">
           <option value="select" selected>Selecciona tipo de reactivo</option>
@@ -42,11 +45,16 @@ $pregunta=array(
           } 
           ?>
        </select></div>
+>>>>>>> a4f2e676ca071968a76f3bd7143e5dfbaf2b515d
         <h3 class = "text-center" required><?= form_textarea($pregunta) ?></h3>
       </div>
       <h5 class = "text-center"><?= form_submit('','Aceptar',"class='btn btn-success'")  ?> 
       <?= form_close() ?>
       </h5>
+<<<<<<< HEAD
+
+=======
+>>>>>>> a4f2e676ca071968a76f3bd7143e5dfbaf2b515d
   </tr>
 </div>   
 <p>&copy; Valverde Cruz Marisol </p>

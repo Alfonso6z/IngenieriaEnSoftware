@@ -120,9 +120,9 @@ class AdminEncuesta extends CI_Controller{
 
 	public function vista_estudios()
 	{
-		$data["recuperar"]= $this->AdminEncuesta_model->obtenerDatos();
-		$this->load->view('encuestas/encuestador/vistaEstudio',$data);
- 	}  
+		$data['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
+		$this->load->view('encuestas/adminEncuesta/altaCuestionario',$data);
+	} 
 
 
 
