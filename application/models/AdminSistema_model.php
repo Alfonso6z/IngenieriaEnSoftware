@@ -23,6 +23,18 @@ class AdminSistema_model extends CI_Model {
 		$this->db->insert('roles',array('idRol'=>$data['nombre']));
 	}
 
+	function actualizaTipoDeUsuario($data){
+		$datos = array(
+			'idRol'=> $data['nombre']);
+		$this->db->where('idRol',$data['tipoUsuario']);
+		$query = $this->db->update('roles',$datos);
+
+	}
+	function eliminaTipoDeUsuario($data){
+		$datos = array(
+			'idRol'=> $data['idRol']);
+		$this->db->delete('roles',$datos);
+	}
 	function insertarTipoReactivo($data){
 		$this->db->insert('tiporeactivo',array('nombre'=>$data['nombre']));
 	}

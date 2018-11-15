@@ -8,14 +8,6 @@
     'name' => 'email','placeholder' => ' Em@il','maxlength'=>'25');
 	$contrasena = array(
 		'name' => 'contrasena','placeholder' => ' Contraseña','maxlength'=>'25');
-$altaUsuario=site_url('adminSistema/altaUsuarios',NULL);
-$altaTipoUsuario=site_url('adminSistema/altaTipoUsuario',NULL);
-$altaTipoReactivo=site_url('adminSistema/altaTipoReactivo',NULL);
-$cerrarSesion=site_url('login/logout',NULL);
-$inicio=site_url('adminSistema',NULL);
-$rol = $this->session->userdata('rol');
-$user = $this->session->userdata('user');
-$apell = $this->session->userdata('apellido');
 ?>
 <html>
   <body>

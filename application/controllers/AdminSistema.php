@@ -67,10 +67,6 @@ class AdminSistema extends CI_Controller{
 	public function altaTipoUsuario(){
 		$this->load->view('encuestas/adminSistema/altaTipoUsuario');
 	}
-	
-	public function actualizaTipoUsuario(){
-		$this->load->view('encuestas/adminSistema/actualizaTipoUsuario');
-	}
 	public function recibirDatosTipoUsuario(){
 		$this->form_validation->set_rules('nombre', 'Tipo de Usuario', 'required|is_unique[roles.idRol]|trim');
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
@@ -86,6 +82,40 @@ class AdminSistema extends CI_Controller{
 		}
 	}
 
+	public function actualizaTipoUsuario(){
+		$data['roles'] = $this->adminSistema_model->getRoles();
+		$this->load->view('encuestas/adminSistema/actualizaTipoUsuario',$data);
+	}
+	public function modificarTipoUsuario(){
+		$this->form_validation->set_rules('nombre', 'Tipo de Usuario', 'required|is_unique[roles.idRol]|trim');
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+		$this->form_validation->set_message('is_unique','El %s ya esta registrado');
+		if($this->form_validation->run()!=false){
+			$datos["correcto"]="Se Ha Actualizado Con Éxito";
+			$data = array(
+				'nombre' => $this->input->post('nombre'),
+				'tipoUsuario'=> $this->input->post('tipoUsuario'));
+			$this->adminSistema_model->actualizaTipoDeUsuario($data);
+			$data['roles'] = $this->adminSistema_model->getRoles();
+			$this->load->view('encuestas/adminSistema/actualizaTipoUsuario',$data+$datos);
+		}else{
+			$data['roles'] = $this->adminSistema_model->getRoles();
+			$datos["error"]="Error Al Actualizar";
+            	$this->load->view('encuestas/adminSistema/actualizaTipoUsuario',$data+$datos);
+		}
+	}
+	public function bajaTipoDeUsuario(){
+		$data['roles'] = $this->adminSistema_model->getRoles();
+		$this->load->view('encuestas/adminSistema/bajaTipoDeUsuario',$data);
+	}
+	public function eliminarTipoDeUsuario(){
+		$data = array(
+				'idRol'=> $this->input->post('tipoUsuario'));
+		$datos["error"]="Se ha Eliminado ". $data['idRol'];
+		$this->adminSistema_model->eliminaTipoDeUsuario($data);
+		$data['roles'] = $this->adminSistema_model->getRoles();
+		$this->load->view('encuestas/adminSistema/bajaTipoDeUsuario',$data+$datos);
+	}
 	public function altaTipoReactivo(){
 		$this->load->view('encuestas/adminSistema/altaTipoReactivo');
 	}

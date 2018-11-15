@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $altaUsuario=site_url('adminSistema/altaUsuarios',NULL);
 $altaTipoUsuario=site_url('adminSistema/altaTipoUsuario',NULL);
 $actualizaTipoUsuario=site_url('adminSistema/actualizaTipoUsuario',NULL);
+$bajaTipoDeUsuario=site_url('adminSistema/bajaTipoDeUsuario',NULL);
 $altaTipoReactivo=site_url('adminSistema/altaTipoReactivo',NULL);
 $cerrarSesion=site_url('login/logout',NULL);
 $inicio=site_url('adminSistema',NULL);
@@ -40,7 +41,7 @@ $apell = $this->session->userdata('apellido');
             <ul class="dropdown-menu">
             <li><a href= "<?php echo $altaTipoUsuario; ?>" >Registrar</a></li>
             <li><a href="<?php echo $actualizaTipoUsuario; ?>">Modificar</a></li>
-            <li><a href="#">Eliminar</a></li>
+            <li><a href="<?php echo $bajaTipoDeUsuario; ?>">Eliminar</a></li>
            </ul>
           </li>
           <li class="dropdown">

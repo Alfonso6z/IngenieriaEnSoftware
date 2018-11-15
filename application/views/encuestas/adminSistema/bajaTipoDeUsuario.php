@@ -1,4 +1,4 @@
-<?= form_open('/adminSistema/modificarTipoUsuario')?>
+<?= form_open('/adminSistema/eliminarTipoDeUsuario')?>
 <?php
 $nombre=array('name' => 'nombre','placeholder' => ' Tipo De Usuario','maxlength'=>'20');
 $rol = $this->session->userdata('rol');
@@ -7,7 +7,7 @@ $apell = $this->session->userdata('apellido');
 ?>
 <html>
 <head>
-  <title>Modifica Tipo Usuario</title>
+  <title>Baja Tipo Usuario</title>
   <!-- Insertamos el archivo CSS compilado y comprimido -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
    <!-- Theme opcional -->
@@ -28,7 +28,7 @@ $apell = $this->session->userdata('apellido');
           <h5 class = "text-center"> <?= validation_errors('*');?></h5>
         </div>
       <?php } ?>
-    		<h3 class = "text-center">Modificar Tipo De Usuario</h3>
+    		<h3 class = "text-center">Eliminar Tipo De Usuario</h3>
         <div class = "text-center">
             <select name= "tipoUsuario" id="tipoUsuario">
               <option value="select" selected>Tipo de usuario a Modificar</option>
@@ -38,9 +38,7 @@ $apell = $this->session->userdata('apellido');
                  } 
               ?>
             </select></div>
-    		<h5 class = "text-center"><?=  form_label('Nuevo Tipo De Usuario','nombre') ?>
-    		<?= form_input($nombre) ?></h5>
-    		<h5 class = "text-center"><?= form_submit('Actualizar','Actualizar',"class='btn btn-warning'")?>
+    		<h5 class = "text-center"><?= form_submit('Eliminar','Eliminar',"class='btn btn-danger'")?>
 		<?= form_close() ?></h5>
     </div>
     <div class="text-right">
