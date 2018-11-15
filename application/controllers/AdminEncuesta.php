@@ -116,6 +116,10 @@ class AdminEncuesta extends CI_Controller{
              }
 		
 	}
+	
+	public function recibirSeleccionParticipante(){
+		$this->load->view('encuestas/adminEncuesta/seleccionarParticipante');
+	}
 
 
 	public function vista_estudios()

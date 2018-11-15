@@ -22,6 +22,11 @@ class AdminEncuesta_model extends CI_Model {
 		$query = $this->db->get("estudios");
 		return $query;
 	}
+	
+	function asignarParti($data){
+	    $this->db->insert('asignarestudio', array('rol'=>$data['rolusuario'], 'nomestudio'=>$data['nomestudio']));
+	}
+	
 	function getEncuesta(){
 		$this->db->order_by('nombre','asc');
 		$estudios = $this->db->get('estudios');
