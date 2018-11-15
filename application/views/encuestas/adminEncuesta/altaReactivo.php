@@ -38,7 +38,7 @@ $pregunta=array(
           <option value="select" selected>Selecciona tipo de reactivo</option>
           <?php
             foreach ($TipoReactivo as $i){
-               echo '<option value="'. $i->nombre .'">'. $i->nombre .'</option>';
+               echo '<option value="'. $i->idTipoReactivo .'">'. $i->nombre .'</option>';
           } 
           ?>
        </select></div>
