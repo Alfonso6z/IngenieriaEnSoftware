@@ -41,6 +41,7 @@ class Encuestas extends CI_Controller{
 		$this->encuestas_model->insertaPregunta($data);
 		$this->load->view('encuestas/inicio');
 	}
+
 	public function recibirDatosRegistro(){
 		$data = array(
 			'nombre' => $this->input->post('nombre'),

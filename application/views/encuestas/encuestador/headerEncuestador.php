@@ -1,7 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+<<<<<<< HEAD
 $estudiosAsig=site_url('encuestador/estudiosAsignados',NULL);
 $estudiosPar=site_url('encuestador/estudiosParticular',NULL);
+=======
+//$modificaEstudio=site_url('adminEncuesta/vista_estudios',NULL);
+>>>>>>> a4f2e676ca071968a76f3bd7143e5dfbaf2b515d
 $cerrarSesion=site_url('login/logout',NULL);
 $inicio=site_url('Encuestador',NULL);
 $rol = $this->session->userdata('rol');
@@ -26,8 +30,13 @@ $apell = $this->session->userdata('apellido');
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Estudios
         <span class="caret"></span></a>
           <ul class="dropdown-menu">
+<<<<<<< HEAD
           <li><a href="<?php echo $estudiosAsig; ?>">Estudios Asignados</a></li>
           <li><a href="<?php echo $estudiosPar; ?>">Estudios en particular</a></li>
+=======
+          <li><a href="#">Estudios asiganados</a></li>
+          <li><a href="#">Estudios en particular</a></li>
+>>>>>>> a4f2e676ca071968a76f3bd7143e5dfbaf2b515d
           <li><a href="#">Responder reactivo</a></li>
         </ul>
         </li>

@@ -9,10 +9,24 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   </head>
   <body>
+<<<<<<< HEAD
       <div class="jumbotron">
         <div class="text-center">
         <h2>Estudios en Particular</h2>
       <br>
+=======
+    <div class="container">
+      <header class="page-header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Inicio</a></li>
+          <li class="active"><a href="#">Estudios</a></li>
+        </ul>
+        <h2>Encuestador</h2>
+      </header>
+      <div class="jumbotron">
+        <h2>Estudios en Particular</h2>
+      </div>
+>>>>>>> a4f2e676ca071968a76f3bd7143e5dfbaf2b515d
      
       <table class="table">
   <thead>
@@ -38,8 +52,12 @@
     </tr>
   </tbody>
 </table>
+<<<<<<< HEAD
 </div>
       </div>
+=======
+
+>>>>>>> a4f2e676ca071968a76f3bd7143e5dfbaf2b515d
  <div>
         <p>&copy; Edgaro 2018</p>
       </div>

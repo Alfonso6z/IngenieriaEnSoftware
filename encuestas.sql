@@ -3,9 +3,15 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
+<<<<<<< HEAD
 -- Tiempo de generación: 15-11-2018 a las 20:19:05
 -- Versión del servidor: 10.1.36-MariaDB
 -- Versión de PHP: 5.6.38
+=======
+-- Tiempo de generación: 15-11-2018 a las 19:36:04
+-- Versión del servidor: 10.1.35-MariaDB
+-- Versión de PHP: 7.2.9
+>>>>>>> a4f2e676ca071968a76f3bd7143e5dfbaf2b515d
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -58,9 +64,13 @@ CREATE TABLE `estudios` (
 --
 
 INSERT INTO `estudios` (`idEstudio`, `nombre`, `descripcion`) VALUES
+<<<<<<< HEAD
 (1, 'Politica', 'Se desea conocer la opinion publica acerca de los partidos politicos.'),
 (2, 'Deportes', 'Se desea conocer las actividades físicas de los jóvenes'),
 (3, 'Arte', 'Qué tanto conocimiento tiene la población en general');
+=======
+(1, 'Politica', 'Se desea conocer la opinion publica acerca de los partidos politicos.');
+>>>>>>> a4f2e676ca071968a76f3bd7143e5dfbaf2b515d
 
 -- --------------------------------------------------------
 
@@ -86,8 +96,12 @@ INSERT INTO `login` (`idLogin`, `user`, `password`, `apellido`, `email`, `rol`) 
 (2, 'Maribel', '916a913f131c52615470330a144861f4', 'Garcia', 'marigb040593@gmail.com', 'Analista'),
 (3, 'unedgaro', '202cb962ac59075b964b07152d234b70', 'corrria', 'abc@hotmail.com', 'Encuestador'),
 (4, 'Eliseo', 'e10adc3949ba59abbe56e057f20f883e', 'Matrinez', 'eliseo@gmail.com', 'AdminEncuesta'),
+<<<<<<< HEAD
 (5, 'Marisol', 'e10adc3949ba59abbe56e057f20f883e', 'Valverde', 'hplmarisol20@gmail.com', 'AdminEncuesta'),
 (6, 'Jose', 'e10adc3949ba59abbe56e057f20f883e', 'Ortega', 'jose@gmail.com', 'Encuestador');
+=======
+(5, 'Marisol', 'e10adc3949ba59abbe56e057f20f883e', 'Valverde', 'hplmarisol20@gmail.com', 'AdminEncuesta');
+>>>>>>> a4f2e676ca071968a76f3bd7143e5dfbaf2b515d
 
 -- --------------------------------------------------------
 
@@ -110,6 +124,29 @@ INSERT INTO `reactivos` (`idReactivo`, `pregunta`, `IDcuestionario`) VALUES
 (2, '¿Votaste en las elecciones pasadas?', 1),
 (3, '¿Cual seria el partido politico que desearia quitar de la plantilla electoral?', 1),
 (4, '¿Cuantos partidos politicos existen actualmente en Mexico?', 1);
+<<<<<<< HEAD
+=======
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `respuestas`
+--
+
+CREATE TABLE `respuestas` (
+  `idRespuesta` int(11) NOT NULL,
+  `resnombre` varchar(20) NOT NULL,
+  `idReactivo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `respuestas`
+--
+
+INSERT INTO `respuestas` (`idRespuesta`, `resnombre`, `idReactivo`) VALUES
+(1, 'si', 2),
+(2, '6', 4);
+>>>>>>> a4f2e676ca071968a76f3bd7143e5dfbaf2b515d
 
 -- --------------------------------------------------------
 
@@ -174,6 +211,12 @@ ALTER TABLE `reactivos`
   ADD KEY `IDcuestionario` (`IDcuestionario`);
 
 --
+-- Indices de la tabla `respuestas`
+--
+ALTER TABLE `respuestas`
+  ADD PRIMARY KEY (`idRespuesta`);
+
+--
 -- Indices de la tabla `roles`
 --
 ALTER TABLE `roles`
@@ -200,13 +243,21 @@ ALTER TABLE `cuestionarios`
 -- AUTO_INCREMENT de la tabla `estudios`
 --
 ALTER TABLE `estudios`
+<<<<<<< HEAD
   MODIFY `idEstudio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+=======
+  MODIFY `idEstudio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+>>>>>>> a4f2e676ca071968a76f3bd7143e5dfbaf2b515d
 
 --
 -- AUTO_INCREMENT de la tabla `login`
 --
 ALTER TABLE `login`
+<<<<<<< HEAD
   MODIFY `idLogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+=======
+  MODIFY `idLogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+>>>>>>> a4f2e676ca071968a76f3bd7143e5dfbaf2b515d
 
 --
 -- AUTO_INCREMENT de la tabla `reactivos`
@@ -215,6 +266,15 @@ ALTER TABLE `reactivos`
   MODIFY `idReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+<<<<<<< HEAD
+=======
+-- AUTO_INCREMENT de la tabla `respuestas`
+--
+ALTER TABLE `respuestas`
+  MODIFY `idRespuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+>>>>>>> a4f2e676ca071968a76f3bd7143e5dfbaf2b515d
 -- AUTO_INCREMENT de la tabla `tiporeactivo`
 --
 ALTER TABLE `tiporeactivo`

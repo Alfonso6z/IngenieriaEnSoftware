@@ -38,7 +38,8 @@
             <select name= "tipoUsuario" id="tipoUsuario">
               <option value="select" selected>Selecciona tipo de usuario</option>
               <?php
-                foreach ($roles as $i){
+                foreach ($roles
+                 as $i){
                    echo '<option value="'. $i->idRol .'">'. $i->idRol .'</option>';
                  } 
               ?>

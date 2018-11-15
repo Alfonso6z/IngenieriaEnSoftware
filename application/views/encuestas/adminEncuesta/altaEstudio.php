@@ -33,7 +33,11 @@ $descripcion = array('name' => 'descripcion','placeholder' => 'Descripción del 
   <h5 class = "text-center"><?= form_submit('','Subir Estudio',"class='btn btn-success'")?></h5>
   <?= form_close() ?>
 </div>
+<<<<<<< HEAD
 <p>&copy; Eliseo Mirafuentes Martínez </p>
+=======
+<p>&copy; Universidad Autonoma Metropolitana 2018 </p>
+>>>>>>> a4f2e676ca071968a76f3bd7143e5dfbaf2b515d
 <!--Insertamos jQuery dependencia de Bootstrap-->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
    <!--Insertamos el archivo JS compilado y comprimido -->
