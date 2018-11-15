@@ -70,7 +70,8 @@ class AdminEncuesta extends CI_Controller{
 
 	public function altaReactivo(){
 		$data['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
-		$this->load->view('encuestas/adminEncuesta/altaReactivo',$data);
+		$tdata['TipoReactivo'] = $this->AdminEncuesta_model->getTipoReactivo();
+		$this->load->view('encuestas/adminEncuesta/altaReactivo',$data+$tdata);
 	}
 	public function recibirDatosReactivo(){
 		$IDcues['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
@@ -123,9 +124,9 @@ class AdminEncuesta extends CI_Controller{
 
 	public function vista_estudios()
 	{
-		$data["recuperar"]= $this->AdminEncuesta_model->obtenerDatos();
-		$this->load->view('encuestas/encuestador/vistaEstudio',$data);
- 	}  
+		$data['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
+		$this->load->view('encuestas/adminEncuesta/altaCuestionario',$data);
+	} 
 
 
 

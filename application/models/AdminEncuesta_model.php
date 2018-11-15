@@ -52,6 +52,14 @@ class AdminEncuesta_model extends CI_Model {
 		}
 	}
 
+	function getTipoReactivo(){
+		$this->db->order_by('nombre','asc');
+		$tipoReactivos = $this->db->get('tiporeactivo');
+		if ($tipoReactivos->num_rows() > 0){
+			return $tipoReactivos->result();
+		}
+	}
+
 
 }
 

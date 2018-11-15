@@ -17,6 +17,15 @@ class Encuestas_model extends CI_Model {
 		$query = $this->db->get("estudios");
 		return $query;
 	}
+
+	function getEncuesta(){
+		$this->db->order_by('nombre','asc');
+		$estudios = $this->db->get('estudios');
+
+		if ($estudios->num_rows() > 0){
+			return $estudios->result();
+		}
+	}
 }
 
 ?>
