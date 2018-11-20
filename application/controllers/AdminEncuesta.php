@@ -128,6 +128,9 @@ class AdminEncuesta extends CI_Controller{
 		$this->load->view('encuestas/adminEncuesta/altaCuestionario',$data);
 	} 
 
+	public function seleccionPart(){
+		$this->load->view('encuestas/adminEncuesta/seleccionarParticipante');
+	}
 
 
 }

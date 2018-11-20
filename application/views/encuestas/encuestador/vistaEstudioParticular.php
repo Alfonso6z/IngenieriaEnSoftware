@@ -9,12 +9,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   </head>
   <body>
-<<<<<<< HEAD
       <div class="jumbotron">
         <div class="text-center">
         <h2>Estudios en Particular</h2>
       <br>
-=======
     <div class="container">
       <header class="page-header">
         <ul class="nav nav-pills pull-right">
@@ -26,14 +24,11 @@
       <div class="jumbotron">
         <h2>Estudios en Particular</h2>
       </div>
->>>>>>> a4f2e676ca071968a76f3bd7143e5dfbaf2b515d
-     
       <table class="table">
   <thead>
     <tr>
       <th scope="col">Estudio</th>
       <th scope="col">Numero de reactivos</th>
-
       <th scope="col">Asignados</th>
     </tr>
   </thead>
@@ -52,20 +47,14 @@
     </tr>
   </tbody>
 </table>
-<<<<<<< HEAD
 </div>
       </div>
-=======
-
->>>>>>> a4f2e676ca071968a76f3bd7143e5dfbaf2b515d
  <div>
         <p>&copy; Edgaro 2018</p>
       </div>
 
     </div>
 
-
-    
     <!--Insertamos jQuery dependencia de Bootstrap-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->

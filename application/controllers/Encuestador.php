@@ -11,10 +11,7 @@ class Encuestador extends CI_Controller {
 		$this->load->helper('url');
 		//$this->load->model('adminSistema_model');
 		$this->load->library('session');
-<<<<<<< HEAD
 		$this->load->model('Encuestas_model');
-=======
->>>>>>> a4f2e676ca071968a76f3bd7143e5dfbaf2b515d
 		$this->load->view('encuestas/encuestador/headerEncuestador');
 		if (!$this->session->userdata("login")){
 			redirect(site_url('login',NULL));
@@ -26,10 +23,6 @@ class Encuestador extends CI_Controller {
 	public function index(){
 		$this->load->view('encuestas/encuestador/inicioEncuestador');
 	}
-<<<<<<< HEAD
-
-	
-
 	public function estudiosParticular(){
 		$this->load->view('encuestas/encuestador/vistaEstudioParticular');
 	}
@@ -38,7 +31,4 @@ class Encuestador extends CI_Controller {
 		$data['idEstudio'] = $this->Encuestas_model->getEncuesta();
 		$this->load->view('encuestas/encuestador/vistaEstudio',$data);
 	}
-
-=======
->>>>>>> a4f2e676ca071968a76f3bd7143e5dfbaf2b515d
 }
