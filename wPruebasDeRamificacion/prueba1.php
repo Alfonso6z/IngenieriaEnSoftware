@@ -29,10 +29,11 @@ class Codigofacilito extends CI_Controller{
 	public function nuevo(){
 		$this->load->view('codigofacilito/headers');
 		$this->load->view('codigofacilito/formulario');
+
 	} 
 
 	public function recibirDatos(){
-		$dato['string'] = 'Hola Culeros ya registro';
+		$dato['string'] = 'Hola prueba de git mersh en diferentes ramas';
 		$data = array(
 			'nombre' => $this->input->post('nombre'),
 			'numero' => $this->input->post('numero'),
