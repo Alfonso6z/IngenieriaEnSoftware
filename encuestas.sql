@@ -1,17 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2018 a las 20:19:05
--- Versión del servidor: 10.1.36-MariaDB
--- Versión de PHP: 5.6.38
--- Tiempo de generación: 15-11-2018 a las 19:36:04
--- Versión del servidor: 10.1.35-MariaDB
--- Versión de PHP: 7.2.9
+-- Servidor: localhost:3306
+-- Tiempo de generación: 21-11-2018 a las 16:45:45
+-- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
+-- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -41,7 +37,8 @@ CREATE TABLE `cuestionarios` (
 --
 
 INSERT INTO `cuestionarios` (`IDcuestionario`, `cuenombre`, `idEstudio`) VALUES
-(1, 'Partidos politicos', 1);
+(1, 'Partidos politicos', 1),
+(2, 'CuestionarioP', 4);
 
 -- --------------------------------------------------------
 
@@ -60,10 +57,10 @@ CREATE TABLE `estudios` (
 --
 
 INSERT INTO `estudios` (`idEstudio`, `nombre`, `descripcion`) VALUES
-
 (1, 'Politica', 'Se desea conocer la opinion publica acerca de los partidos politicos.'),
 (2, 'Deportes', 'Se desea conocer las actividades físicas de los jóvenes'),
-(3, 'Arte', 'Qué tanto conocimiento tiene la población en general');
+(3, 'Arte', 'Qué tanto conocimiento tiene la población en general'),
+(4, 'Nuevo estudio', 'estudio de prueba');
 
 -- --------------------------------------------------------
 
@@ -109,6 +106,7 @@ CREATE TABLE `reactivos` (
 --
 
 INSERT INTO `reactivos` (`idReactivo`, `pregunta`, `IDcuestionario`) VALUES
+(0, 'Nombre:', 2),
 (1, '¿Cual es el partido politico de su preferencia?', 1),
 (2, '¿Votaste en las elecciones pasadas?', 1),
 (3, '¿Cual seria el partido politico que desearia quitar de la plantilla electoral?', 1),
@@ -164,6 +162,13 @@ CREATE TABLE `tiporeactivo` (
   `idTipoReactivo` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tiporeactivo`
+--
+
+INSERT INTO `tiporeactivo` (`idTipoReactivo`, `nombre`) VALUES
+(0, 'Respuesta abierta');
 
 --
 -- Índices para tablas volcadas
@@ -223,69 +228,12 @@ ALTER TABLE `tiporeactivo`
 -- AUTO_INCREMENT de la tabla `cuestionarios`
 --
 ALTER TABLE `cuestionarios`
-  MODIFY `IDcuestionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
+  MODIFY `IDcuestionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `estudios`
 --
 ALTER TABLE `estudios`
-  MODIFY `idEstudio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
-  MODIFY `idEstudio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
-
---
--- AUTO_INCREMENT de la tabla `login`
---
-ALTER TABLE `login`
-<<<<<<< HEAD
-  MODIFY `idLogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-=======
-  MODIFY `idLogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
->>>>>>> a4f2e676ca071968a76f3bd7143e5dfbaf2b515d
-
---
--- AUTO_INCREMENT de la tabla `reactivos`
---
-ALTER TABLE `reactivos`
-  MODIFY `idReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
-
--- AUTO_INCREMENT de la tabla `respuestas`
---
-ALTER TABLE `respuestas`
-  MODIFY `idRespuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `tiporeactivo`
---
-ALTER TABLE `tiporeactivo`
-  MODIFY `idTipoReactivo` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `cuestionarios`
---
-ALTER TABLE `cuestionarios`
-  ADD CONSTRAINT `cuestionarios_ibfk_1` FOREIGN KEY (`idEstudio`) REFERENCES `estudios` (`idEstudio`);
-
---
--- Filtros para la tabla `login`
---
-ALTER TABLE `login`
-  ADD CONSTRAINT `login_ibfk_1` FOREIGN KEY (`rol`) REFERENCES `roles` (`idRol`);
-
---
--- Filtros para la tabla `reactivos`
---
-ALTER TABLE `reactivos`
-  ADD CONSTRAINT `reactivos_ibfk_1` FOREIGN KEY (`IDcuestionario`) REFERENCES `cuestionarios` (`IDcuestionario`);
-COMMIT;
-
+  MODIFY `idEstudio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
