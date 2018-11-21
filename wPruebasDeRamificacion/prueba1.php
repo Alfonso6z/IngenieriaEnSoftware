@@ -46,6 +46,9 @@ class Codigofacilito extends CI_Controller{
 		$this->load->view('codigofacilito/bienvenido',$dato);
 		'figura' => $this->input->post('♥');
 		'otrafigura' => $this->input->post('•');
+		$dato['string'] = 'Marisol ☻ y Alfonso';
+		$dato['string'] = 'Marisol ☻ y Gonzalez ';
+		$dato['string'] = 'Marisol ☻ y Zempoalteca';
 	}
 }
 ?>
