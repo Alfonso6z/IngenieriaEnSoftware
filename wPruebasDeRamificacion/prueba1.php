@@ -33,11 +33,11 @@ class Codigofacilito extends CI_Controller{
 	} 
 
 	public function recibirDatos(){
-		$dato['string'] = 'Marisol ☻';
+		$dato['string'] = 'Marisol ☻ y Alfonso Gonzalez Zempoalteca';
 		$data = array(
 			'nombre' => $this->input->post('nombre'),
 			'numero' => $this->input->post('numero'),
-			//No entendi que tenia que hacer aqui porque no se ve en el navegador 
+			//No entendi que tenia que hacer aAlfonso Gonzalez Zempoaltecaqui porque no se ve en el navegador 
 			//pero voy a poner esto:
 			'numero2' => $this->input->post('numero2')
 		);
