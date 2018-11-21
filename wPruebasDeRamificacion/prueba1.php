@@ -33,7 +33,7 @@ class Codigofacilito extends CI_Controller{
 	} 
 
 	public function recibirDatos(){
-		$dato['string'] = 'Hola prueba de git mersh en diferentes ramas';
+		$dato['string'] = 'Marisol ☻';
 		$data = array(
 			'nombre' => $this->input->post('nombre'),
 			'numero' => $this->input->post('numero'),
