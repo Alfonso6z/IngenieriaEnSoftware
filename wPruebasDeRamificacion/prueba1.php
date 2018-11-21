@@ -35,8 +35,10 @@ class Codigofacilito extends CI_Controller{
 		$dato['string'] = 'Hola Culeros ya registro';
 		$data = array(
 			'nombre' => $this->input->post('nombre'),
-			'numero' => $this->input->post('numero')
-
+			'numero' => $this->input->post('numero'),
+			//No entendi que tenia que hacer aqui porque no se ve en el navegador 
+			//pero voy a poner esto:
+			'numero2' => $this->input->post('numero2')
 		);
 		$this->codigofacilito_model->creaDept($data);
 		$this->load->view('codigofacilito/headers');
