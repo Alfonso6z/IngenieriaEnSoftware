@@ -37,13 +37,15 @@ class Codigofacilito extends CI_Controller{
 		$data = array(
 			'nombre' => $this->input->post('nombre'),
 			'numero' => $this->input->post('numero'),
-			//No entendi que tenia que hacer aAlfonso Gonzalez Zempoaltecaqui porque no se ve en el navegador 
+			//No entendi que tenia que hacer aqui porque no se ve en el navegador 
 			//pero voy a poner esto:
 			'numero2' => $this->input->post('numero2')
 		);
 		$this->codigofacilito_model->creaDept($data);
 		$this->load->view('codigofacilito/headers');
 		$this->load->view('codigofacilito/bienvenido',$dato);
+		'figura' => $this->input->post('♥');
+		'otrafigura' => $this->input->post('•');
 	}
 }
 ?>
