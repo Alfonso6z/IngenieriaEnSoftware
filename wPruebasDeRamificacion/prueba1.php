@@ -44,6 +44,9 @@ class Codigofacilito extends CI_Controller{
 		$this->codigofacilito_model->creaDept($data);
 		$this->load->view('codigofacilito/headers');
 		$this->load->view('codigofacilito/bienvenido',$dato);
+		$dato['string'] = 'Marisol ☻ y Alfonso';
+		$dato['string'] = 'Marisol ☻ y Gonzalez ';
+		$dato['string'] = 'Marisol ☻ y Zempoalteca';
 	}
 }
 ?>
