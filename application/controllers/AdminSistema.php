@@ -6,6 +6,7 @@ class AdminSistema extends CI_Controller{
 		function __construct(){
 		parent::__construct();
 		$this->load->library('form_validation');
+		$this->load->library('email');
 		$this->load->helper('form');
 		$this->load->helper('url');
 		$this->load->model('adminSistema_model');
@@ -44,7 +45,6 @@ class AdminSistema extends CI_Controller{
 			$this->form_validation->set_message('is_unique','El %s ya esta registrado');
 
 			if($this->form_validation->run()!=false){ 
-            	$datos["correcto"]="Se Ha Registrado Con Éxito";
             	$data = array(
 				'nombre' => $this->input->post('nombre'),
 				'apellido' => $this->input->post('apellido'),
@@ -52,7 +52,13 @@ class AdminSistema extends CI_Controller{
 				'contrasena' => $this->input->post('contrasena'),
 				'tipoUsuario' => $this->input->post('tipoUsuario')
 				);
+				$datos["correcto"]="Se Ha Registrado Con Éxito  " . $data['email'];
 				$this->adminSistema_model->insertarRegistro($data);
+				$this->email->from('agzdn666@outlook.es', 'Wolgang');
+				$this->email->to($data['email']);
+				$this->email->subject('Sistema de Encuestas Wolfgang');
+				$this->email->message('<h2>' . $data['nombre'] . 'Tu Registro fue Exitoso </h2><hr><br><br>Tu password es:' . $data['contrasena']);
+				$this->email->send();
 				$this->load->view('encuestas/adminSistema/altaUsuario',$roles+$datos);
         	}else{
             	$datos["error"]="Error Al Registrar";
