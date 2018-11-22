@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2018 a las 01:37:45
--- Versión del servidor: 10.1.36-MariaDB
--- Versión de PHP: 7.2.11
+-- Servidor: localhost:3306
+-- Tiempo de generación: 21-11-2018 a las 20:14:53
+-- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
+-- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -125,14 +123,6 @@ CREATE TABLE `respuestas` (
   `idReactivo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `respuestas`
---
-
-INSERT INTO `respuestas` (`idRespuesta`, `resnombre`, `idReactivo`) VALUES
-(1, 'si', 2),
-(2, '6', 4);
-
 -- --------------------------------------------------------
 
 --
@@ -209,7 +199,8 @@ ALTER TABLE `reactivos`
 -- Indices de la tabla `respuestas`
 --
 ALTER TABLE `respuestas`
-  ADD PRIMARY KEY (`idRespuesta`);
+  ADD PRIMARY KEY (`idRespuesta`),
+  ADD KEY `idReactivo` (`idReactivo`);
 
 --
 -- Indices de la tabla `roles`
@@ -234,25 +225,49 @@ ALTER TABLE `tiporeactivo`
 --
 ALTER TABLE `cuestionarios`
   MODIFY `IDcuestionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT de la tabla `estudios`
 --
 ALTER TABLE `estudios`
   MODIFY `idEstudio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT de la tabla `reactivos`
 --
 ALTER TABLE `reactivos`
   MODIFY `idReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT de la tabla `tiporeactivo`
 --
 ALTER TABLE `tiporeactivo`
   MODIFY `idTipoReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-COMMIT;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `cuestionarios`
+--
+ALTER TABLE `cuestionarios`
+  ADD CONSTRAINT `cuestionarios_ibfk_1` FOREIGN KEY (`idEstudio`) REFERENCES `estudios` (`idEstudio`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `login`
+--
+ALTER TABLE `login`
+  ADD CONSTRAINT `login_ibfk_1` FOREIGN KEY (`rol`) REFERENCES `roles` (`idRol`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `reactivos`
+--
+ALTER TABLE `reactivos`
+  ADD CONSTRAINT `reactivos_ibfk_1` FOREIGN KEY (`IDcuestionario`) REFERENCES `cuestionarios` (`IDcuestionario`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `reactivos_ibfk_2` FOREIGN KEY (`idTipoReactivo`) REFERENCES `tiporeactivo` (`idTipoReactivo`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `respuestas`
+--
+ALTER TABLE `respuestas`
+  ADD CONSTRAINT `respuestas_ibfk_1` FOREIGN KEY (`idReactivo`) REFERENCES `reactivos` (`idReactivo`) ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
