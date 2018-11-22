@@ -50,7 +50,7 @@ class Login extends CI_Controller {
 			else if($this->session->userdata("rol")=='Encuestador'){
 				redirect(site_url('Encuestador',NULL)); 
 			}else{
-				$this->load->view('encuestas/iniciarSesion');
+				redirect(site_url('NuevoTipoUsuario',NULL)); 
 			}
 		}
 		
