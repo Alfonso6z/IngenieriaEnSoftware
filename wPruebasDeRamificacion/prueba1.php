@@ -33,22 +33,17 @@ class Codigofacilito extends CI_Controller{
 	} 
 
 	public function recibirDatos(){
-		$dato['string'] = 'Marisol ☻ y Alfonso Gonzalez Zempoalteca';
+		$dato['string'] = 'Hola Culeros';
 		$data = array(
 			'nombre' => $this->input->post('nombre'),
 			'numero' => $this->input->post('numero'),
-			//No entendi que tenia que hacer aqui porque no se ve en el navegador 
-			//pero voy a poner esto:
-			'numero2' => $this->input->post('numero2')
 		);
 		$this->codigofacilito_model->creaDept($data);
 		$this->load->view('codigofacilito/headers');
 		$this->load->view('codigofacilito/bienvenido',$dato);
 		'figura' => $this->input->post('♥');
 		'otrafigura' => $this->input->post('•');
-		$dato['string'] = 'Marisol ☻ y Alfonso';
-		$dato['string'] = 'Marisol ☻ y Gonzalez ';
-		$dato['string'] = 'Marisol ☻ y Zempoalteca';
+
 	}
 }
 ?>
