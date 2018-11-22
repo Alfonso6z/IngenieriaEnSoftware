@@ -126,10 +126,10 @@ class AdminEncuesta extends CI_Controller{
 	} 
 
 	public function seleccionPart(){
-		$data['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
+		$data1['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
 		$data2['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionarioAsignados();
 		$data3['idLogin'] = $this->AdminEncuesta_model->getEncuestadores();
-		$this->load->view('encuestas/adminEncuesta/seleccionarParticipante',$data+$data2+$data3);
+		$this->load->view('encuestas/adminEncuesta/seleccionarParticipante',$data1+$data2+$data3);
 	}
 
 	public function recibirDatosseleccionPart(){
@@ -149,7 +149,7 @@ class AdminEncuesta extends CI_Controller{
              	$datos['error'] = 'Debe escribir una respuesta válida' ;
                 $this->load->view('encuestas/adminEncuesta/altaRespuesta',$idReactivo+$datos);
 			 }*/
-		$data['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
+		$data1['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
 		$data2['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionarioAsignados();
 		$data3['idLogin'] = $this->AdminEncuesta_model->getEncuestadores();
 
@@ -165,10 +165,10 @@ class AdminEncuesta extends CI_Controller{
 				'IDcuestionario' => $this->input->post('IDcuestionario'));
 				$datos['correcto'] = 'Relacion agregada con éxito';
 				$this->AdminEncuesta_model->insertaAsignacion($data);
-				$this->load->view('encuestas/adminEncuesta/seleccionarParticipante',$datos);
+				$this->load->view('encuestas/adminEncuesta/seleccionarParticipante',$datos+$data1+$data2+$data3);
 		}else{
 			$datos['error'] = 'Error al seleccionar datos';
-			$this->load->view('encuestas/adminEncuesta/seleccionarParticipante',$datos);
+			$this->load->view('encuestas/adminEncuesta/seleccionarParticipante',$datos+$data1+$data2+$data3);
 		}
 		
 	}
