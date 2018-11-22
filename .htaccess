@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+Options +FollowSymLinks
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# FOR LIVE
+    #RewriteRule ^(.*)$ index.php?/$1 [QSA,L]
+
+# FOR LOCAL
+    RewriteRule .* index.php/$0 [PT,L]
+
+</IfModule>
