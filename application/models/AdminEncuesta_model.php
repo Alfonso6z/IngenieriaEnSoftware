@@ -12,6 +12,11 @@ class AdminEncuesta_model extends CI_Model {
 	function insertaCuestionario($data){
 		$this->db->insert('cuestionarios', array('cuenombre'=>$data['nombre'], 'idEstudio'=>$data['idEstudio']));
 	}
+
+	function insertaAsignacion($data){
+		$this->db->insert('asignarestudio', array('idLogin'=>$data['idLogin'], 'idCuestionario'=>$data['idCuestionario']));
+	}
+
 	function insertaReactivo($data){
 		$this->db->insert('reactivos',array('pregunta'=>$data['pregunta'], 'IDcuestionario'=>$data['IDcuestionario'], 'idTipoReactivo'=>$data['TipoReactivo']));
 	}
@@ -22,7 +27,7 @@ class AdminEncuesta_model extends CI_Model {
 		$query = $this->db->get("estudios");
 		return $query;
 	}
-	
+
 	function asignarParti($data){
 	    $this->db->insert('asignarestudio', array('rol'=>$data['rolusuario'], 'nomestudio'=>$data['nomestudio']));
 	}
@@ -43,6 +48,27 @@ class AdminEncuesta_model extends CI_Model {
 			return $cuestionarios->result();
 		}
 	}
+	
+	function getCuestionarioAsignados(){
+		$this->db->order_by('cuenombre','asc');
+		$cuestionarios = $this->db->get('cuestionarios');
+		$estudios = $this->db->get('estudios');
+
+		if (($cuestionarios->num_rows() > 0) and ($estudios->num_rows() > 0)){
+			return $cuestionarios->result();
+		}
+	}
+
+	function getEncuestadores(){
+		$this->db->order_by('user','asc');
+		$encuestador = $this->db->get('login');
+
+		if ($encuestador->num_rows() > 0){
+			return $encuestador->result();
+		}
+	}
+
+
 	function getReactivo(){
 		$this->db->order_by('pregunta','asc');
 		$reactivos = $this->db->get('reactivos');

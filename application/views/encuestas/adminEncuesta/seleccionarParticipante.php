@@ -1,5 +1,5 @@
-<?= form_open("adminEncuesta/recibirSeleccionParticipante") ?>
-<html>
+<?= form_open("adminEncuesta/seleccionPart") ?>
+<html> 
 <head><!-- Insertamos el archivo CSS compilado y comprimido -->
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
  <!-- Theme opcional -->
@@ -22,11 +22,11 @@
 	
 	<h3 class = "text-center"> <?= form_label('Seleccion de Estudio'); ?></h3>
    	<div class = "text-center">
-          <select name= "idEstudio" id="idEstudio">
+          <select name= "idLogin" id="idLogin">
             <option  value="" selected >Selecciona Usuario</option>
             <?php
-              foreach ($idEstudio as $i){
-                 echo '<option value="'. $i->idEstudio .'">'. $i->nombre .'</option>';
+              foreach ($idLogin as $i){
+                 echo '<option value="'. $i->idLogin .'">'. $i->user .'</option>';
                } 
             ?>
           </select>
@@ -40,16 +40,17 @@
             ?>
           </select>
           
-           <select name= "idEstudio" id="idEstudio">
-            <option  value="" selected >Selecciona Cuestionario</option>
+          <select name= "IDcuestionario" id="IDcuestionario">
+            <option value="" selected>Selecciona el cuestionario</option>
             <?php
-              foreach ($idEstudio as $i){
-                 echo '<option value="'. $i->idEstudio .'">'. $i->nombre .'</option>';
+              foreach ($IDcuestionario as $i){
+                 echo '<option value="'. $i->IDcuestionario .'">'. $i->cuenombre .'</option>';
                } 
             ?>
           </select>
    </div>
    
+   <h5 class = "text-center"><?= form_submit('','Asignar Usuario',"class='btn btn-success'")?></h5>
   
 </div>
 <p>&copy; Universidad Autonoma Metropolitana 2018 </p>

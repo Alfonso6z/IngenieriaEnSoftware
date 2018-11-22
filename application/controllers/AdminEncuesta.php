@@ -49,6 +49,7 @@ class AdminEncuesta extends CI_Controller{
 		$data['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
 		$this->load->view('encuestas/adminEncuesta/altaCuestionario',$data);
 	}
+
 	public function recibirDatosCuestionario(){
 		$idEstudio['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
 
@@ -117,11 +118,6 @@ class AdminEncuesta extends CI_Controller{
              }
 		
 	}
-	
-	public function recibirSeleccionParticipante(){
-		$this->load->view('encuestas/adminEncuesta/seleccionarParticipante');
-	}
-
 
 	public function vista_estudios()
 	{
@@ -130,7 +126,10 @@ class AdminEncuesta extends CI_Controller{
 	} 
 
 	public function seleccionPart(){
-		$this->load->view('encuestas/adminEncuesta/seleccionarParticipante');
+		$data['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
+		$data2['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionarioAsignados();
+		$data3['idLogin'] = $this->AdminEncuesta_model->getEncuestadores();
+		$this->load->view('encuestas/adminEncuesta/seleccionarParticipante',$data+$data2+$data3);
 	}
 
 
