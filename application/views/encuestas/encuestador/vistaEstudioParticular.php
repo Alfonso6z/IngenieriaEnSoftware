@@ -12,17 +12,6 @@
       <div class="jumbotron">
         <div class="text-center">
         <h2>Estudios en Particular</h2>
-      <br>
-    <div class="container">
-      <header class="page-header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Inicio</a></li>
-          <li class="active"><a href="#">Estudios</a></li>
-        </ul>
-        <h2>Encuestador</h2>
-      </header>
-      <div class="jumbotron">
-        <h2>Estudios en Particular</h2>
       </div>
       <table class="table">
   <thead>

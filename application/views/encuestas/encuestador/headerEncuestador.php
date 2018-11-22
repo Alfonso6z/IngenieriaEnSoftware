@@ -29,8 +29,6 @@ $apell = $this->session->userdata('apellido');
           <ul class="dropdown-menu">
           <li><a href="<?php echo $estudiosAsig; ?>">Estudios Asignados</a></li>
           <li><a href="<?php echo $estudiosPar; ?>">Estudios en particular</a></li>
-          <li><a href="#">Estudios asiganados</a></li>
-          <li><a href="#">Estudios en particular</a></li>
           <li><a href="#">Responder reactivo</a></li>
         </ul>
         </li>

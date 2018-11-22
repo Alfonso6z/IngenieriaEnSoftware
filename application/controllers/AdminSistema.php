@@ -74,9 +74,10 @@ class AdminSistema extends CI_Controller{
 		$this->load->view('encuestas/adminSistema/altaTipoUsuario');
 	}
 	public function recibirDatosTipoUsuario(){
-		$this->form_validation->set_rules('nombre', 'Tipo de Usuario', 'required|is_unique[roles.idRol]|trim');
+		$this->form_validation->set_rules('nombre', 'Tipo de Usuario', 'required|is_unique[roles.idRol]|trim|alpha');
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 		$this->form_validation->set_message('is_unique','El %s ya esta registrado');
+		$this->form_validation->set_message('alpha','El campo %s solo acepta letras');
 		if($this->form_validation->run()!=false){
 			$datos["correcto"]="Se Ha Registrado Con Éxito";
 			$data = array('nombre' => $this->input->post('nombre'));
@@ -93,6 +94,7 @@ class AdminSistema extends CI_Controller{
 		$this->load->view('encuestas/adminSistema/actualizaTipoUsuario',$data);
 	}
 	public function modificarTipoUsuario(){
+		$data['roles'] = $this->adminSistema_model->getRoles();
 		$this->form_validation->set_rules('nombre', 'Tipo de Usuario', 'required|is_unique[roles.idRol]|trim');
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 		$this->form_validation->set_message('is_unique','El %s ya esta registrado');
@@ -102,10 +104,8 @@ class AdminSistema extends CI_Controller{
 				'nombre' => $this->input->post('nombre'),
 				'tipoUsuario'=> $this->input->post('tipoUsuario'));
 			$this->adminSistema_model->actualizaTipoDeUsuario($data);
-			$data['roles'] = $this->adminSistema_model->getRoles();
 			$this->load->view('encuestas/adminSistema/actualizaTipoUsuario',$data+$datos);
 		}else{
-			$data['roles'] = $this->adminSistema_model->getRoles();
 			$datos["error"]="Error Al Actualizar";
             	$this->load->view('encuestas/adminSistema/actualizaTipoUsuario',$data+$datos);
 		}
