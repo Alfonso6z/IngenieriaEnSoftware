@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 21-11-2018 a las 16:45:45
--- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
--- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 22-11-2018 a las 01:37:45
+-- Versión del servidor: 10.1.36-MariaDB
+-- Versión de PHP: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -98,19 +100,18 @@ INSERT INTO `login` (`idLogin`, `user`, `password`, `apellido`, `email`, `rol`) 
 CREATE TABLE `reactivos` (
   `idReactivo` int(11) NOT NULL,
   `pregunta` varchar(100) COLLATE latin1_spanish_ci NOT NULL,
-  `IDcuestionario` int(11) NOT NULL
+  `IDcuestionario` int(11) NOT NULL,
+  `idTipoReactivo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `reactivos`
 --
 
-INSERT INTO `reactivos` (`idReactivo`, `pregunta`, `IDcuestionario`) VALUES
-(0, 'Nombre:', 2),
-(1, '¿Cual es el partido politico de su preferencia?', 1),
-(2, '¿Votaste en las elecciones pasadas?', 1),
-(3, '¿Cual seria el partido politico que desearia quitar de la plantilla electoral?', 1),
-(4, '¿Cuantos partidos politicos existen actualmente en Mexico?', 1);
+INSERT INTO `reactivos` (`idReactivo`, `pregunta`, `IDcuestionario`, `idTipoReactivo`) VALUES
+(1, 'Cuál es su nombre?', 1, 1),
+(2, 'Cuál es su edad?', 2, 1),
+(3, 'qué transportes utiliza?', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -168,7 +169,8 @@ CREATE TABLE `tiporeactivo` (
 --
 
 INSERT INTO `tiporeactivo` (`idTipoReactivo`, `nombre`) VALUES
-(0, 'Respuesta abierta');
+(1, 'Respuesta abierta'),
+(2, 'Opción múltiple');
 
 --
 -- Índices para tablas volcadas
@@ -185,7 +187,8 @@ ALTER TABLE `cuestionarios`
 -- Indices de la tabla `estudios`
 --
 ALTER TABLE `estudios`
-  ADD PRIMARY KEY (`idEstudio`);
+  ADD PRIMARY KEY (`idEstudio`),
+  ADD KEY `idEstudio` (`idEstudio`);
 
 --
 -- Indices de la tabla `login`
@@ -199,7 +202,8 @@ ALTER TABLE `login`
 --
 ALTER TABLE `reactivos`
   ADD PRIMARY KEY (`idReactivo`),
-  ADD KEY `IDcuestionario` (`IDcuestionario`);
+  ADD KEY `IDcuestionario` (`IDcuestionario`),
+  ADD KEY `idTipoReactivo` (`idTipoReactivo`);
 
 --
 -- Indices de la tabla `respuestas`
@@ -218,7 +222,8 @@ ALTER TABLE `roles`
 -- Indices de la tabla `tiporeactivo`
 --
 ALTER TABLE `tiporeactivo`
-  ADD PRIMARY KEY (`idTipoReactivo`);
+  ADD PRIMARY KEY (`idTipoReactivo`),
+  ADD KEY `idTipoReactivo` (`idTipoReactivo`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -229,11 +234,26 @@ ALTER TABLE `tiporeactivo`
 --
 ALTER TABLE `cuestionarios`
   MODIFY `IDcuestionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT de la tabla `estudios`
 --
 ALTER TABLE `estudios`
   MODIFY `idEstudio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `reactivos`
+--
+ALTER TABLE `reactivos`
+  MODIFY `idReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `tiporeactivo`
+--
+ALTER TABLE `tiporeactivo`
+  MODIFY `idTipoReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

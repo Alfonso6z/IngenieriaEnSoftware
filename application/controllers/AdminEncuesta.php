@@ -75,6 +75,7 @@ class AdminEncuesta extends CI_Controller{
 	}
 	public function recibirDatosReactivo(){
 		$IDcues['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
+		$tdata['TipoReactivo'] = $this->AdminEncuesta_model->getTipoReactivo();
 		$this->form_validation->set_rules('pregunta', 'Pregunta', 'required|min_length[3]|trim');
 		$this->form_validation->set_rules('IDcuestionario', 'Selecciona Estudio', 'required|min_length[1]|trim');
 
@@ -82,13 +83,13 @@ class AdminEncuesta extends CI_Controller{
 		if($this->form_validation->run()!=false){ //Si la validación es correcta
                 $data = array(
 					'pregunta' => $this->input->post('pregunta'),
-                	'IDcuestionario' => $this->input->post('IDcuestionario'));
+                	'IDcuestionario' => $this->input->post('IDcuestionario'),'TipoReactivo' => $this->input->post('TipoReactivo'));
                 $datos['correcto'] = 'Pregunta agregada con éxito' ;
                 $this->AdminEncuesta_model->insertaReactivo($data);
-                $this->load->view('encuestas/adminEncuesta/altaReactivo',$IDcues+$datos);
+                $this->load->view('encuestas/adminEncuesta/altaReactivo',$IDcues+$datos+$tdata);
              }else{                    
              	$datos['error'] = 'Debe escribir una pregunta válida' ;
-                $this->load->view('encuestas/adminEncuesta/altaReactivo',$IDcues+$datos);
+                $this->load->view('encuestas/adminEncuesta/altaReactivo',$IDcues+$datos+$tdata);
              }
 		
 	}
