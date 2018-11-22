@@ -1,4 +1,4 @@
-<?= form_open("adminEncuesta/seleccionPart") ?>
+<?= form_open("adminEncuesta/recibirDatosseleccionPart") ?>
 <html> 
 <head><!-- Insertamos el archivo CSS compilado y comprimido -->
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -26,7 +26,10 @@
             <option  value="" selected >Selecciona Usuario</option>
             <?php
               foreach ($idLogin as $i){
-                 echo '<option value="'. $i->idLogin .'">'. $i->user .'</option>';
+                if($i->rol == "Encuestador"){
+                  echo '<option value="'. $i->idLogin .'">'. $i->user .'</option>';
+                }
+                
                } 
             ?>
           </select>
@@ -44,13 +47,16 @@
             <option value="" selected>Selecciona el cuestionario</option>
             <?php
               foreach ($IDcuestionario as $i){
-                 echo '<option value="'. $i->IDcuestionario .'">'. $i->cuenombre .'</option>';
+                
+                  echo '<option value="'. $i->IDcuestionario .'">'. $i->cuenombre .'</option>';
+                
                } 
             ?>
           </select>
    </div>
    
-   <h5 class = "text-center"><?= form_submit('','Asignar Usuario',"class='btn btn-success'")?></h5>
+   <h5 class = "text-center"><?= form_submit('','Asignar Usuario',"class='btn btn-success'")?>
+   <?= form_close() ?></h5>
   
 </div>
 <p>&copy; Universidad Autonoma Metropolitana 2018 </p>

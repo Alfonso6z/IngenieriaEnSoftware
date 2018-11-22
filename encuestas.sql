@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2018 a las 06:02:26
+-- Tiempo de generación: 22-11-2018 a las 08:29:28
 -- Versión del servidor: 10.1.36-MariaDB
 -- Versión de PHP: 7.2.10
 
@@ -32,6 +32,13 @@ CREATE TABLE `asignarestudio` (
   `idLogin` int(11) NOT NULL,
   `idCuestionario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `asignarestudio`
+--
+
+INSERT INTO `asignarestudio` (`idLogin`, `idCuestionario`) VALUES
+(3, 1);
 
 -- --------------------------------------------------------
 
@@ -183,8 +190,8 @@ INSERT INTO `tiporeactivo` (`idTipoReactivo`, `nombre`) VALUES
 -- Indices de la tabla `asignarestudio`
 --
 ALTER TABLE `asignarestudio`
-  ADD PRIMARY KEY (`idLogin`,`idCuestionario`),
-  ADD KEY `idCuestionario` (`idCuestionario`);
+  ADD KEY `idCuestionario` (`idCuestionario`),
+  ADD KEY `idLogin` (`idLogin`);
 
 --
 -- Indices de la tabla `cuestionarios`

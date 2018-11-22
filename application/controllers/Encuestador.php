@@ -23,12 +23,15 @@ class Encuestador extends CI_Controller {
 	public function index(){
 		$this->load->view('encuestas/encuestador/inicioEncuestador');
 	}
+
 	public function estudiosParticular(){
-		$this->load->view('encuestas/encuestador/vistaEstudioParticular');
+		$data['idEstudio'] = $this->Encuestas_model->getEncuesta();
+		$this->load->view('encuestas/encuestador/estudiosParticular',$data);
 	}
 
-	public function estudiosAsignados(){
+	public function estudiosAsignadosE(){
 		$data['idEstudio'] = $this->Encuestas_model->getEncuesta();
-		$this->load->view('encuestas/encuestador/vistaEstudio',$data);
+		$this->load->view('encuestas/encuestador/estudiosAsignados',$data);
 	}
+
 }

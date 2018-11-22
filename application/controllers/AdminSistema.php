@@ -74,6 +74,7 @@ class AdminSistema extends CI_Controller{
 		$this->load->view('encuestas/adminSistema/altaTipoUsuario');
 	}
 	public function recibirDatosTipoUsuario(){
+
 		$this->form_validation->set_rules('nombre', 'Tipo de Usuario', 'required|is_unique[roles.idRol]|trim|alpha');
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 		$this->form_validation->set_message('is_unique','El %s ya esta registrado');
@@ -127,9 +128,10 @@ class AdminSistema extends CI_Controller{
 	}
 
 	public function recibirDatosTipoReactivo(){
-		$this->form_validation->set_rules('nombre', 'Tipo de Reactivo', 'required|is_unique[tiporeactivo.nombre]|trim');
+		$this->form_validation->set_rules('nombre', 'Tipo de Reactivo', 'required|is_unique[tiporeactivo.nombre]|alpha|trim');
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 		$this->form_validation->set_message('is_unique','El reactivo %s ya esta registrado');
+		$this->form_validation->set_message('alpha','El campo %s debe estar compuesto solo por letras');
 		if($this->form_validation->run()!=false){
 			$datos["correcto"]="Agregado con éxito";
 			$data = array('nombre' => $this->input->post('nombre'));

@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-$estudiosAsig=site_url('encuestador/estudiosAsignados',NULL);
+$estudiosAsig=site_url('encuestador/estudiosAsignadosE',NULL);
 $estudiosPar=site_url('encuestador/estudiosParticular',NULL);
 //$modificaEstudio=site_url('adminEncuesta/vista_estudios',NULL);
 $cerrarSesion=site_url('login/logout',NULL);

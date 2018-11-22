@@ -132,5 +132,47 @@ class AdminEncuesta extends CI_Controller{
 		$this->load->view('encuestas/adminEncuesta/seleccionarParticipante',$data+$data2+$data3);
 	}
 
+	public function recibirDatosseleccionPart(){
+		/*$idReactivo['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
+		$this->form_validation->set_rules('respuesta', 'Respuesta', 'required|min_length[1]|trim');
+		$this->form_validation->set_rules('idReactivo', 'Selecciona Pregunta', 'required|min_length[1]|trim');
+
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+		if($this->form_validation->run()!=false){ //Si la validación es correcta
+                $data = array(
+					'respuesta' => $this->input->post('respuesta'),
+                	'idReactivo' => $this->input->post('idReactivo'));
+                $datos['correcto'] = 'Respuesta agregada con éxito' ;
+                $this->AdminEncuesta_model->insertaRespuesta($data);
+                $this->load->view('encuestas/adminEncuesta/altaRespuesta',$idReactivo+$datos);
+             }else{                    
+             	$datos['error'] = 'Debe escribir una respuesta válida' ;
+                $this->load->view('encuestas/adminEncuesta/altaRespuesta',$idReactivo+$datos);
+			 }*/
+		$data['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
+		$data2['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionarioAsignados();
+		$data3['idLogin'] = $this->AdminEncuesta_model->getEncuestadores();
+
+		$this->form_validation->set_rules('idEstudio', 'Selecciona Estudio', 'required|min_length[1]|trim');
+		$this->form_validation->set_rules('IDcuestionario', 'Selecciona Cuestionario', 'required|min_length[1]|trim');
+		$this->form_validation->set_rules('idLogin', 'Selecciona Usuario', 'required|min_length[1]|trim');
+
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+
+		if($this->form_validation->run()!=false){
+			$data = array(
+				'idLogin' => $this->input->post('idLogin'),
+				'IDcuestionario' => $this->input->post('IDcuestionario'));
+				$datos['correcto'] = 'Relacion agregada con éxito';
+				$this->AdminEncuesta_model->insertaAsignacion($data);
+				$this->load->view('encuestas/adminEncuesta/seleccionarParticipante',$datos);
+		}else{
+			$datos['error'] = 'Error al seleccionar datos';
+			$this->load->view('encuestas/adminEncuesta/seleccionarParticipante',$datos);
+		}
+		
+	}
+
+
 
 }
