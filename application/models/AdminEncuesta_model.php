@@ -73,7 +73,6 @@ class AdminEncuesta_model extends CI_Model {
 	function getReactivo(){
 		$this->db->order_by('pregunta','asc');
 		$reactivos = $this->db->get('reactivos');
-
 		if ($reactivos->num_rows() > 0){
 			return $reactivos->result();
 		}
@@ -86,7 +85,21 @@ class AdminEncuesta_model extends CI_Model {
 			return $tipoReactivos->result();
 		}
 	}
+	function actualizaReactivo($data){
+		$datos = array(
+			'pregunta'=> $data['pregunta'],
+			'idReactivo' => $data['idReactivo']
+			);
+		$this->db->where('idReactivo',$data['idReactivo']);
+		$query = $this->db->update('reactivos',$datos);
+	}
 
+	function eliminaReactivo($data){
+		$datos = array(
+			'idReactivo' => $data['idReactivo']
+			);
+		$this->db->delete('reactivos',$datos);
+	}
 
 }
 

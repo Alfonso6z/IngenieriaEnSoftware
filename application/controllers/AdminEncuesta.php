@@ -165,14 +165,58 @@ class AdminEncuesta extends CI_Controller{
 				'IDcuestionario' => $this->input->post('IDcuestionario'));
 				$datos['correcto'] = 'Relacion agregada con éxito';
 				$this->AdminEncuesta_model->insertaAsignacion($data);
-				$this->load->view('encuestas/adminEncuesta/seleccionarParticipante',$datos+$data1+$data2+$data3);
+				$this->load->view('encuestas/AdminEncuesta/seleccionarParticipante',$datos+$data1+$data2+$data3);
 		}else{
 			$datos['error'] = 'Error al seleccionar datos';
-			$this->load->view('encuestas/adminEncuesta/seleccionarParticipante',$datos+$data1+$data2+$data3);
+			$this->load->view('encuestas/AdminEncuesta/seleccionarParticipante',$datos+$data1+$data2+$data3);
 		}
 		
 	}
 
+	public function actualizaReactivo(){
+		$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
+		$this->load->view('encuestas/AdminEncuesta/actualizaReactivo',$data);
+	}
+	public function modificarReactivo(){
+		$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
+		$this->form_validation->set_rules('pregunta', 'Pregunta', 'required|is_unique[reactivos.pregunta]|trim');
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+		$this->form_validation->set_message('is_unique','El %s ya esta registrado');
+		if($this->form_validation->run()!=false){
+			$datos["correcto"]="Se Ha Actualizado Con Éxito";
+			$data1 = array(
+				'pregunta' => $this->input->post('pregunta'),
+				'idReactivo'=> $this->input->post('idReactivo'));
+			$this->AdminEncuesta_model->actualizaReactivo($data1);
+			$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
+			$this->load->view('encuestas/adminEncuesta/actualizaReactivo',$datos+$data);
+		}else{
+			$datos["error"]="Error Al Actualizar";
+            	$this->load->view('encuestas/adminEncuesta/actualizaReactivo',$datos+$data);
+		}
+	}
 
+	public function eliminarReactivo(){
+		$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
+		$this->load->view('encuestas/AdminEncuesta/eliminarReactivo',$data);
+	}
+	public function borrarReactivo(){
+		$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
+		$this->form_validation->set_rules('idReactivo', 'Selecciona pregunta', 'required|trim');
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+		if($this->form_validation->run()!=false){
+			$data1 = array(
+				'pregunta' => $this->input->post('pregunta'),
+				'idReactivo'=> $this->input->post('idReactivo'));
+			$this->AdminEncuesta_model->eliminaReactivo($data1);
+			$datos["correcto"]="Se Ha Eliminado Con Éxito     ".$data1['pregunta'];
+			$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
+			$this->load->view('encuestas/adminEncuesta/eliminarReactivo',$datos+$data);
+		}else{
+			$datos["error"]="Error Al Eliminar";
+            	$this->load->view('encuestas/adminEncuesta/eliminarReactivo',$datos+$data);
+		}
+	}
 
 }
+
