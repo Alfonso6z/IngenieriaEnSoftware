@@ -142,5 +142,39 @@ class AdminSistema extends CI_Controller{
             	$this->load->view('encuestas/adminSistema/altaTipoReactivo',$datos);
 		}
 	}
+	public function actualizaTipoReactivo(){
+		$data['tiporeactivo'] = $this->adminSistema_model->getTreactivos();
+		$this->load->view('encuestas/adminSistema/actualizaTipoReactivo',$data);
+	}
+	public function modificarTipoReactivo(){
+		$data['tiporeactivo'] = $this->adminSistema_model->getTreactivos();
+		$this->form_validation->set_rules('nombre', 'Nuevo Tipo De Reactivo', 'required|is_unique[tiporeactivo.nombre]|trim|alpha');
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+		$this->form_validation->set_message('is_unique','El %s ya esta registrado');
+		$this->form_validation->set_message('alpha','El campo %s solo acepta letras');
+        if($this->form_validation->run()!=false){
+			$datos["correcto"]="Se Ha Actualizado Con Éxito";
+			$data = array(
+				'nombre' => $this->input->post('nombre'),
+				'tipoReactivo'=> $this->input->post('tipoReactivo'));
+			$this->adminSistema_model->actualizaTipoDeReactivo($data);
+			$this->load->view('encuestas/adminSistema/actualizaTipoReactivo',$data+$datos);
+		}else{
+			$datos["error"]="Error Al Actualizar";
+            	$this->load->view('encuestas/adminSistema/actualizaTipoReactivo',$data+$datos);
+		}
+	}
+	public function bajaTipoDeReactivo(){
+		$data['tiporeactivo'] = $this->adminSistema_model->getTreactivos();
+		$this->load->view('encuestas/adminSistema/bajaTipoDeReactivo',$data);
+	}
+	public function eliminarTipoDeReactivo(){
+		$data = array(
+				'nombre'=> $this->input->post('tipoReactivo'));
+		$datos["error"]="Se ha Eliminado ". $data['nombre'];
+		$this->adminSistema_model->eliminarTipoDeReactivo($data);
+		$data['tiporeactivo'] = $this->adminSistema_model->getTreactivos();
+		$this->load->view('encuestas/adminSistema/bajaTipoDeReactivo',$data+$datos);
+	}
 
 }

@@ -48,6 +48,18 @@ class AdminSistema_model extends CI_Model {
 	function insertarTipoReactivo($data){
 		$this->db->insert('tiporeactivo',array('nombre'=>$data['nombre']));
 	}
+	function actualizaTipoDeReactivo($data){
+		$datos = array(
+			'nombre'=> $data['nombre']);
+		$this->db->where('nombre',$data['tipoReactivo']);
+		$query = $this->db->update('tiporeactivo',$datos);
+
+	}
+	function eliminaTipoDeReactivo($data){
+		$datos = array(
+			'nombre'=> $data['nombre']);
+		$this->db->delete('tiporeactivo',$datos);
+	}
 }
 
 ?>

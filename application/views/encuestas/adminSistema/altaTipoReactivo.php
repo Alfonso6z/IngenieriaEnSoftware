@@ -29,10 +29,10 @@ $apell = $this->session->userdata('apellido');
 				<h5 class = "text-center"> <?= validation_errors('*');?></h5>
 			</div>
 			<?php } ?>
-			<h3 class = "text-center"><strong>Alta Tipo de Reactivo</strong></h3><br>
-			<h4 class = "text-center">
+			<h3 class = "text-center">Alta Tipo de Reactivo</h3>
+			<h5 class = "text-center">
 				<?= form_label('Tipo de reactivo: ', 'nombre') ?>
-				<?= form_input($nombre)  ?></h4>
+				<?= form_input($nombre)  ?></h5>
 			<h5 class = "text-center"><?= form_submit('aceptar','Aceptar',"class='btn btn-success'")?>
 <?= form_close() ?>
 </div>
