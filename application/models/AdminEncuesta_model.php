@@ -101,6 +101,21 @@ class AdminEncuesta_model extends CI_Model {
 		$this->db->delete('reactivos',$datos);
 	}
 
+	function actualizaCuestionario($data){
+		$datos = array(
+			'cuenombre'=> $data['cuenombre'],
+			'IDcuestionario' => $data['IDcuestionario']
+			);
+		$this->db->where('IDcuestionario',$data['IDcuestionario']);
+		$query = $this->db->update('cuestionarios',$datos);
+	}
+	function eliminaCuestionario($data){
+		$datos = array(
+			'IDcuestionario' => $data['IDcuestionario']
+			);
+		$this->db->delete('cuestionarios',$datos);
+	}
+
 }
 
 ?>

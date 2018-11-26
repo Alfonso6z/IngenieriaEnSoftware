@@ -34,8 +34,8 @@ $descripcion = array('name' => 'descripcion','placeholder' => 'Descripción del 
   <h4 class = "text-center">
   <?= form_input($cuenombre) ?></h4>
   <h4 class = "text-center">
-  <h5 class = "text-center"><?= form_submit('','Crear cuestionario',"class='btn btn-success'")?></h5>
-  <?= form_close() ?>
+  <h5 class = "text-center"><?= form_submit('','Crear cuestionario',"class='btn btn-success'")?>
+  <?= form_close() ?></h5>
    </div>   
 <p>&copy; Valverde Cruz Marisol </p>
 <!--Insertamos jQuery dependencia de Bootstrap-->

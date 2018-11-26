@@ -7,6 +7,8 @@ $modificaReactivo=site_url('adminEncuesta/actualizaReactivo',NULL);
 $eliminarReactivo=site_url('adminEncuesta/eliminarReactivo',NULL);
 $altaRespuesta=site_url('adminEncuesta/altaRespuesta',NULL);
 $seleccionPart=site_url('adminEncuesta/seleccionPart',NULL);
+$modificaCuestionario=site_url('adminEncuesta/actualizaCuestionario',NULL);
+$eliminarCuestionario=site_url('adminEncuesta/eliminarCuestionario',NULL);
 //$modificaEstudio=site_url('adminEncuesta/vista_estudios',NULL);
 $cerrarSesion=site_url('login/logout',NULL);
 $inicio=site_url('adminEncuesta',NULL);
@@ -42,8 +44,8 @@ $apell = $this->session->userdata('apellido');
         <span class="caret"></span></a>
           <ul class="dropdown-menu">
               <li><a href="<?php echo $altaCuestionario;?>">Alta</a></li>
-              <li><a href="#">Modificar</a></li>
-              <li><a href="#">Eliminar</a></li>
+              <li><a href="<?php echo $modificaCuestionario;?>">Modificar</a></li>
+              <li><a href="<?php echo $eliminarCuestionario;?>">Eliminar</a></li>
           </ul>
         </li>
         <li class="dropdown">

@@ -32,9 +32,10 @@ $pregunta=array(
                  echo '<option value="'. $i->IDcuestionario .'">'. $i->cuenombre .'</option>';
                } 
             ?>
-          </select></div>
+          </select>&nbsp;&nbsp;
+            <!--</div>
 
-              <br><div class = "text-center">
+              <br><div class = "text-center">-->
         <select name= "TipoReactivo" id="TipoReactivo">
           <option value="select" selected>Selecciona tipo de reactivo</option>
           <?php
