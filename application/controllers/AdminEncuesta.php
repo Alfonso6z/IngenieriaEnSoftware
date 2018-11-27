@@ -172,7 +172,7 @@ class AdminEncuesta extends CI_Controller{
 
 	public function actualizaReactivo(){
 		$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
-		$this->load->view('encuestas/AdminEncuesta/actualizaReactivo',$data);
+		$this->load->view('encuestas/adminEncuesta/actualizaReactivo',$data);
 	}
 	public function modificarReactivo(){
 		$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
@@ -195,7 +195,7 @@ class AdminEncuesta extends CI_Controller{
 
 	public function eliminarReactivo(){
 		$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
-		$this->load->view('encuestas/AdminEncuesta/eliminarReactivo',$data);
+		$this->load->view('encuestas/adminEncuesta/eliminarReactivo',$data);
 	}
 	public function borrarReactivo(){
 		$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
@@ -217,7 +217,7 @@ class AdminEncuesta extends CI_Controller{
 
 	public function actualizaCuestionario(){
 		$data['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
-		$this->load->view('encuestas/AdminEncuesta/actualizaCuestionario',$data);
+		$this->load->view('encuestas/adminEncuesta/actualizaCuestionario',$data);
 	}
 	public function modificarCuestionario(){
 		$data['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
@@ -239,7 +239,7 @@ class AdminEncuesta extends CI_Controller{
 	}
 	public function eliminarCuestionario(){
 		$data['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
-		$this->load->view('encuestas/AdminEncuesta/eliminarCuestionario',$data);
+		$this->load->view('encuestas/adminEncuesta/eliminarCuestionario',$data);
 	}
 	public function borrarCuestionario(){
 		$data['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
@@ -261,7 +261,7 @@ class AdminEncuesta extends CI_Controller{
 
 	public function actualizaEstudio(){
 		$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
-		$this->load->view('encuestas/AdminEncuesta/actualizaReactivo',$data);
+		$this->load->view('encuestas/adminEncuesta/actualizaReactivo',$data);
 	}
 	public function modificarEstudio(){
 		$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
@@ -284,7 +284,7 @@ class AdminEncuesta extends CI_Controller{
 
 	public function eliminarEstudio(){
 		$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
-		$this->load->view('encuestas/AdminEncuesta/eliminarReactivo',$data);
+		$this->load->view('encuestas/adminEncuesta/eliminarReactivo',$data);
 	}
 	public function borrarEstudio(){
 		$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
