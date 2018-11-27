@@ -261,7 +261,7 @@ class AdminEncuesta extends CI_Controller{
 
 	public function actualizarEstudio(){
 		$data['idEstudio'] = $this->AdminEncuesta_model->getEstudio();
-		$this->load->view('encuestas/AdminEncuesta/actualizarEstudio',$data);
+		$this->load->view('encuestas/adminEncuesta/actualizarEstudio',$data);
 
 	}
 	public function modificarEstudio(){
@@ -285,7 +285,7 @@ class AdminEncuesta extends CI_Controller{
 
 	public function eliminarEstudio(){ 
 		$data['idEstudio'] = $this->AdminEncuesta_model->getEstudio();
-		$this->load->view('encuestas/AdminEncuesta/eliminarEstudio',$data);
+		$this->load->view('encuestas/adminEncuesta/eliminarEstudio',$data);
 	}
 	public function borrarEstudio(){
 		$data['idEstudio'] = $this->AdminEncuesta_model->getEstudio();

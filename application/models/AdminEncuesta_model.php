@@ -134,7 +134,7 @@ class AdminEncuesta_model extends CI_Model {
 	
 	function getEstudio() {
         $this->db->order_by('nombre', 'asc');
-        $Estudios = $this->db->get('Estudios');
+        $Estudios = $this->db->get('estudios');
         
         if($Estudios->num_rows() > 0){
             return $Estudios->result();
@@ -145,7 +145,7 @@ class AdminEncuesta_model extends CI_Model {
 		$datos = array(
 			'idEstudio' => $data['idEstudio']
 			);
-		$this->db->delete('Estudios',$datos);
+		$this->db->delete('estudios',$datos);
 	}
 
 	function actualizarEstudio($data){
@@ -154,7 +154,7 @@ class AdminEncuesta_model extends CI_Model {
 			'idEstudio' => $data['idEstudio']
 			);
 		$this->db->where('idEstudio',$data['idEstudio']);
-		$query = $this->db->update('Estudios',$datos);
+		$query = $this->db->update('estudios',$datos);
 	}
 
 }
