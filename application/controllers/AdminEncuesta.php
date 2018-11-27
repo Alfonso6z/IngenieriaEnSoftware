@@ -1,4 +1,3 @@
-
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -96,11 +95,25 @@ class AdminEncuesta extends CI_Controller{
 	}
 
 	public function altaRespuesta(){
-		$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
+		$data['reactivo'] = $this->AdminEncuesta_model->getReactivo();
 		$this->load->view('encuestas/adminEncuesta/altaRespuesta',$data);
 	}
+
+	public function respuestas() {
+        $idReactivo = $this->input->post('idReactivo');
+        if($idReactivo){
+            $this->load->model('AdminEncuestas_model');
+            $respuestas = $this->AdminEncuestas_model->getRespuestas($idReactivo);
+            echo '<option value="0">Respuestas</option>';
+            foreach($respuestas as $fila){
+                echo '<option value="'. $fila->idRespuesta .'">'. $fila->resnombre .'</option>';
+            }
+        }  else {
+            echo '<option value="0">Respuestas</option>';
+        }
+    }
 	public function recibirDatosRespuesta(){
-		$idReactivo['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
+		$idReactivo['reactivo'] = $this->AdminEncuesta_model->getReactivo();
 		$this->form_validation->set_rules('respuesta', 'Respuesta', 'required|min_length[1]|trim');
 		$this->form_validation->set_rules('idReactivo', 'Selecciona Pregunta', 'required|min_length[1]|trim');
 

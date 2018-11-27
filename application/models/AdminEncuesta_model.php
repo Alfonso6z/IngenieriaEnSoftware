@@ -116,6 +116,15 @@ class AdminEncuesta_model extends CI_Model {
 		$this->db->delete('cuestionarios',$datos);
 	}
 
+	function getRespuestas($idReactivo) {
+        $this->db->where('idReactivo', $idReactivo);
+        $this->db->order_by('resnombre', 'asc');
+        $respuestas = $this->db->get('respuestas');
+        
+        if($respuestas->num_rows() > 0){
+            return $respuestas->result();
+        }
+    }
 }
 
 ?>
