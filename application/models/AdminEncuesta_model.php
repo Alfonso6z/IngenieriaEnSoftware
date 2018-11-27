@@ -109,11 +109,16 @@ class AdminEncuesta_model extends CI_Model {
 		$this->db->where('IDcuestionario',$data['IDcuestionario']);
 		$query = $this->db->update('cuestionarios',$datos);
 	}
-	function eliminaCuestionario($data){
+	function eliminarCuestionario($data){
+		$query= $this->db->query("SET foreign_key_checks = 0;");
 		$datos = array(
 			'IDcuestionario' => $data['IDcuestionario']
 			);
+		$this->db->delete('reactivos',array(
+			'IDcuestionario' => $data['IDcuestionario']
+			));
 		$this->db->delete('cuestionarios',$datos);
+		$query= $this->db->query("SET foreign_key_checks = 1;");
 	}
 
 	function getRespuestas($idReactivo) {
@@ -125,6 +130,7 @@ class AdminEncuesta_model extends CI_Model {
             return $respuestas->result();
         }
     }
+	
 }
 
 ?>
