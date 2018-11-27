@@ -129,12 +129,8 @@ class AdminEncuesta_model extends CI_Model {
         if($respuestas->num_rows() > 0){
             return $respuestas->result();
         }
-<<<<<<< HEAD
     }
 	
-}
-=======
-	}
 	
 	function getEstudio() {
         $this->db->order_by('nombre', 'asc');
@@ -144,7 +140,6 @@ class AdminEncuesta_model extends CI_Model {
             return $Estudios->result();
         }
 	}
->>>>>>> cb106941ca45c0acd0e8d4330735e79571918c74
 
 	function eliminarEstudio($data){
 		$datos = array(

@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $altaEstudio=site_url('adminEncuesta/altaEstudio',NULL);
 $eliminarEstudio=site_url('adminEncuesta/eliminarEstudio',NULL);
 $modificarEstudio=site_url('adminEncuesta/actualizarEstudio',NULL);
-
 $altaCuestionario=site_url('adminEncuesta/altaCuestionario',NULL);
 $altaReactivo=site_url('adminEncuesta/altaReactivo',NULL);
 $modificaReactivo=site_url('adminEncuesta/actualizaReactivo',NULL);
@@ -38,13 +37,10 @@ $apell = $this->session->userdata('apellido');
         <span class="caret"></span></a>
           <ul class="dropdown-menu">
           <li><a href="<?php echo $altaEstudio; ?>">Alta</a></li>
-<<<<<<< HEAD
           <li><a href="<#">Modificar</a></li>
           <li><a href="#">Eliminar</a></li>
-=======
           <li><a href="<?php echo $modificarEstudio;?>">Modificar</a></li>
           <li><a href="<?php echo $eliminarEstudio;?>">Eliminar</a></li>
->>>>>>> cb106941ca45c0acd0e8d4330735e79571918c74
         </ul>
         </li>
         <li class="dropdown">
