@@ -1,10 +1,10 @@
-<?= form_open('/AdminEncuesta/modificarCuestionario')?>
+<?= form_open('/AdminEncuesta/modificarEstudio')?>
 <?php
-$cuenombre=array('name' => 'cuenombre','placeholder' => 'Escriba cuestionario','maxlength'=>'20');
+$nombre=array('name' => 'nombre','placeholder' => 'Escribe nuevo Estudio','maxlength'=>'50');
 ?>
 <html>
 <head>
-  <title>Modifica Cuestionario</title>
+  <title>Modifica Estudio</title>
   <!-- Insertamos el archivo CSS compilado y comprimido -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
    <!-- Theme opcional -->
@@ -25,25 +25,25 @@ $cuenombre=array('name' => 'cuenombre','placeholder' => 'Escriba cuestionario','
           <h5 class = "text-center"> <?= validation_errors('*');?></h5>
         </div>
       <?php } ?>
-        <h3 class = "text-center">Modificar Cuestionario</h3>
+        <h3 class = "text-center">Modificar Estudio</h3>
         <div class = "text-center">
-            <select name= "IDcuestionario" id="IDcuestionario">
-              <option value="" selected>Selecciona Cuestionario</option>
+            <select name= "idEstudio" id="idEstudio">
+              <option value="" selected>Selecciona el Estudio</option>
               <?php
-                foreach ($IDcuestionario as $i){
-                   echo '<option value="'. $i->IDcuestionario .'">'. $i->cuenombre .'</option>';
+                foreach ($idEstudio as $i){
+                   echo '<option value="'. $i->idEstudio .'">'. $i->nombre .'</option>';
                  } 
               ?>
             </select></div>
+            <br>
              <h4 class = "text-center">
-        <h4 class = "text-center"> 
-        <?= form_input($cuenombre) ?></h4>
-        <h4 class = "text-center"> 
+        <h5 class = "text-center" required>
+        <?=  form_input($nombre) ?></h5>
         <h5 class = "text-center"><?= form_submit('Actualizar','Actualizar',"class='btn btn-warning'")?>
     <?= form_close() ?></h5>
     </div>
     <div class="text-left">
-      <p>&copy;Eliseo Mirafuentes Martinez</p>
+      <p>&copy;Unedgaro</p>
     </div>
   </div>
   <!--Insertamos jQuery dependencia de Bootstrap-->

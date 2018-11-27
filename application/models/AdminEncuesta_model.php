@@ -129,8 +129,38 @@ class AdminEncuesta_model extends CI_Model {
         if($respuestas->num_rows() > 0){
             return $respuestas->result();
         }
+<<<<<<< HEAD
     }
 	
 }
+=======
+	}
+	
+	function getEstudio() {
+        $this->db->order_by('nombre', 'asc');
+        $Estudios = $this->db->get('Estudios');
+        
+        if($Estudios->num_rows() > 0){
+            return $Estudios->result();
+        }
+	}
+>>>>>>> cb106941ca45c0acd0e8d4330735e79571918c74
 
+	function eliminarEstudio($data){
+		$datos = array(
+			'idEstudio' => $data['idEstudio']
+			);
+		$this->db->delete('Estudios',$datos);
+	}
+
+	function actualizarEstudio($data){
+		$datos = array(
+			'nombre'=> $data['nombre'],
+			'idEstudio' => $data['idEstudio']
+			);
+		$this->db->where('idEstudio',$data['idEstudio']);
+		$query = $this->db->update('Estudios',$datos);
+	}
+
+}
 ?>

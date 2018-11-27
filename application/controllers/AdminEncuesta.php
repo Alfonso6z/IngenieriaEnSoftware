@@ -172,7 +172,7 @@ class AdminEncuesta extends CI_Controller{
 
 	public function actualizaReactivo(){
 		$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
-		$this->load->view('encuestas/AdminEncuesta/actualizaReactivo',$data);
+		$this->load->view('encuestas/adminEncuesta/actualizaReactivo',$data);
 	}
 	public function modificarReactivo(){
 		$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
@@ -195,7 +195,7 @@ class AdminEncuesta extends CI_Controller{
 
 	public function eliminarReactivo(){
 		$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
-		$this->load->view('encuestas/AdminEncuesta/eliminarReactivo',$data);
+		$this->load->view('encuestas/adminEncuesta/eliminarReactivo',$data);
 	}
 	public function borrarReactivo(){
 		$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
@@ -217,7 +217,7 @@ class AdminEncuesta extends CI_Controller{
 
 	public function actualizaCuestionario(){
 		$data['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
-		$this->load->view('encuestas/AdminEncuesta/actualizaCuestionario',$data);
+		$this->load->view('encuestas/adminEncuesta/actualizaCuestionario',$data);
 	}
 	public function modificarCuestionario(){
 		$data['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
@@ -239,7 +239,7 @@ class AdminEncuesta extends CI_Controller{
 	}
 	public function eliminarCuestionario(){
 		$data['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
-		$this->load->view('encuestas/AdminEncuesta/eliminarCuestionario',$data);
+		$this->load->view('encuestas/adminEncuesta/eliminarCuestionario',$data);
 	}
 	public function borrarCuestionario(){
 		$data['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
@@ -259,6 +259,56 @@ class AdminEncuesta extends CI_Controller{
 		}
 	}
 
+<<<<<<< HEAD
+=======
+
+	public function actualizarEstudio(){
+		$data['idEstudio'] = $this->AdminEncuesta_model->getEstudio();
+		$this->load->view('encuestas/AdminEncuesta/actualizarEstudio',$data);
+
+	}
+	public function modificarEstudio(){
+		$data['idEstudio'] = $this->AdminEncuesta_model->getEstudio();
+		$this->form_validation->set_rules('nombre', 'Pregunta', 'required|is_unique[reactivos.pregunta]|trim');
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+		$this->form_validation->set_message('is_unique','El %s ya esta registrado');
+		if($this->form_validation->run()!=false){
+			$datos["correcto"]="Se Ha Actualizado Con Éxito";
+			$data1 = array(
+				'nombre' => $this->input->post('nombre'),
+				'idEstudio'=> $this->input->post('idEstudio'));
+			$this->AdminEncuesta_model->actualizarEstudio($data1);
+			$data['idEstudio'] = $this->AdminEncuesta_model->getEstudio();
+			$this->load->view('encuestas/adminEncuesta/actualizarEstudio',$datos+$data);
+		}else{
+			$datos["error"]="Error Al Actualizar";
+            	$this->load->view('encuestas/adminEncuesta/actualizarEstudio',$datos+$data);
+		}
+	}
+
+	public function eliminarEstudio(){ 
+		$data['idEstudio'] = $this->AdminEncuesta_model->getEstudio();
+		$this->load->view('encuestas/AdminEncuesta/eliminarEstudio',$data);
+	}
+	public function borrarEstudio(){
+		$data['idEstudio'] = $this->AdminEncuesta_model->getEstudio();
+		$this->form_validation->set_rules('idEstudio', 'Selecciona Estudio', 'required|trim');
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+		if($this->form_validation->run()!=false){
+			$data1 = array(
+				'nombre' => $this->input->post('nombre'),
+				'idEstudio'=> $this->input->post('idEstudio'));
+			$this->AdminEncuesta_model->eliminarEstudio($data1);
+			$datos["correcto"]="Se Ha Eliminado Con Éxito     ".$data1['nombre'];
+			$data['idEstudio'] = $this->AdminEncuesta_model->getEstudio();
+			$this->load->view('encuestas/adminEncuesta/eliminarEstudio',$datos+$data);
+		}else{
+			$datos["error"]="Error Al Eliminar";
+            	$this->load->view('encuestas/adminEncuesta/eliminarEstudio',$datos+$data);
+		}
+	}
+
+>>>>>>> cb106941ca45c0acd0e8d4330735e79571918c74
 
 }
 
