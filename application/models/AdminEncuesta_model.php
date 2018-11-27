@@ -14,11 +14,11 @@ class AdminEncuesta_model extends CI_Model {
 	}
 
 	function insertaAsignacion($data){
-		$this->db->insert('asignarestudio', array('idLogin'=>$data['idLogin'], 'IDcuestionario'=>$data['IDcuestionario']));
+		$this->db->insert('asignarestudio', array('idLogin'=>$data['idLogin'], 'idCuestionario'=>$data['idCuestionario']));
 	}
 
 	function insertaReactivo($data){
-		$this->db->insert('reactivos',array('pregunta'=>$data['pregunta'], 'IDcuestionario'=>$data['IDcuestionario'], 'idTipoReactivo'=>$data['TipoReactivo']));
+		$this->db->insert('reactivos',array('pregunta'=>$data['pregunta'], 'idCuestionario'=>$data['idCuestionario'], 'idTipoReactivo'=>$data['TipoReactivo']));
 	}
 	function insertaRespuesta($data){
 		$this->db->insert('respuestas',array('resnombre'=>$data['respuesta'], 'idReactivo'=>$data['idReactivo']));
@@ -104,18 +104,18 @@ class AdminEncuesta_model extends CI_Model {
 	function actualizaCuestionario($data){
 		$datos = array(
 			'cuenombre'=> $data['cuenombre'],
-			'IDcuestionario' => $data['IDcuestionario']
+			'idCuestionario' => $data['idCuestionario']
 			);
-		$this->db->where('IDcuestionario',$data['IDcuestionario']);
+		$this->db->where('idCuestionario',$data['idCuestionario']);
 		$query = $this->db->update('cuestionarios',$datos);
 	}
 	function eliminarCuestionario($data){
 		$query= $this->db->query("SET foreign_key_checks = 0;");
 		$datos = array(
-			'IDcuestionario' => $data['IDcuestionario']
+			'idCuestionario' => $data['idCuestionario']
 			);
 		$this->db->delete('reactivos',array(
-			'IDcuestionario' => $data['IDcuestionario']
+			'idCuestionario' => $data['idCuestionario']
 			));
 		$this->db->delete('cuestionarios',$datos);
 		$query= $this->db->query("SET foreign_key_checks = 1;");
@@ -134,7 +134,7 @@ class AdminEncuesta_model extends CI_Model {
 	
 	function getEstudio() {
         $this->db->order_by('nombre', 'asc');
-        $Estudios = $this->db->get('Estudios');
+        $Estudios = $this->db->get('estudios');
         
         if($Estudios->num_rows() > 0){
             return $Estudios->result();
@@ -145,7 +145,7 @@ class AdminEncuesta_model extends CI_Model {
 		$datos = array(
 			'idEstudio' => $data['idEstudio']
 			);
-		$this->db->delete('Estudios',$datos);
+		$this->db->delete('estudios',$datos);
 	}
 
 	function actualizarEstudio($data){
@@ -154,7 +154,7 @@ class AdminEncuesta_model extends CI_Model {
 			'idEstudio' => $data['idEstudio']
 			);
 		$this->db->where('idEstudio',$data['idEstudio']);
-		$query = $this->db->update('Estudios',$datos);
+		$query = $this->db->update('estudios',$datos);
 	}
 
 }

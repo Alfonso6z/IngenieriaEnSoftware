@@ -69,21 +69,21 @@ class AdminEncuesta extends CI_Controller{
 	}
 
 	public function altaReactivo(){
-		$data['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
+		$data['idCuestionario'] = $this->AdminEncuesta_model->getCuestionario();
 		$tdata['TipoReactivo'] = $this->AdminEncuesta_model->getTipoReactivo();
 		$this->load->view('encuestas/adminEncuesta/altaReactivo',$data+$tdata);
 	}
 	public function recibirDatosReactivo(){
-		$IDcues['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
+		$IDcues['idCuestionario'] = $this->AdminEncuesta_model->getCuestionario();
 		$tdata['TipoReactivo'] = $this->AdminEncuesta_model->getTipoReactivo();
 		$this->form_validation->set_rules('pregunta', 'Pregunta', 'required|min_length[3]|trim');
-		$this->form_validation->set_rules('IDcuestionario', 'Selecciona Estudio', 'required|min_length[1]|trim');
+		$this->form_validation->set_rules('idCuestionario', 'Selecciona Estudio', 'required|min_length[1]|trim');
 
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 		if($this->form_validation->run()!=false){ //Si la validación es correcta
                 $data = array(
 					'pregunta' => $this->input->post('pregunta'),
-                	'IDcuestionario' => $this->input->post('IDcuestionario'),'TipoReactivo' => $this->input->post('TipoReactivo'));
+                	'idCuestionario' => $this->input->post('idCuestionario'),'TipoReactivo' => $this->input->post('TipoReactivo'));
                 $datos['correcto'] = 'Pregunta agregada con éxito' ;
                 $this->AdminEncuesta_model->insertaReactivo($data);
                 $this->load->view('encuestas/adminEncuesta/altaReactivo',$IDcues+$datos+$tdata);
@@ -140,18 +140,18 @@ class AdminEncuesta extends CI_Controller{
 
 	public function seleccionPart(){
 		$data1['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
-		$data2['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionarioAsignados();
+		$data2['idCuestionario'] = $this->AdminEncuesta_model->getCuestionarioAsignados();
 		$data3['idLogin'] = $this->AdminEncuesta_model->getEncuestadores();
 		$this->load->view('encuestas/adminEncuesta/seleccionarParticipante',$data1+$data2+$data3);
 	}
 
 	public function recibirDatosseleccionPart(){
 		$data1['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
-		$data2['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionarioAsignados();
+		$data2['idCuestionario'] = $this->AdminEncuesta_model->getCuestionarioAsignados();
 		$data3['idLogin'] = $this->AdminEncuesta_model->getEncuestadores();
 
 		$this->form_validation->set_rules('idEstudio', 'Selecciona Estudio', 'required|min_length[1]|trim');
-		$this->form_validation->set_rules('IDcuestionario', 'Selecciona Cuestionario', 'required|min_length[1]|trim');
+		$this->form_validation->set_rules('idCuestionario', 'Selecciona Cuestionario', 'required|min_length[1]|trim');
 		$this->form_validation->set_rules('idLogin', 'Selecciona Usuario', 'required|min_length[1]|trim');
 
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
@@ -159,7 +159,7 @@ class AdminEncuesta extends CI_Controller{
 		if($this->form_validation->run()!=false){
 			$data = array(
 				'idLogin' => $this->input->post('idLogin'),
-				'IDcuestionario' => $this->input->post('IDcuestionario'));
+				'idCuestionario' => $this->input->post('idCuestionario'));
 				$datos['correcto'] = 'Relacion agregada con éxito';
 				$this->AdminEncuesta_model->insertaAsignacion($data);
 				$this->load->view('encuestas/AdminEncuesta/seleccionarParticipante',$datos+$data1+$data2+$data3);
@@ -216,21 +216,20 @@ class AdminEncuesta extends CI_Controller{
 	}
 
 	public function actualizaCuestionario(){
-		$data['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
+		$data['idCuestionario'] = $this->AdminEncuesta_model->getCuestionario();
 		$this->load->view('encuestas/adminEncuesta/actualizaCuestionario',$data);
 	}
 	public function modificarCuestionario(){
-		$data['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
-		$this->form_validation->set_rules('nombre', 'Nombre', 'required|is_unique[cuestionarios.nombre]|trim');
+		$data['idCuestionario'] = $this->AdminEncuesta_model->getCuestionario();
+		$this->form_validation->set_rules('cuenombre', 'Nombre', 'required|trim');
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
-		$this->form_validation->set_message('is_unique','El %s ya esta registrado');
 		if($this->form_validation->run()!=false){
 			$datos["correcto"]="Se Ha Actualizado Con Éxito";
 			$data1 = array(
-				'nombre' => $this->input->post('nombre'),
-				'IDcuestionario'=> $this->input->post('IDcuestionario'));
+				'cuenombre' => $this->input->post('cuenombre'),
+				'idCuestionario'=> $this->input->post('idCuestionario'));
 			$this->AdminEncuesta_model->actualizaCuestionario($data1);
-			$data['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
+			$data['idCuestionario'] = $this->AdminEncuesta_model->getCuestionario();
 			$this->load->view('encuestas/adminEncuesta/actualizaCuestionario',$datos+$data);
 		}else{
 			$datos["error"]="Error Al Actualizar";
@@ -238,20 +237,20 @@ class AdminEncuesta extends CI_Controller{
 		}
 	}
 	public function eliminarCuestionario(){
-		$data['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
+		$data['idCuestionario'] = $this->AdminEncuesta_model->getCuestionario();
 		$this->load->view('encuestas/adminEncuesta/eliminarCuestionario',$data);
 	}
 	public function borrarCuestionario(){
-		$data['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
-		$this->form_validation->set_rules('IDcuestionario', 'Selecciona Cuestionario', 'required|trim');
+		$data['idCuestionario'] = $this->AdminEncuesta_model->getCuestionario();
+		$this->form_validation->set_rules('idCuestionario', 'Selecciona Cuestionario', 'required|trim');
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 		if($this->form_validation->run()!=false){
 			$data1 = array(
 				'nombre' => $this->input->post('nombre'),
-				'IDcuestionario'=> $this->input->post('IDcuestionario'));
+				'idCuestionario'=> $this->input->post('idCuestionario'));
 			$this->AdminEncuesta_model->eliminarCuestionario($data1);
 			$datos["correcto"]="Se Ha Eliminado Con Éxito     ".$data1['nombre'];
-			$data['IDcuestionario'] = $this->AdminEncuesta_model->getCuestionario();
+			$data['idCuestionario'] = $this->AdminEncuesta_model->getCuestionario();
 			$this->load->view('encuestas/adminEncuesta/eliminarCuestionario',$datos+$data);
 		}else{
 			$datos["error"]="Error Al Eliminar";
@@ -261,7 +260,7 @@ class AdminEncuesta extends CI_Controller{
 
 	public function actualizarEstudio(){
 		$data['idEstudio'] = $this->AdminEncuesta_model->getEstudio();
-		$this->load->view('encuestas/AdminEncuesta/actualizarEstudio',$data);
+		$this->load->view('encuestas/adminEncuesta/actualizarEstudio',$data);
 
 	}
 	public function modificarEstudio(){
@@ -285,7 +284,7 @@ class AdminEncuesta extends CI_Controller{
 
 	public function eliminarEstudio(){ 
 		$data['idEstudio'] = $this->AdminEncuesta_model->getEstudio();
-		$this->load->view('encuestas/AdminEncuesta/eliminarEstudio',$data);
+		$this->load->view('encuestas/adminEncuesta/eliminarEstudio',$data);
 	}
 	public function borrarEstudio(){
 		$data['idEstudio'] = $this->AdminEncuesta_model->getEstudio();
