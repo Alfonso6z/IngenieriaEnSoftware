@@ -37,8 +37,6 @@ $apell = $this->session->userdata('apellido');
         <span class="caret"></span></a>
           <ul class="dropdown-menu">
           <li><a href="<?php echo $altaEstudio; ?>">Alta</a></li>
-          <li><a href="<#">Modificar</a></li>
-          <li><a href="#">Eliminar</a></li>
           <li><a href="<?php echo $modificarEstudio;?>">Modificar</a></li>
           <li><a href="<?php echo $eliminarEstudio;?>">Eliminar</a></li>
         </ul>
