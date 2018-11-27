@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2018 a las 08:29:28
--- Versión del servidor: 10.1.36-MariaDB
--- Versión de PHP: 7.2.10
+-- Servidor: localhost:3306
+-- Tiempo de generación: 27-11-2018 a las 14:31:15
+-- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
+-- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -38,7 +36,9 @@ CREATE TABLE `asignarestudio` (
 --
 
 INSERT INTO `asignarestudio` (`idLogin`, `idCuestionario`) VALUES
-(3, 1);
+(3, 1),
+(6, 2),
+(3, 2);
 
 -- --------------------------------------------------------
 
@@ -47,7 +47,7 @@ INSERT INTO `asignarestudio` (`idLogin`, `idCuestionario`) VALUES
 --
 
 CREATE TABLE `cuestionarios` (
-  `IDcuestionario` int(11) NOT NULL,
+  `idCuestionario` int(11) NOT NULL,
   `cuenombre` varchar(20) NOT NULL,
   `idEstudio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -56,9 +56,10 @@ CREATE TABLE `cuestionarios` (
 -- Volcado de datos para la tabla `cuestionarios`
 --
 
-INSERT INTO `cuestionarios` (`IDcuestionario`, `cuenombre`, `idEstudio`) VALUES
+INSERT INTO `cuestionarios` (`idCuestionario`, `cuenombre`, `idEstudio`) VALUES
 (1, 'Partidos politicos', 1),
-(2, 'CuestionarioP', 4);
+(9, 'Futbol', 2),
+(11, 'Rock and roll', 11);
 
 -- --------------------------------------------------------
 
@@ -80,7 +81,7 @@ INSERT INTO `estudios` (`idEstudio`, `nombre`, `descripcion`) VALUES
 (1, 'Politica', 'Se desea conocer la opinion publica acerca de los partidos politicos.'),
 (2, 'Deportes', 'Se desea conocer las actividades físicas de los jóvenes'),
 (3, 'Arte', 'Qué tanto conocimiento tiene la población en general'),
-(4, 'Nuevo estudio', 'estudio de prueba');
+(11, 'Música', 'Que Pedo Perro');
 
 -- --------------------------------------------------------
 
@@ -128,8 +129,8 @@ CREATE TABLE `reactivos` (
 
 INSERT INTO `reactivos` (`idReactivo`, `pregunta`, `IDcuestionario`, `idTipoReactivo`) VALUES
 (1, 'Cuál es su nombre?', 1, 1),
-(2, 'Cuál es su edad?', 2, 1),
-(3, 'qué transportes utiliza?', 2, 2);
+(12, 'Equipo favorito?', 9, 1),
+(14, 'Que Banda es tu preferida?', 11, 2);
 
 -- --------------------------------------------------------
 
@@ -142,6 +143,13 @@ CREATE TABLE `respuestas` (
   `resnombre` varchar(20) NOT NULL,
   `idReactivo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `respuestas`
+--
+
+INSERT INTO `respuestas` (`idRespuesta`, `resnombre`, `idReactivo`) VALUES
+(1, 'Van Halen', 14);
 
 -- --------------------------------------------------------
 
@@ -180,7 +188,8 @@ CREATE TABLE `tiporeactivo` (
 
 INSERT INTO `tiporeactivo` (`idTipoReactivo`, `nombre`) VALUES
 (1, 'Respuesta abierta'),
-(2, 'Opción múltiple');
+(2, 'Opción múltiple'),
+(4, 'Verdadero o Falso');
 
 --
 -- Índices para tablas volcadas
@@ -197,7 +206,7 @@ ALTER TABLE `asignarestudio`
 -- Indices de la tabla `cuestionarios`
 --
 ALTER TABLE `cuestionarios`
-  ADD PRIMARY KEY (`IDcuestionario`),
+  ADD PRIMARY KEY (`idCuestionario`),
   ADD KEY `idEstudio` (`idEstudio`);
 
 --
@@ -251,26 +260,27 @@ ALTER TABLE `tiporeactivo`
 -- AUTO_INCREMENT de la tabla `cuestionarios`
 --
 ALTER TABLE `cuestionarios`
-  MODIFY `IDcuestionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `idCuestionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `estudios`
 --
 ALTER TABLE `estudios`
-  MODIFY `idEstudio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
+  MODIFY `idEstudio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `reactivos`
 --
 ALTER TABLE `reactivos`
-  MODIFY `idReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `idReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT de la tabla `respuestas`
+--
+ALTER TABLE `respuestas`
+  MODIFY `idRespuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `tiporeactivo`
 --
 ALTER TABLE `tiporeactivo`
-  MODIFY `idTipoReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `idTipoReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Restricciones para tablas volcadas
 --
@@ -280,7 +290,7 @@ ALTER TABLE `tiporeactivo`
 --
 ALTER TABLE `asignarestudio`
   ADD CONSTRAINT `asignarestudio_ibfk_1` FOREIGN KEY (`idLogin`) REFERENCES `login` (`idLogin`),
-  ADD CONSTRAINT `asignarestudio_ibfk_2` FOREIGN KEY (`idCuestionario`) REFERENCES `cuestionarios` (`IDcuestionario`);
+  ADD CONSTRAINT `asignarestudio_ibfk_2` FOREIGN KEY (`idCuestionario`) REFERENCES `cuestionarios` (`idCuestionario`);
 
 --
 -- Filtros para la tabla `cuestionarios`
@@ -298,7 +308,7 @@ ALTER TABLE `login`
 -- Filtros para la tabla `reactivos`
 --
 ALTER TABLE `reactivos`
-  ADD CONSTRAINT `reactivos_ibfk_1` FOREIGN KEY (`IDcuestionario`) REFERENCES `cuestionarios` (`IDcuestionario`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `reactivos_ibfk_1` FOREIGN KEY (`IDcuestionario`) REFERENCES `cuestionarios` (`idCuestionario`) ON UPDATE CASCADE,
   ADD CONSTRAINT `reactivos_ibfk_2` FOREIGN KEY (`idTipoReactivo`) REFERENCES `tiporeactivo` (`idTipoReactivo`) ON UPDATE CASCADE;
 
 --
@@ -306,7 +316,6 @@ ALTER TABLE `reactivos`
 --
 ALTER TABLE `respuestas`
   ADD CONSTRAINT `respuestas_ibfk_1` FOREIGN KEY (`idReactivo`) REFERENCES `reactivos` (`idReactivo`) ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
