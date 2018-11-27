@@ -25,11 +25,11 @@ $pregunta=array(
     <div class="form-group">
         <h3 class = "text-center"><?=  form_label('Alta Reactivo ','pregunta') ?></h3>  
         <div class = "text-center">
-          <select name= "IDcuestionario" id="IDcuestionario">
+          <select name= "idCuestionario" id="idCuestionario">
             <option value="" selected>Selecciona el cuestionario</option>
             <?php
-              foreach ($IDcuestionario as $i){
-                 echo '<option value="'. $i->IDcuestionario .'">'. $i->cuenombre .'</option>';
+              foreach ($idCuestionario as $i){
+                 echo '<option value="'. $i->idCuestionario .'">'. $i->cuenombre .'</option>';
                } 
             ?>
           </select>&nbsp;&nbsp;

@@ -9,20 +9,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   </head>
   <body>
-<<<<<<< HEAD:application/views/encuestas/encuestador/vistaEstudioParticular.php
       <div class="jumbotron">
         <div class="text-center">
         <h2>Estudios en Particular</h2>
       </div>
       <table class="table">
-=======
-
     <div class="container">
       <div class="jumbotron">
         <h2>Estudios en Particular</h2>
     
   <table class="table">
->>>>>>> 0cf1de91b8913f84b3d78b037043c2b409219915:application/views/encuestas/encuestador/estudiosParticular.php
   <thead>
     <tr>
       <th scope="col">Estudio</th>

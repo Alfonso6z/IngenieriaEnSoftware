@@ -28,11 +28,11 @@ $cuenombre=array('name' => 'cuenombre');
       <?php } ?>
         <h3 class = "text-center">Eliminar Cuestionario</h3>
         <div class = "text-center">
-            <select name= "IDcuestionario" id="IDcuestionario">
+            <select name= "idCuestionario" id="idCuestionario">
               <option value="" selected>Selecciona Cuestionario</option>
               <?php
-                foreach ($IDcuestionario as $i){
-                   echo '<option value="'. $i->IDcuestionario.'">'. $i->cuenombre .'</option>';
+                foreach ($idCuestionario as $i){
+                   echo '<option value="'. $i->idCuestionario.'">'. $i->cuenombre .'</option>';
                  } 
               ?>
             </select></div>
