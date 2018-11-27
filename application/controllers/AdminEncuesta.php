@@ -106,10 +106,10 @@ class AdminEncuesta extends CI_Controller{
             $respuestas = $this->AdminEncuestas_model->getRespuestas($idReactivo);
             echo '<option value="0">Respuestas</option>';
             foreach($respuestas as $fila){
-                echo '<option value="'. $fila->idRespuesta .'">'. $fila->resnombre .'</option>';
+              echo '<option value="'. $fila->idRespuesta .'">'. $fila->resnombre .'</option>';
             }
         }  else {
-            echo '<option value="0">Respuestas</option>';
+             echo '<option value="0">Respuestas</option>';
         }
     }
 	public function recibirDatosRespuesta(){
