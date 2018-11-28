@@ -33,6 +33,32 @@ class ControlComboBoxes extends CI_Controller{
         }
     }
 
+    public function rolUsuario() {
+        $data =array( 'rol' => $this->input->post('idRol'));
+        if($data){
+            $usuario = $this->AdminEncuesta_model->getRolUsuario($data);
+            echo '<option value="0">Selecciona Usuario</option>';
+            foreach($usuario as $fila){
+              echo '<option value="'. $fila->idLogin.'">'. $fila->user .'</option>';
+            }
+        }  else {
+             echo '<option value="0">Preguntas</option>';
+        }
+    }
+
+    public function cuestionarioEncuestador() {
+        $data =array( 'idCuestionario' => $this->input->post('idCuestionario'));
+        if($data){
+            $participantes = $this->AdminEncuesta_model->getEncuestadoroCuestionario($data);
+            echo '<option value="0">Preguntas</option>';
+            foreach($participantes as $fila){
+              echo '<option value="'. $fila->idLogin.'">'. $fila->user .'</option>';
+            }
+        }  else {
+             echo '<option value="0">Preguntas</option>';
+        }
+    }
+
     public function reactivoRespuesta() {
         $data =array( 'idReactivo' => $this->input->post('idReactivo'));
         if($data){

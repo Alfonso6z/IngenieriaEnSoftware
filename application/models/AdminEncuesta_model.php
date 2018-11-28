@@ -14,7 +14,7 @@ class AdminEncuesta_model extends CI_Model {
 	}
 
 	function insertaAsignacion($data){
-		$this->db->insert('asignarestudio', array('idLogin'=>$data['idLogin'], 'idUsuario'=>$data['idUsuario'], 'idCuestionario'=>$data['idCuestionario']));
+		$this->db->insert('asignarestudio', array('idLogin'=>$data['idLogin'], 'idEstudio'=>$data['idEstudio'], 'idCuestionario'=>$data['idCuestionario']));
 	}
 
 	function insertaReactivo($data){
@@ -68,6 +68,8 @@ class AdminEncuesta_model extends CI_Model {
 			return $encuestador->result();
 		}
 	}
+
+
 
 
 	function getReactivo(){
@@ -133,7 +135,15 @@ class AdminEncuesta_model extends CI_Model {
         }
     }
 	
-	
+	function getRoles(){
+		$this->db->order_by('idRol','asc');
+		$roles = $this->db->get('roles');
+
+		if ($roles->num_rows() > 0){
+			return $roles->result();
+		}
+	}
+
 	function getEstudio() {
         $this->db->order_by('nombre', 'asc');
         $Estudios = $this->db->get('estudios');
@@ -168,6 +178,18 @@ class AdminEncuesta_model extends CI_Model {
         if($cuestionarios->num_rows() > 0){
             return $cuestionarios->result();
         }
+	}
+	//getcuestionarioestudio
+	function getRolUsuario($data){
+    	$datos = array(
+			'rol' => $data['rol']
+			);
+		$this->db->where('rol',$datos['rol']);
+        $usuario = $this->db->get('login');
+
+        if($usuario->num_rows() > 0){
+            return $usuario->result();
+        }
     }
 
     function getReactivoCuestionario($data){
@@ -176,6 +198,18 @@ class AdminEncuesta_model extends CI_Model {
 			);
 		$this->db->where('idCuestionario',$datos['idCuestionario']);
         $reactivos = $this->db->get('reactivos');
+
+        if($reactivos->num_rows() > 0){
+            return $reactivos->result();
+        }
+	}
+	
+	function getEncuestadorCuestionario($data){
+    	$datos = array(
+			'idCuestionario' => $data['idCuestionario']
+			);
+		$this->db->where('idCuestionario',$datos['idCuestionario']);
+        $reactivos = $this->db->get('asignarestudio');
 
         if($reactivos->num_rows() > 0){
             return $reactivos->result();

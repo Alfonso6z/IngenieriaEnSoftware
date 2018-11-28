@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-11-2018 a las 03:48:12
+-- Tiempo de generación: 28-11-2018 a las 20:46:57
 -- Versión del servidor: 10.1.36-MariaDB
 -- Versión de PHP: 7.2.10
 
@@ -29,9 +29,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `asignarestudio` (
-  `idAsignacion` int(11) NOT NULL,
   `idLogin` int(11) NOT NULL,
-  `idUsuario` int(11) NOT NULL,
+  `idEstudio` int(11) NOT NULL,
   `idCuestionario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -39,8 +38,16 @@ CREATE TABLE `asignarestudio` (
 -- Volcado de datos para la tabla `asignarestudio`
 --
 
-INSERT INTO `asignarestudio` (`idAsignacion`, `idLogin`, `idUsuario`, `idCuestionario`) VALUES
-(9, 6, 2, 1);
+INSERT INTO `asignarestudio` (`idLogin`, `idEstudio`, `idCuestionario`) VALUES
+(3, 0, 11),
+(2, 0, 11),
+(2, 0, 9),
+(2, 0, 9),
+(2, 0, 11),
+(2, 0, 11),
+(2, 0, 9),
+(3, 11, 11),
+(6, 2, 9);
 
 -- --------------------------------------------------------
 
@@ -142,7 +149,7 @@ INSERT INTO `reactivos` (`idReactivo`, `pregunta`, `IDcuestionario`, `idTipoReac
 
 CREATE TABLE `respuestas` (
   `idRespuesta` int(11) NOT NULL,
-  `resnombre` varchar(20) NOT NULL,
+  `respuesta` varchar(20) NOT NULL,
   `idReactivo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -150,7 +157,7 @@ CREATE TABLE `respuestas` (
 -- Volcado de datos para la tabla `respuestas`
 --
 
-INSERT INTO `respuestas` (`idRespuesta`, `resnombre`, `idReactivo`) VALUES
+INSERT INTO `respuestas` (`idRespuesta`, `respuesta`, `idReactivo`) VALUES
 (1, 'Van Halen', 14);
 
 -- --------------------------------------------------------
@@ -201,7 +208,6 @@ INSERT INTO `tiporeactivo` (`idTipoReactivo`, `nombre`) VALUES
 -- Indices de la tabla `asignarestudio`
 --
 ALTER TABLE `asignarestudio`
-  ADD PRIMARY KEY (`idAsignacion`),
   ADD KEY `idCuestionario` (`idCuestionario`),
   ADD KEY `idLogin` (`idLogin`);
 
@@ -258,12 +264,6 @@ ALTER TABLE `tiporeactivo`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
-
---
--- AUTO_INCREMENT de la tabla `asignarestudio`
---
-ALTER TABLE `asignarestudio`
-  MODIFY `idAsignacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `cuestionarios`
