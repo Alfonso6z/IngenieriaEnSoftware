@@ -4,15 +4,17 @@ $altaEstudio=site_url('adminEncuesta/altaEstudio',NULL);
 $eliminarEstudio=site_url('adminEncuesta/eliminarEstudio',NULL);
 $modificarEstudio=site_url('adminEncuesta/actualizarEstudio',NULL);
 $altaCuestionario=site_url('adminEncuesta/altaCuestionario',NULL);
+$modificaCuestionario=site_url('adminEncuesta/actualizaCuestionario',NULL);
+$eliminarCuestionario=site_url('adminEncuesta/eliminarCuestionario',NULL);
 $altaReactivo=site_url('adminEncuesta/altaReactivo',NULL);
 $modificaReactivo=site_url('adminEncuesta/actualizaReactivo',NULL);
 $eliminarReactivo=site_url('adminEncuesta/eliminarReactivo',NULL);
 $altaRespuesta=site_url('adminEncuesta/altaRespuesta',NULL);
+$modificaRespuesta=site_url('adminEncuesta/actualizaRespuesta',NULL);
+$eliminarRespuesta=site_url('adminEncuesta/eliminarRespuesta',NULL);
 $seleccionPart=site_url('adminEncuesta/seleccionPart',NULL);
 $deseleccionPart=site_url('adminEncuesta/deseleccionPart',NULL);
-$modificaCuestionario=site_url('adminEncuesta/actualizaCuestionario',NULL);
-$eliminarCuestionario=site_url('adminEncuesta/eliminarCuestionario',NULL);
-//$modificaEstudio=site_url('adminEncuesta/vista_estudios',NULL);
+
 $cerrarSesion=site_url('login/logout',NULL);
 $inicio=site_url('adminEncuesta',NULL);
 $rol = $this->session->userdata('rol');
@@ -65,8 +67,8 @@ $apell = $this->session->userdata('apellido');
           <span class="caret"></span></a>
             <ul class="dropdown-menu">
             <li><a href="<?php echo $altaRespuesta; ?>">Alta</a></li>
-            <li><a href="#">Modificar</a></li>
-            <li><a href="#">Eliminar</a></li>
+            <li><a href="<?php echo $modificaRespuesta; ?>">Modificar</a></li>
+            <li><a href="<?php echo $eliminarRespuesta; ?>">Eliminar</a></li>
           </ul>
           </li>
         <li class="dropdown">
