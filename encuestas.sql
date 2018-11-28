@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-11-2018 a las 17:54:09
+-- Tiempo de generación: 28-11-2018 a las 18:04:04
 -- Versión del servidor: 10.1.36-MariaDB
 -- Versión de PHP: 7.2.11
 
@@ -21,6 +21,29 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `encuestas`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `asignarestudio`
+--
+
+CREATE TABLE `asignarestudio` (
+  `idAsignacion` int(11) NOT NULL,
+  `idLogin` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  `idCuestionario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `asignarestudio`
+--
+
+INSERT INTO `asignarestudio` (`idAsignacion`, `idLogin`, `idUsuario`, `idCuestionario`) VALUES
+(9, 6, 2, 1),
+(10, 3, 2, 11),
+(11, 6, 2, 1),
+(12, 3, 2, 11);
 
 -- --------------------------------------------------------
 
@@ -178,6 +201,14 @@ INSERT INTO `tiporeactivo` (`idTipoReactivo`, `nombre`) VALUES
 --
 
 --
+-- Indices de la tabla `asignarestudio`
+--
+ALTER TABLE `asignarestudio`
+  ADD PRIMARY KEY (`idAsignacion`),
+  ADD KEY `idCuestionario` (`idCuestionario`),
+  ADD KEY `idLogin` (`idLogin`);
+
+--
 -- Indices de la tabla `cuestionarios`
 --
 ALTER TABLE `cuestionarios`
@@ -230,6 +261,12 @@ ALTER TABLE `tiporeactivo`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `asignarestudio`
+--
+ALTER TABLE `asignarestudio`
+  MODIFY `idAsignacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `cuestionarios`
