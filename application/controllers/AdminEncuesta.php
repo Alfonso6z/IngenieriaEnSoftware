@@ -161,6 +161,39 @@ class AdminEncuesta extends CI_Controller{
 		
 	}
 
+	public function deseleccionPart(){
+		$data1['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
+		$this->load->view('encuestas/adminEncuesta/deseleccionarParticipante',$data1);
+	}
+
+	public function recibirDatosdeseleccionPart(){
+		$data1['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
+		$data2['idCuestionario'] = $this->AdminEncuesta_model->getCuestionarioAsignados();
+		$data3['idLogin'] = $this->AdminEncuesta_model->getEncuestadores();
+		$data4['idUsuario'] = $this->AdminEncuesta_model->getEncuestadores();
+
+		$this->form_validation->set_rules('idLogin', 'Selecciona Encuestador', 'required|min_length[1]|trim');
+		$this->form_validation->set_rules('idUsuario', 'Selecciona Analista', 'required|min_length[1]|trim');
+		$this->form_validation->set_rules('idEstudio', 'Selecciona Estudio', 'required|min_length[1]|trim');
+		$this->form_validation->set_rules('idCuestionario', 'Selecciona Cuestionario', 'required|min_length[1]|trim');
+
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+
+		if($this->form_validation->run()!=false){
+			$data = array(
+				'idLogin' => $this->input->post('idLogin'),
+				'idUsuario' => $this->input->post('idUsuario'),
+				'idCuestionario' => $this->input->post('idCuestionario'));
+				$datos['correcto'] = 'Asignacion realizada con exito';
+				$this->AdminEncuesta_model->insertaAsignacion($data);
+				$this->load->view('encuestas/AdminEncuesta/deseleccionarParticipante',$datos+$data1+$data2+$data3+$data4);
+		}else{
+			$datos['error'] = 'Error al seleccionar datos';
+			$this->load->view('encuestas/AdminEncuesta/deseleccionarParticipante',$datos+$data1+$data2+$data3+$data4);
+		}
+		
+	}
+
 	public function actualizaReactivo(){
 		$data['idReactivo'] = $this->AdminEncuesta_model->getReactivo();
 		$this->load->view('encuestas/adminEncuesta/actualizaReactivo',$data);
