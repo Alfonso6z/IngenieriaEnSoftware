@@ -181,5 +181,23 @@ class AdminEncuesta_model extends CI_Model {
             return $reactivos->result();
         }
     }
+
+    function actualizarRespuesta($data){
+		$datos = array(
+			'respuesta'=> $data['respuesta'],
+			'idRespuesta' => $data['idRespuesta']
+			);
+		$this->db->where('idRespuesta',$data['idRespuesta']);
+		$query = $this->db->update('respuestas',$datos);
+	}
+
+	function eliminarRespuesta($data){
+		$query= $this->db->query("SET foreign_key_checks = 0;");
+		$datos = array(
+			'idRespuesta' => $data['idRespuesta']
+			);
+		$this->db->delete('respuestas',$datos);
+		$query= $this->db->query("SET foreign_key_checks = 1;");
+	}
 }
 ?>

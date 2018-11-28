@@ -5,9 +5,9 @@ class Encuestas extends CI_Controller{
 
 		function __construct(){
 		parent::__construct();
-		$this->load->helper('url');
 		$this->load->helper('form');
-		$this->load->model('encuestas_model');
+		$this->load->helper('url');
+		$this->load->model('Encuestas_model');
 	}
 
 	public function inicio(){
