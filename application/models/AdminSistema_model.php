@@ -18,8 +18,6 @@ class AdminSistema_model extends CI_Model {
 			return $roles->result();
 		}
 	}
-
-
 	function getTreactivos(){
 		$this->db->order_by('nombre','asc');
 		$tiporeactivo = $this->db->get('tiporeactivo');
@@ -59,6 +57,24 @@ class AdminSistema_model extends CI_Model {
 		$datos = array(
 			'nombre'=> $data['nombre']);
 		$this->db->delete('tiporeactivo',$datos);
+	}
+
+
+	function getUsuario(){
+		$this->db->order_by('user','asc');
+		$user = $this->db->get('login');
+
+		if ($user->num_rows() > 0){
+			return $user->result();
+		}
+	}
+
+	function actualizaUsuario($data){
+		$datos = array(
+			'user'=>$data['nombre'],'apellido'=>$data['apellido'],'email'=>$data['email'],'rol'=>$data['tipoUsuario']
+			);
+		$this->db->where('idLogin',$data['idLogin']);
+		$query = $this->db->update('login',$datos);
 	}
 }
 

@@ -28,9 +28,21 @@
       <!--<div class="form-group">-->
         <div class="text text-center">
           <div class="col-lx-10 bg-danger">
-            <h1>EN CONSTRUCCION ☺</h1>
+            <h1> <?php echo $idLogin ;?> ☺  </h1>
           </div>
         </div>
+        <div class = "text-center">
+            <select name= "idEstudio" id="idEstudio">
+              <option value="0" >Selecciona Estudio</option>
+              <?php
+                foreach ($idEstudio as $i){
+                  //if ($i->idTipoReactivo == 2){ 
+                   echo '<option value="'. $i->idEstudio .'">'. $i->idEstudio .'</option>';
+                  //}
+                 } 
+              ?>
+            </select>
+          </div>
           
 
  <!-- <h4 class = "text-center">

@@ -34,8 +34,10 @@ class Encuestador extends CI_Controller {
 	}
 
 	public function responderReactivo(){
-		$data['estudio'] = $this->Encuestas_model->getEncuesta();
-		$this->load->view('encuestas/Encuestador/responderReactivo',$data);
+		$idLogin['idLogin'] = $this->session->userdata('idLogin');
+		$data['idEstudio'] = $this->Encuestas_model->getEncuestaLogin($idLogin);
+		$data1['estudios'] = $this->Encuestas_model->getEstudioId($data);
+ 		$this->load->view('encuestas/encuestador/responderReactivo',$idLogin+$data);
 	}
 
 	public function recibirRespuesta(){
