@@ -295,5 +295,50 @@ class AdminEncuesta extends CI_Controller{
 		}
 	}
 
+	public function actualizaRespuesta(){
+		$data['estudio'] = $this->AdminEncuesta_model->getEncuesta();
+		$this->load->view('encuestas/adminEncuesta/actualizaRespuesta',$data);
+	}
+
+	public function modificarRespuesta(){
+		$data1['estudio'] = $this->AdminEncuesta_model->getEncuesta();
+		$this->form_validation->set_rules('idRespuesta', 'Respuesta', 'required|min_length[1]|trim');
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+		if($this->form_validation->run()!=false){ //Si la validación es correcta
+                $data = array(
+					'respuesta' => $this->input->post('respuesta'),
+                	'idRespuesta' => $this->input->post('idRespuesta'));
+                $datos['correcto'] = 'Respuesta modificada con éxito' ;
+                $this->AdminEncuesta_model->actualizarRespuesta($data);
+                $this->load->view('encuestas/adminEncuesta/actualizaRespuesta',$data1+$datos);
+             }else{                    
+             	$datos['error'] = 'Debe escribir una respuesta válida' ;
+                $this->load->view('encuestas/adminEncuesta/actualizaRespuesta',$data1+$datos);
+             }
+		
+	}
+
+	public function eliminarRespuesta(){
+		$data['estudio'] = $this->AdminEncuesta_model->getEncuesta();
+		$this->load->view('encuestas/adminEncuesta/eliminarRespuesta',$data);
+	}
+
+	public function borrarRespuesta(){
+		$data1['estudio'] = $this->AdminEncuesta_model->getEncuesta();
+		$this->form_validation->set_rules('idRespuesta', 'Selecciona respuesta', 'required|trim');
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+		if($this->form_validation->run()!=false){ //Si la validación es correcta
+                $data = array(
+					'respuesta' => $this->input->post('respuesta'),
+                	'idRespuesta' => $this->input->post('idRespuesta'));
+                $datos['correcto'] = 'Respuesta eliminada con éxito' ;
+                $this->AdminEncuesta_model->eliminarRespuesta($data);
+                $this->load->view('encuestas/adminEncuesta/eliminarRespuesta',$data1+$datos);
+             }else{                    
+             	$datos['error'] = 'Debe escribir una respuesta válida' ;
+                $this->load->view('encuestas/adminEncuesta/eliminarRespuesta',$data1+$datos);
+             }
+		
+	}
 }
 

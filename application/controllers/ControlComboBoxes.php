@@ -42,5 +42,17 @@ class ControlComboBoxes extends CI_Controller{
             }   
         }
     }
+
+    public function modificaReactivoRespuesta() {
+        $data =array( 'idReactivo' => $this->input->post('idReactivo'));
+        if($data){
+            $respuestas = $this->AdminEncuesta_model->getRespuestas($data);
+            foreach ($respuestas as $i) {
+                echo '<option value="'. $i->idRespuesta .'">'. $i->respuesta .'</option>';
+            }   
+        }
+    }
+
+
     
 }
