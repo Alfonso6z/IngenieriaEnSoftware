@@ -27,6 +27,19 @@ class Encuestas_model extends CI_Model {
 		}
 	}
 	
+
+	function getEncuestaLogin($data){
+		$this->db->where('idLogin',$data['idLogin']);
+		$estudios = $this->db->get('asignarestudio');
+		if ($estudios->num_rows() > 0){
+			return $estudios->result();
+		}
+	}
+
+	function getEstudioId($data){
+		print_r($data);
+		$this->db->where('idLogin',$data['idLogin']);
+	}
 }
 
 ?>
