@@ -23,13 +23,23 @@
 	<h3 class = "text-center"> <?= form_label('Seleccion de Estudio'); ?></h3>
    	<div class = "text-center">
           <select name= "idLogin" id="idLogin">
-            <option  value="" selected >Selecciona Usuario</option>
+            <option  value="" selected >Selecciona Encuestador</option>
             <?php
               foreach ($idLogin as $i){
                 if($i->rol == "Encuestador"){
                   echo '<option value="'. $i->idLogin .'">'. $i->user .'</option>';
                 }
-                
+               } 
+            ?>
+          </select>
+
+          <select name= "idUsuario" id="idUsuario">
+            <option  value="" selected >Selecciona Analista</option>
+            <?php
+              foreach ($idUsuario as $i){
+                if($i->rol == "Analista"){
+                  echo '<option value="'. $i->idLogin .'">'. $i->user .'</option>';
+                }
                } 
             ?>
           </select>
@@ -43,12 +53,12 @@
             ?>
           </select>
           
-          <select name= "IDcuestionario" id="IDcuestionario">
+          <select name= "idCuestionario" id="idCuestionario">
             <option value="" selected>Selecciona el cuestionario</option>
             <?php
-              foreach ($IDcuestionario as $i){
+              foreach ($idCuestionario as $i){
                 
-                  echo '<option value="'. $i->IDcuestionario .'">'. $i->cuenombre .'</option>';
+                  echo '<option value="'. $i->idCuestionario .'">'. $i->cuenombre .'</option>';
                 
                } 
             ?>

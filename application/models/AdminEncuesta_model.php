@@ -14,7 +14,7 @@ class AdminEncuesta_model extends CI_Model {
 	}
 
 	function insertaAsignacion($data){
-		$this->db->insert('asignarestudio', array('idLogin'=>$data['idLogin'], 'idCuestionario'=>$data['idCuestionario']));
+		$this->db->insert('asignarestudio', array('idLogin'=>$data['idLogin'], 'idUsuario'=>$data['idUsuario'], 'idCuestionario'=>$data['idCuestionario']));
 	}
 
 	function insertaReactivo($data){
@@ -55,7 +55,7 @@ class AdminEncuesta_model extends CI_Model {
 		$cuestionarios = $this->db->get('cuestionarios');
 		$estudios = $this->db->get('estudios');
 
-		if (($cuestionarios->num_rows() > 0) and ($estudios->num_rows() > 0)){
+		if (($cuestionarios->num_rows() > 0)){
 			return $cuestionarios->result();
 		}
 	}
