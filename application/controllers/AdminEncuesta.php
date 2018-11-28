@@ -153,7 +153,7 @@ class AdminEncuesta extends CI_Controller{
 				'idCuestionario' => $this->input->post('idCuestionario'));
 				$datos['correcto'] = 'Asignacion realizada con exito';
 				$this->AdminEncuesta_model->insertaAsignacion($data);
-				$this->load->view('encuestas/AdminEncuesta/seleccionarParticipante',$datos+$data1+$data2+$data3+$data4);
+				$this->load->view('encuestas/adminEncuesta/seleccionarParticipante',$datos+$data1+$data2+$data3+$data4);
 		}else{
 			$datos['error'] = 'Error al seleccionar datos';
 			$this->load->view('encuestas/AdminEncuesta/seleccionarParticipante',$datos+$data1+$data2+$data3+$data4);
