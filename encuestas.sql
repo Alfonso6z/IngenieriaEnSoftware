@@ -3,13 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
-<<<<<<< HEAD
--- Tiempo de generación: 28-11-2018 a las 18:04:04
-=======
--- Tiempo de generación: 28-11-2018 a las 20:46:57
->>>>>>> seleccion
+-- Tiempo de generación: 28-11-2018 a las 21:38:18
 -- Versión del servidor: 10.1.36-MariaDB
--- Versión de PHP: 7.2.11
+-- Versión de PHP: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -42,13 +38,6 @@ CREATE TABLE `asignarestudio` (
 -- Volcado de datos para la tabla `asignarestudio`
 --
 
-<<<<<<< HEAD
-INSERT INTO `asignarestudio` (`idAsignacion`, `idLogin`, `idUsuario`, `idCuestionario`) VALUES
-(9, 6, 2, 1),
-(10, 3, 2, 11),
-(11, 6, 2, 1),
-(12, 3, 2, 11);
-=======
 INSERT INTO `asignarestudio` (`idLogin`, `idEstudio`, `idCuestionario`) VALUES
 (3, 0, 11),
 (2, 0, 11),
@@ -59,7 +48,6 @@ INSERT INTO `asignarestudio` (`idLogin`, `idEstudio`, `idCuestionario`) VALUES
 (2, 0, 9),
 (3, 11, 11),
 (6, 2, 9);
->>>>>>> seleccion
 
 -- --------------------------------------------------------
 
@@ -278,15 +266,6 @@ ALTER TABLE `tiporeactivo`
 --
 
 --
-<<<<<<< HEAD
--- AUTO_INCREMENT de la tabla `asignarestudio`
---
-ALTER TABLE `asignarestudio`
-  MODIFY `idAsignacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
-=======
->>>>>>> seleccion
 -- AUTO_INCREMENT de la tabla `cuestionarios`
 --
 ALTER TABLE `cuestionarios`
