@@ -95,25 +95,12 @@ class AdminEncuesta extends CI_Controller{
 	}
 
 	public function altaRespuesta(){
-		$data['reactivo'] = $this->AdminEncuesta_model->getReactivo();
+		$data['estudio'] = $this->AdminEncuesta_model->getEncuesta();
 		$this->load->view('encuestas/adminEncuesta/altaRespuesta',$data);
 	}
 
-	public function respuestas() {
-        $idReactivo = $this->input->post('idReactivo');
-        if($idReactivo){
-            $this->load->model('AdminEncuestas_model');
-            $respuestas = $this->AdminEncuestas_model->getRespuestas($idReactivo);
-            echo '<option value="0">Respuestas</option>';
-            foreach($respuestas as $fila){
-              echo '<option value="'. $fila->idRespuesta .'">'. $fila->resnombre .'</option>';
-            }
-        }  else {
-             echo '<option value="0">Respuestas</option>';
-        }
-    }
 	public function recibirDatosRespuesta(){
-		$idReactivo['reactivo'] = $this->AdminEncuesta_model->getReactivo();
+		$data1['estudio'] = $this->AdminEncuesta_model->getEncuesta();
 		$this->form_validation->set_rules('respuesta', 'Respuesta', 'required|min_length[1]|trim');
 		$this->form_validation->set_rules('idReactivo', 'Selecciona Pregunta', 'required|min_length[1]|trim');
 
@@ -124,10 +111,10 @@ class AdminEncuesta extends CI_Controller{
                 	'idReactivo' => $this->input->post('idReactivo'));
                 $datos['correcto'] = 'Respuesta agregada con éxito' ;
                 $this->AdminEncuesta_model->insertaRespuesta($data);
-                $this->load->view('encuestas/adminEncuesta/altaRespuesta',$idReactivo+$datos);
+                $this->load->view('encuestas/adminEncuesta/altaRespuesta',$data1+$datos);
              }else{                    
              	$datos['error'] = 'Debe escribir una respuesta válida' ;
-                $this->load->view('encuestas/adminEncuesta/altaRespuesta',$idReactivo+$datos);
+                $this->load->view('encuestas/adminEncuesta/altaRespuesta',$data1+$datos);
              }
 		
 	}

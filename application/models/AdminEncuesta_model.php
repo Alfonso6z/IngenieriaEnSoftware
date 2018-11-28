@@ -121,11 +121,13 @@ class AdminEncuesta_model extends CI_Model {
 		$query= $this->db->query("SET foreign_key_checks = 1;");
 	}
 
-	function getRespuestas($idReactivo) {
-        $this->db->where('idReactivo', $idReactivo);
-        $this->db->order_by('resnombre', 'asc');
+	function getRespuestas($data) {
+        $datos = array(
+			'idReactivo' => $data['idReactivo']
+			);
+		$this->db->where('idReactivo',$datos['idReactivo']);
         $respuestas = $this->db->get('respuestas');
-        
+
         if($respuestas->num_rows() > 0){
             return $respuestas->result();
         }
@@ -156,6 +158,28 @@ class AdminEncuesta_model extends CI_Model {
 		$this->db->where('idEstudio',$data['idEstudio']);
 		$query = $this->db->update('estudios',$datos);
 	}
+    function getCuestionarioEstudio($data){
+    	$datos = array(
+			'idEstudio' => $data['idEstudio']
+			);
+		$this->db->where('idEstudio',$datos['idEstudio']);
+        $cuestionarios = $this->db->get('cuestionarios');
 
+        if($cuestionarios->num_rows() > 0){
+            return $cuestionarios->result();
+        }
+    }
+
+    function getReactivoCuestionario($data){
+    	$datos = array(
+			'idCuestionario' => $data['idCuestionario']
+			);
+		$this->db->where('idCuestionario',$datos['idCuestionario']);
+        $reactivos = $this->db->get('reactivos');
+
+        if($reactivos->num_rows() > 0){
+            return $reactivos->result();
+        }
+    }
 }
 ?>

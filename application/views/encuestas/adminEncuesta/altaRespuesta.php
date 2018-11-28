@@ -8,6 +8,7 @@ $resnombre=array(
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Theme opcional -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
   </head>
@@ -27,21 +28,38 @@ $resnombre=array(
       <!--<div class="form-group">-->
           <h3 class = "text-center"><?=  form_label('Alta Respuesta ');#,'respuesta') ?></h3>  
           <div class = "text-center">
-            <select name= "idReactivo" id="idReactivo">
-              <option value="0" >Selecciona la pregunta</option>
+            <select name= "idEstudio" id="idEstudio">
+              <option value="0" >Selecciona Estudio</option>
               <?php
-                foreach ($reactivo as $i){
-                  if ($i->idTipoReactivo == 2){ 
-                   echo '<option value="'. $i->idReactivo .'">'. $i->pregunta .'</option>';
-                  }
+                foreach ($estudio as $i){
+                  //if ($i->idTipoReactivo == 2){ 
+                   echo '<option value="'. $i->idEstudio .'">'. $i->nombre .'</option>';
+                  //}
                  } 
               ?>
-            </select></div>
-          <div class="text-center">
-            <select id="idRespuesta" name="idRespuesta">
-                <option value="0">Respuestas</option>
             </select>
           </div>
+          <div class="text-center">
+            <select id="idCuestionario" name="idCuestionario">
+                <option value="0">Cuestionarios</option>
+            </select>
+          </div>
+          <div class="text-center">
+            <select id="idReactivo" name="idReactivo">
+                <option value="0">Reactivos</option>
+            </select>
+          </div>
+          <div class="text-center">
+            <div class="container">
+              <h4> Respuestas Ya Registradas </h4>
+              <tr></tr><table class="table table-hover" id = "idRespuesta">
+                <td>
+                  
+                </td>
+              </table>
+            </div>  
+          </div>
+
   <h4 class = "text-center">
   <?= form_input($resnombre) ?></h4>
   <h4 class = "text-center">
@@ -54,16 +72,40 @@ $resnombre=array(
     <script type="text/javascript">
     /*funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
     $(document).ready(function(){
-       $("#idReactivo").change(function () {
-               $("#idReactivo option:selected").each(function () {
-                idReactivo=$('#idReactivo').val();
-                $.post("<?php echo base_url('adminEncuesta/respuestas'); ?>", { idReactivo: idReactivo}, function(data){
-                $("#idRespuesta").html(data);
+       $("#idEstudio").change(function () {
+               $("#idEstudio option:selected").each(function () {
+                idEstudio=$('#idEstudio').val();
+                $.post("<?php echo base_url('ControlComboBoxes/estudioCuestionario'); ?>", { idEstudio: idEstudio}, function(data){
+                $("#idCuestionario").html(data);
                 });            
             });
        })
     });
     /*fin de la funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+       $("#idCuestionario").change(function () {
+               $("#idCuestionario option:selected").each(function () {
+                idCuestionario=$('#idCuestionario').val();
+                $.post("<?php echo base_url('ControlComboBoxes/cuestionarioReactivo'); ?>", { idCuestionario: idCuestionario}, function(data){
+                $("#idReactivo").html(data);
+                });            
+            });
+       })
+    });
+    </script>
+     <script type="text/javascript">
+    $(document).ready(function(){
+       $("#idReactivo").change(function () {
+               $("#idReactivo option:selected").each(function () {
+                idReactivo=$('#idReactivo').val();
+                $.post("<?php echo base_url('ControlComboBoxes/reactivoRespuesta'); ?>", { idReactivo: idReactivo}, function(data){
+                $("#idRespuesta").html(data);
+                });            
+            });
+       })
+    });
     </script>
 <!--Insertamos jQuery dependencia de Bootstrap-->
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
