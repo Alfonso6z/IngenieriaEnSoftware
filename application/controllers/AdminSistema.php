@@ -54,7 +54,7 @@ class AdminSistema extends CI_Controller{
 				);
 				$datos["correcto"]="Se Ha Registrado Con Éxito  " . $data['email'];
 				$this->adminSistema_model->insertarRegistro($data);
-				$this->email->from('agzdn666@outlook.es', 'Wolgang');
+				$this->email->from('agzdn666@outlook.es', 'Wolfgang');
 				$this->email->to($data['email']);
 				$this->email->subject('Sistema de Encuestas Wolfgang');
 				$this->email->message('<h2>' . $data['nombre'] . 'Tu Registro fue Exitoso </h2><hr><br><br>Tu password es:' . $data['contrasena']);
@@ -174,6 +174,41 @@ class AdminSistema extends CI_Controller{
 		$this->adminSistema_model->eliminaTipoDeReactivo($data);
 		$data['tiporeactivo'] = $this->adminSistema_model->getTreactivos();
 		$this->load->view('encuestas/adminSistema/bajaTipoDeReactivo',$data+$datos);
+	}
+
+	public function actualizaUsuario(){
+		$data['idLogin'] = $this->adminSistema_model->getUsuario();
+		$rdata['roles'] = $this->adminSistema_model->getRoles();
+		$this->load->view('encuestas/adminSistema/actualizaUsuario',$data+$rdata);
+	}
+	public function modificarUsuario(){
+		$data['idLogin'] = $this->adminSistema_model->getUsuario();
+		$rdata['roles'] = $this->adminSistema_model->getRoles();
+
+		if($this->input->post('Actualizar')){
+			$this->form_validation->set_rules('nombre', 'Nombre', 'required|min_length[3]|alpha|trim');
+		    $this->form_validation->set_rules('apellido', 'Apellido', 'required|min_length[3]|trim');
+			$this->form_validation->set_rules('email', 'Email', 'required|min_length[3]|valid_email|trim');
+			$this->form_validation->set_rules('tipoUsuario', 'Tipo Usuario', 'required|trim');
+			$this->form_validation->set_message('alpha','El campo %s debe estar compuesto solo por letras sin tildes');
+			$this->form_validation->set_message('valid_email','El campo %s debe ser un email correcto');
+			$this->form_validation->set_message('required','El campo %s es obligatorio');
+			if($this->form_validation->run()!=false){ 
+            	$data = array(
+            	'idLogin'=> $this->input->post('idLogin'),	
+				'nombre' => $this->input->post('nombre'),
+				'apellido' => $this->input->post('apellido'),
+				'email' => $this->input->post('email'),
+				'tipoUsuario' => $this->input->post('tipoUsuario')
+				);
+				$datos["correcto"]="Ha modificado el usuario con éxito";
+				$this->adminSistema_model->actualizaUsuario($data);
+				$this->load->view('encuestas/adminSistema/actualizaUsuario',$data+$rdata+$datos);
+			}else{
+			$datos["error"]="Error en la modificación";
+            	$this->load->view('encuestas/adminSistema/actualizaUsuario',$data+$datos+$rdata);
+			}
+		}
 	}
 
 }

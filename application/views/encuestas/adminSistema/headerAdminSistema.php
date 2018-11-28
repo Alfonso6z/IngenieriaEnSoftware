@@ -1,17 +1,21 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $altaUsuario=site_url('adminSistema/altaUsuarios',NULL);
+$actualizaUsuario=site_url('adminSistema/actualizaUsuario',NULL);
 $altaTipoUsuario=site_url('adminSistema/altaTipoUsuario',NULL);
 $actualizaTipoUsuario=site_url('adminSistema/actualizaTipoUsuario',NULL);
 $bajaTipoDeUsuario=site_url('adminSistema/bajaTipoDeUsuario',NULL);
 $altaTipoReactivo=site_url('adminSistema/altaTipoReactivo',NULL);
 $actualizaTipoReactivo=site_url('adminSistema/actualizaTipoReactivo',NULL);
 $bajaTipoDeReactivo=site_url('adminSistema/bajaTipoDeReactivo',NULL);
+
 $cerrarSesion=site_url('login/logout',NULL);
 $inicio=site_url('adminSistema',NULL);
 $rol = $this->session->userdata('rol'); 
 $user = $this->session->userdata('user');
 $apell = $this->session->userdata('apellido');
+$apell = $this->session->userdata('apellido');
+
 ?><!DOCTYPE html>
 <html>
   <head>
@@ -32,7 +36,7 @@ $apell = $this->session->userdata('apellido');
           <span class="caret"></span></a>
             <ul class="dropdown-menu">
             <li><a href= "<?php echo $altaUsuario; ?>" >Registrar</a></li>
-            <li><a href="#">Modificar</a></li>
+            <li><a href="<?php echo $actualizaUsuario; ?>">Modificar</a></li>
             <li><a href="#">Eliminar</a></li>
             <li><a href="#">Cambio De Password</a></li>
           </ul>

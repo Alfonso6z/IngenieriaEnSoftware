@@ -6,6 +6,7 @@ class ControlComboBoxes extends CI_Controller{
         $this->load->helper('form');
         $this->load->helper('url');
         $this->load->model('AdminEncuesta_model');
+        $this->load->model('AdminSistema_model');
     }
     public function estudioCuestionario() {
         $data =array( 'idEstudio' => $this->input->post('idEstudio'));
@@ -50,6 +51,19 @@ class ControlComboBoxes extends CI_Controller{
             foreach ($respuestas as $i) {
                 echo '<option value="'. $i->idRespuesta .'">'. $i->respuesta .'</option>';
             }   
+        }
+    }
+
+    public function Usuario() {
+        $data =array( 'idLogin' => $this->input->post('idLogin'));
+        if($data){
+         $usuario = $this->AdminEncuesta_model->getUsuario($data);
+            echo '<option value="0">Nombre</option>';
+            foreach($usuario as $i){
+                echo '<value="'. $i->idLogin .'">'. $i->user .'</option>';
+            }
+        }  else {
+            echo '<value="0">Usuario</option>';
         }
     }
 
