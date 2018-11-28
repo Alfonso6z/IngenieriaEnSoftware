@@ -23,28 +23,21 @@
   </div>
       <?php } ?>
 	
-	<h3 class = "text-center"> <?= form_label('Seleccion de Estudio'); ?></h3>
+	<h3 class = "text-center"> <?= form_label('Seleccion de participantes'); ?></h3>
    	<div class = "text-center">
-          <select name= "idLogin" id="idLogin">
-            <option  value="" selected >Selecciona Encuestador</option>
+          <select name= "idRol" id="idRol">
+            <option  value="" selected >Selecciona Rol</option>
             <?php
-              foreach ($idLogin as $i){
-                if($i->rol == "Encuestador"){
-                  echo '<option value="'. $i->idLogin .'">'. $i->user .'</option>';
-                }
+              foreach ($roles as $i){
+                  if($i-> idRol == "Encuestador" or $i-> idRol == "Analista")
+                  echo '<option value="'. $i->idRol .'">'. $i->idRol .'</option>';
                } 
             ?>
           </select>
 
-          <select name= "idUsuario" id="idUsuario">
-            <option  value="" selected >Selecciona Analista</option>
-            <?php
-              foreach ($idUsuario as $i){
-                if($i->rol == "Analista"){
-                  echo '<option value="'. $i->idLogin .'">'. $i->user .'</option>';
-                }
-               } 
-            ?>
+          <select name= "idLogin" id="idLogin">
+            <option  value="" selected >Selecciona Usuario</option>
+            
           </select>
 
           <select name= "idEstudio" id="idEstudio">
@@ -76,6 +69,21 @@
                 idEstudio=$('#idEstudio').val();
                 $.post("<?php echo base_url('ControlComboBoxes/estudioCuestionario'); ?>", { idEstudio: idEstudio}, function(data){
                 $("#idCuestionario").html(data);
+                });            
+            });
+       })
+    });
+    /*fin de la funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
+</script>
+
+<script type="text/javascript">
+    /*funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
+    $(document).ready(function(){
+       $("#idRol").change(function () {
+               $("#idRol option:selected").each(function () {
+                idRol=$('#idRol').val();
+                $.post("<?php echo base_url('ControlComboBoxes/rolUsuario'); ?>", { idRol: idRol}, function(data){
+                $("#idLogin").html(data);
                 });            
             });
        })
