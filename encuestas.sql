@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-11-2018 a las 03:48:12
+-- Tiempo de generación: 28-11-2018 a las 17:30:30
 -- Versión del servidor: 10.1.36-MariaDB
 -- Versión de PHP: 7.2.10
 
@@ -40,7 +40,10 @@ CREATE TABLE `asignarestudio` (
 --
 
 INSERT INTO `asignarestudio` (`idAsignacion`, `idLogin`, `idUsuario`, `idCuestionario`) VALUES
-(9, 6, 2, 1);
+(9, 6, 2, 1),
+(10, 3, 2, 11),
+(11, 6, 2, 1),
+(12, 3, 2, 11);
 
 -- --------------------------------------------------------
 
@@ -263,7 +266,7 @@ ALTER TABLE `tiporeactivo`
 -- AUTO_INCREMENT de la tabla `asignarestudio`
 --
 ALTER TABLE `asignarestudio`
-  MODIFY `idAsignacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idAsignacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `cuestionarios`
