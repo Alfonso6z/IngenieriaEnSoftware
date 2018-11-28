@@ -37,10 +37,14 @@ class ControlComboBoxes extends CI_Controller{
         $data =array( 'idReactivo' => $this->input->post('idReactivo'));
         if($data){
             $respuestas = $this->AdminEncuesta_model->getRespuestas($data);
-            foreach ($respuestas as $i) {
-                echo "<tr><td>".$i->resnombre."</td></tr>";
-            }   
-        }
+            if($respuestas){
+                 foreach ($respuestas as $i) {
+                    echo "<tr><td>".$i->respuesta."</td></tr>";
+                }   
+            }else{
+             echo "<tr><td>Sin Respuestas</td></tr>";
+            }
+        }    
     }
 
     public function modificaReactivoRespuesta() {

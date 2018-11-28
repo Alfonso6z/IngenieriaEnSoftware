@@ -21,7 +21,7 @@ class AdminEncuesta_model extends CI_Model {
 		$this->db->insert('reactivos',array('pregunta'=>$data['pregunta'], 'idCuestionario'=>$data['idCuestionario'], 'idTipoReactivo'=>$data['TipoReactivo']));
 	}
 	function insertaRespuesta($data){
-		$this->db->insert('respuestas',array('resnombre'=>$data['respuesta'], 'idReactivo'=>$data['idReactivo']));
+		$this->db->insert('respuestas',array('respuesta'=>$data['respuesta'], 'idReactivo'=>$data['idReactivo']));
 	}
 	
 	function obtenerDatos(){
