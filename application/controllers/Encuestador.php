@@ -24,20 +24,24 @@ class Encuestador extends CI_Controller {
 	}
 
 	public function estudiosParticular(){
-		$data['idEstudio'] = $this->Encuestas_model->getEncuesta();
+		$idLogin['idLogin'] = $this->session->userdata('idLogin');
+		$data1['idEstudio'] = $this->Encuestas_model->getEncuestaLogin($idLogin);
+		$data['estudios'] = $this->Encuestas_model->getEstudioId($data1);
 		$this->load->view('encuestas/encuestador/estudiosParticular',$data);
 	}
 
 	public function estudiosAsignadosE(){
-		$data['idEstudio'] = $this->Encuestas_model->getEncuesta();
+		$idLogin['idLogin'] = $this->session->userdata('idLogin');
+		$data1['idEstudio'] = $this->Encuestas_model->getEncuestaLogin($idLogin);
+		$data['estudios'] = $this->Encuestas_model->getEstudioId($data1);
 		$this->load->view('encuestas/encuestador/estudiosAsignados',$data);
 	}
 
 	public function responderReactivo(){
 		$idLogin['idLogin'] = $this->session->userdata('idLogin');
-		$data['idEstudio'] = $this->Encuestas_model->getEncuestaLogin($idLogin);
-		$data1['estudios'] = $this->Encuestas_model->getEstudioId($data);
- 		$this->load->view('encuestas/encuestador/responderReactivo',$idLogin+$data);
+		$data1['idEstudio'] = $this->Encuestas_model->getEncuestaLogin($idLogin);
+		$data['estudios'] = $this->Encuestas_model->getEstudioId($data1);
+ 		$this->load->view('encuestas/encuestador/responderReactivo',$data);
 	}
 
 	public function recibirRespuesta(){

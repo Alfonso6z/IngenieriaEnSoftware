@@ -28,19 +28,20 @@
       <!--<div class="form-group">-->
         <div class="text text-center">
           <div class="col-lx-10 bg-danger">
-            <h1> <?php echo $idLogin ;?> ☺  </h1>
+            <h1>  ☺  </h1>
           </div>
         </div>
         <div class = "text-center">
             <select name= "idEstudio" id="idEstudio">
               <option value="0" >Selecciona Estudio</option>
               <?php
-                foreach ($idEstudio as $i){
-                  //if ($i->idTipoReactivo == 2){ 
-                   echo '<option value="'. $i->idEstudio .'">'. $i->idEstudio .'</option>';
-                  //}
+                foreach ($estudios as $i){
+                   echo '<option value="'. $i->idEstudio .'">'. $i->nombre .'</option>';
                  } 
               ?>
+            </select>
+            <select style="margin-left:20px;" name= "idCuestionario" id="idCuestionario">
+                <option value="0">Cuestionarios</option>
             </select>
           </div>
           
@@ -61,7 +62,7 @@
        $("#idEstudio").change(function () {
                $("#idEstudio option:selected").each(function () {
                 idEstudio=$('#idEstudio').val();
-                $.post("<?php echo base_url('ControlComboBoxes/estudioCuestionario'); ?>", { idEstudio: idEstudio}, function(data){
+                $.post("<?php echo base_url('ControlComboBoxes/estudioCuestionarioRespuestas'); ?>", { idEstudio: idEstudio}, function(data){
                 $("#idCuestionario").html(data);
                 });            
             });
