@@ -8,6 +8,7 @@ class Analista extends CI_Controller{
 		$this->load->helper('form');
 		$this->load->helper('url');
 		$this->load->model('Analista_model');
+		$this->load->model('Encuestas_model');
 		$this->load->library('session');
 		$this->load->library('form_validation');
 		$this->load->view('encuestas/analista/headerAnalista');
@@ -24,9 +25,9 @@ class Analista extends CI_Controller{
 
 	}
     public function estudiosParticularAnalista(){
-    	$this->session->userdata('idLogin')!=('idLogin');
-		$data['idCuestionario'] = $this->Analista_model->getCuestionario();
-		$data['idEstudio'] = $this->Analista_model->getEncuesta();
+    	$idLogin['idLogin'] = $this->session->userdata('idLogin');
+		$data1['idEstudio'] = $this->Encuestas_model->getEncuestaLogin($idLogin);
+		$data['estudios'] = $this->Encuestas_model->getEstudioId($data1);
 		$this->load->view('encuestas/analista/estudiosEnParticular',$data);
 	}
 }
