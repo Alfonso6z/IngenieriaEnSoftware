@@ -48,7 +48,10 @@ class Login extends CI_Controller {
 				redirect(site_url('AdminEncuesta',NULL));
 			}
 			else if($this->session->userdata("rol")=='Encuestador'){
-				redirect(site_url('Encuestador',NULL)); 
+				redirect(site_url('Encuestador',NULL));
+			} 
+			else if($this->session->userdata("rol")=='Analista'){
+				redirect(site_url('Analista',NULL));
 			}else{
 				redirect(site_url('NuevoTipoUsuario',NULL)); 
 			}
