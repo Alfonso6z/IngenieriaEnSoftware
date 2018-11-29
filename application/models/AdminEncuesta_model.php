@@ -210,7 +210,6 @@ class AdminEncuesta_model extends CI_Model {
 			);
 		$this->db->where('idCuestionario',$datos['idCuestionario']);
         $reactivos = $this->db->get('asignarestudio');
-
         if($reactivos->num_rows() > 0){
             return $reactivos->result();
         }
@@ -231,6 +230,15 @@ class AdminEncuesta_model extends CI_Model {
 			'idRespuesta' => $data['idRespuesta']
 			);
 		$this->db->delete('respuestas',$datos);
+		$query= $this->db->query("SET foreign_key_checks = 1;");
+	}
+
+	function eliminarAsignacion($data){
+		$query= $this->db->query("SET foreign_key_checks = 0;");
+		$datos = array(
+			'idLogin' => $data['idLogin']
+			);
+		$this->db->delete('asignarestudio',$datos);
 		$query= $this->db->query("SET foreign_key_checks = 1;");
 	}
 }

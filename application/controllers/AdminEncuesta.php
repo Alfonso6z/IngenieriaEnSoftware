@@ -163,7 +163,9 @@ class AdminEncuesta extends CI_Controller{
 
 	public function deseleccionPart(){
 		$data1['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
-		$this->load->view('encuestas/adminEncuesta/deseleccionarParticipante',$data1);
+		$data2['idCuestionario'] = $this->AdminEncuesta_model->getCuestionarioAsignados();
+		$data3['idLogin'] = $this->AdminEncuesta_model->getEncuestadores();
+		$this->load->view('encuestas/adminEncuesta/deseleccionarParticipante',$data1+$data2+$data3);
 	}
 
 	public function recibirDatosdeseleccionPart(){
@@ -183,8 +185,8 @@ class AdminEncuesta extends CI_Controller{
 				'idLogin' => $this->input->post('idLogin'),
 				'idUsuario' => $this->input->post('idUsuario'),
 				'idCuestionario' => $this->input->post('idCuestionario'));
-				$datos['correcto'] = 'Asignacion realizada con exito';
-				$this->AdminEncuesta_model->insertaAsignacion($data);
+				$datos['correcto'] = 'Asignacion eliminada con Exito';
+				$this->AdminEncuesta_model->eliminarAsignacion($data);
 				$this->load->view('encuestas/AdminEncuesta/deseleccionarParticipante',$datos+$data1+$data2+$data3);
 		}else{
 			$datos['error'] = 'Error al seleccionar datos';
