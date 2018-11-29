@@ -36,7 +36,7 @@
             </select>
           </div>
           <div class="text-center">
-              <h4> Respuestas Ya Registradas </h4>
+              <h4> Cuestionarios</h4>
               <tr></tr><table class="table table-hover" id = "idCuestionario">
                 <td>
                   
