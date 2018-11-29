@@ -53,6 +53,7 @@ class Encuestas_model extends CI_Model {
 	}
 
 	function cuestionariosSelect($data){
+		print_r($data);
 		$this->db->select('idCuestionario')->from('asignarestudio')->where('idEstudio',$data['idEstudio']);
 		$estudios = $this->db->get();
 		if ($estudios->num_rows() > 0){
