@@ -42,7 +42,7 @@
       
 
       <select style="margin-left: 25px;" name= "idLogin" id="idLogin">
-                <option value="0">Encuestador</option>
+                <option value="0">Participantes</option>
           </select>
           </div>
 
@@ -68,8 +68,20 @@
     /*fin de la funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
 </script>
 
-
-
+<script type="text/javascript">
+    /*funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
+    $(document).ready(function(){
+       $("#idCuestionario").change(function () {
+               $("#idCuestionario option:selected").each(function () {
+                idCuestionario=$('#idCuestionario').val();
+                $.post("<?php echo base_url('ControlComboBoxes/cuestionarioEncuestador()'); ?>", { idCuestionario: idCuestionario}, function(data){
+                $("#idLogin").html(data);
+                });            
+            });
+       })
+    });
+    /*fin de la funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
+</script>
     
 <p>&copy; Universidad Autonoma Metropolitana 2018 </p>
 <!--Insertamos jQuery dependencia de Bootstrap-->
