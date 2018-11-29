@@ -17,7 +17,7 @@
             <h2 class = "text-center">Estudios asignados</h2>
             <br>
                 <div class="text-center">
-            		<table class="table table-hover">
+                <table class="table table-hover">
                         <thead>
                         <tr>
                             <th class="text-center">Selección</th>
@@ -27,8 +27,11 @@
                         </thead>
                         <tbody>
                          <?php
+                          if($estudios){
                             foreach ($estudios as $i){ 
                             echo "<tr><td><label><input type='radio' name='idEstudio' value = ".$i->idEstudio."></td><td>".$i->nombre."</td><td>".$i->descripcion." </label></td></tr>";
+                          }
+                            
                         }?>
                         </tbody>
                 </table>
@@ -37,7 +40,7 @@
             </div>
         </div>
     <br>
-    <p>&copy; Eliseo Mirafuentes Martínez </p>
+    <p>&copy;</p>
     <script type="text/javascript">
     /*funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
     $(document).ready(function(){

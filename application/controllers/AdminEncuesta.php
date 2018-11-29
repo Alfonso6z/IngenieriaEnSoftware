@@ -153,7 +153,7 @@ class AdminEncuesta extends CI_Controller{
 				'idCuestionario' => $this->input->post('idCuestionario'));
 				$datos['correcto'] = 'Asignacion realizada con exito';
 				$this->AdminEncuesta_model->insertaAsignacion($data);
-				$this->load->view('encuestas/AdminEncuesta/seleccionarParticipante',$datos+$data1+$data2+$data3+$data4);
+				$this->load->view('encuestas/adminEncuesta/seleccionarParticipante',$datos+$data1+$data2+$data3+$data4);
 		}else{
 			$datos['error'] = 'Error al seleccionar datos';
 			$this->load->view('encuestas/AdminEncuesta/seleccionarParticipante',$datos+$data1+$data2+$data3+$data4);
@@ -336,7 +336,7 @@ class AdminEncuesta extends CI_Controller{
 
 	public function modificarRespuesta(){
 		$data1['estudio'] = $this->AdminEncuesta_model->getEncuesta();
-		$this->form_validation->set_rules('idRespuesta', 'Respuesta', 'required|min_length[1]|trim');
+		$this->form_validation->set_rules('respuesta', 'Respuesta', 'required|min_length[1]|trim');
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 		if($this->form_validation->run()!=false){ //Si la validación es correcta
                 $data = array(

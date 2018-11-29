@@ -7,6 +7,7 @@ class ControlComboBoxes extends CI_Controller{
         $this->load->helper('url');
         $this->load->model('AdminEncuesta_model');
         $this->load->model('AdminSistema_model');
+        $this->load->model('Encuestas_model');
     }
     public function estudioCuestionario() {
         $data =array( 'idEstudio' => $this->input->post('idEstudio'));
@@ -97,6 +98,30 @@ class ControlComboBoxes extends CI_Controller{
         }
     }
 
+    public function estudioCuestionarioRespuestas() {
+        $data =array( 'idEstudio' => $this->input->post('idEstudio'));
+        if($data){
+            $cuestionariosSelect = $this->Encuestas_model->cuestionariosSelect($data);
+            $cuestionarios = $this->Encuestas_model->cuestionarioNombre($cuestionariosSelect);
+            echo '<option value="0">Cuestionarios</option>';
+            foreach($cuestionarios as $i){
+                echo '<option value="'. $i->idCuestionario .'">'. $i->cuenombre .'</option>';
+            }
+        }  else {
+            echo '<option value="0">Cuestionarios</option>';
+        }
+    }
 
-    
+    public function estudioCuestionarioParticular(){
+        $data =array( 'idEstudio' => $this->input->post('idEstudio'));
+        if($data){
+            $cuestionariosSelect = $this->Encuestas_model->cuestionariosSelect($data);
+            $cuestionarios = $this->Encuestas_model->cuestionarioNombre($cuestionariosSelect);
+            foreach($cuestionarios as $i){
+                echo  "<tr><td>".$i->cuenombre."</td></tr>";
+            }
+        }  else {
+            echo "<tr><td>Sin Cuestionario </td></tr>";;
+        }
+    }
 }
