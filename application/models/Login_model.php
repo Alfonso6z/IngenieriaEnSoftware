@@ -29,8 +29,8 @@ class Login_model extends CI_Model {
 
 	function actualizarPassword($data){
 		$datos = array(
-			'email'=> $data['email']);
-		$this->db->where('email',$data['newpass']);
+			'password'=> md5($data['password']));
+		$this->db->where('email',$data['email']);
 		$query = $this->db->update('login',$datos);
 	}
 }

@@ -1,9 +1,9 @@
 <?= form_open('/login/actualizaContrasena')?> 
 <?php
+$correo = array('name' => 'correo', 'value' => $email );
 $contrasena = array('name' => 'contrasena','placeholder' => ' Contraseña','maxlength'=>'25');
-
-    $var=site_url('login');
-    $varIni=site_url('login/iniciaSesion');
+$var=site_url('login');
+$varIni=site_url('login/iniciaSesion');
 ?>
 <html>
   <head>
@@ -29,8 +29,9 @@ $contrasena = array('name' => 'contrasena','placeholder' => ' Contraseña','maxl
             <h5 class = "text-center"> <?= validation_errors('*');?></h5>
             </div>
         <?php } ?>
-      		<h3 class = "text-center">Nueva contraseña</h3>
+      		<h3 class = "text-center">Nueva contraseña del correo <br> <?php echo $email; ?></h3>
       		<h5 class = "text-center"><?=  form_label('Contraseña ','contrasena') ?>
+              <?= form_input($correo) ?>
               <?= form_password($contrasena) ?>
      
       		<h5 class = "text-center"><?= form_submit('','Recuperar',"class='btn btn-primary'")?>

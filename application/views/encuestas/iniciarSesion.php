@@ -34,12 +34,18 @@
     <header class="page-header">
     <div class="container">  
       <div class="jumbotron">
-         <?php if(isset($error)){?>
-          <div class="alert alert-danger alert-dismissible">
-            <h6 class= "text-center"><a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong class = "text-center"><?php echo $error; ?></strong></h6>
-            <h5 class = "text-center"> <?= validation_errors('*');?></h5>
-          </div>
-        <?php } ?>
+          <?php if(isset($error)){?>
+                    <div class="alert alert-danger alert-dismissible">
+                        <h5 class= "text-center"><a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong class = "text-center"><?php echo $error; ?></strong></h5>
+                        <h5 class = "text-center"> <?= validation_errors('*');?></h5>
+                    </div>
+                <?php } ?>
+                <?php if(isset($correcto)){?>
+                    <div class="alert alert-success alert-dismissible">
+                        <h5 class= "text-center"><a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong class = "text-center"><?php echo $correcto; ?></strong></h5>
+                        <h5 class = "text-center"> <?= validation_errors('*');?></h5>
+                    </div>
+                <?php } ?>
       		<h3 class = "text-center"><strong> Inicio de Sesión </strong></h3><br>
       		<h4 class = "text-center"><?=  form_label('Email: ','email') ?>
       		  <?= form_input($email) ?>  
