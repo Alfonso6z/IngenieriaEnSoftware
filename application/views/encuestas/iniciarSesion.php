@@ -5,7 +5,9 @@
 		'name' => 'email','placeholder' => ' email de Usuario','maxlength'=>'25');
 	$contrasena = array(
 		'name' => 'contrasena','placeholder' => ' Contraseña','maxlength'=>'25');
-	$var=site_url('login',NULL);
+  $var=site_url('login',NULL);
+  
+  $recpass=site_url('login/recContrasenia',NULL);
 ?>
 <html>
   <head>
@@ -45,6 +47,7 @@
       		<h4 style="width: 95%" class = "text-center"><?=  form_label('Contraseña: ','contrasena') ?>
       		  <?= form_password($contrasena) ?>  
           </h4><h3> </h3>
+          <h5 class = "text-center"><a href=" <?php echo $recpass; ?>">Recuperar Contraseña</a>
       		<h5 class = "text-center"><?= form_submit('','Iniciar',"class='btn btn-primary'")?>
 			     <?= form_close() ?>     
           </h5>

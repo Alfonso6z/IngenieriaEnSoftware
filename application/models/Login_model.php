@@ -16,5 +16,22 @@ class Login_model extends CI_Model {
 			return false;
 		}
 	}
+
+	public function existeCorreo($dataCorreo){
+		$this->db->where('email',$dataCorreo['email']);
+		$q1 = $this->db->get('login');
+		if($q1->num_rows()>0){
+			return $q1->row(); 
+		}else{
+			return false;
+		}
+	}
+
+	function actualizarPassword($data){
+		$datos = array(
+			'email'=> $data['email']);
+		$this->db->where('email',$data['newpass']);
+		$query = $this->db->update('login',$datos);
+	}
 }
 ?>

@@ -58,6 +58,23 @@ class Login extends CI_Controller {
 		}
 		
 	}
+
+	public function recContrasenia(){
+		$this->load->view('encuestas/recuperarContrasenia');
+	}
+
+	public function envioCorreo(){
+		$setcorreo['email'] = $this->input->post('email');
+		$getcorreo = $this->login_model->existeCorreo($setcorreo);
+		if(!$getcorreo){
+			$correo["error"]="No exite el usuario";
+			$this->load->view('encuestas/recuperarContrasenia',$correo);
+		}
+		else{
+			$this->load->view('encuestas/newContrasenia');
+		}
+	}
+
 	public function logout(){
 		$this->session->sess_destroy();
 		$this->load->view('encuestas/inicio');
