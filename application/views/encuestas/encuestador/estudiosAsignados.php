@@ -1,3 +1,9 @@
+<?= form_open("encuestador/recibirDatosEstudiosAsignados") ?>
+<?php
+$pregunta=array(
+  'name' => 'pregunta','placeholder' => ' Escribe una pregunta', 'maxlength'=>'100');
+?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -14,6 +20,18 @@
         <div class="container">
         <br>
             <div class="jumbotron">
+                <?php if(isset($error)){?>
+                    <div class="alert alert-danger alert-dismissible">
+                        <h5 class= "text-center"><a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong class = "text-center"><?php echo $error; ?></strong></h5>
+                        <h5 class = "text-center"> <?= validation_errors('*');?></h5>
+                    </div>
+                <?php } ?>
+                <?php if(isset($correcto)){?>
+                    <div class="alert alert-success alert-dismissible">
+                        <h5 class= "text-center"><a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong class = "text-center"><?php echo $correcto; ?></strong></h5>
+                        <h5 class = "text-center"> <?= validation_errors('*');?></h5>
+                    </div>
+                <?php } ?>
             <h2 class = "text-center">Estudios asignados</h2>
             <br>
                 <div class="text-center">
@@ -27,9 +45,14 @@
                         </thead>
                         <tbody>
                          <?php
-                            foreach ($estudios as $i){ 
-                            echo "<tr><td><label><input type='radio' name='idEstudio' value = ".$i->idEstudio."></td><td>".$i->nombre."</td><td>".$i->descripcion." </label></td></tr>";
-                        }?>
+                             if($estudios){
+                                foreach ($estudios as $i){ 
+                                echo "<tr><td><label><input type='radio' id='idEstudio' name='idEstudio' value = ".$i->idEstudio."></td><td>".$i->nombre."</td><td>".$i->descripcion." </label></td></tr>";
+                                }
+                            }else{
+                                echo "<h2>No hay estudios asignados</h2>";
+                            }
+                        ?>
                         </tbody>
                 </table>
                 <h5><?= form_submit('Seleccionar','Seleccionar',"class='btn btn-info'")?>

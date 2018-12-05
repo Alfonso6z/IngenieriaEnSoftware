@@ -48,10 +48,24 @@ class Encuestas_model extends CI_Model {
 			if ($estudios->num_rows() > 0){
 			return $estudios->result();
 			}
-		}
-		
+		}	
 	}
 
+	function getEstudioNombre($data){
+		$this->db->where('idEstudio',$data['idEstudio']);
+		$estudio = $this->db->get('estudios');
+		if($estudio->num_rows()>0){
+			return $estudio->result();
+		}
+	}
+	function getCuestionarios($data){
+		$this->db->where('idEstudio',$data['idEstudio']);
+		$this->db->order_by('cuenombre','asc');
+		$cuestionarios = $this->db->get('cuestionarios');
+		if($cuestionarios->num_rows()>0){
+			return $cuestionarios->result();
+		}
+	}
 	function cuestionariosSelect($data){
 		print_r($data);
 		$this->db->select('idCuestionario')->from('asignarestudio')->where('idEstudio',$data['idEstudio']);
@@ -70,6 +84,15 @@ class Encuestas_model extends CI_Model {
 		$estudios = $this->db->get('cuestionarios');
 		if ($estudios->num_rows() > 0){
 			return $estudios->result();
+		}
+	}
+
+	function getReactivosCuestionario($data){
+		$this->db->where('idCuestionario',$data['idCuestionario']);
+		$this->db->order_by('idReactivo','asc');
+		$reactivos = $this->db->get('reactivos');
+		if($reactivos->num_rows()>0){
+			return $reactivos->result();
 		}
 	}
 }

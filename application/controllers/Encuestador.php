@@ -23,25 +23,49 @@ class Encuestador extends CI_Controller {
 		$this->load->view('encuestas/encuestador/inicioEncuestador');
 	}
 
-	public function estudiosParticular(){
-		$idLogin['idLogin'] = $this->session->userdata('idLogin');
-		$data1['idEstudio'] = $this->Encuestas_model->getEncuestaLogin($idLogin);
-		$data['estudios'] = $this->Encuestas_model->getEstudioId($data1);
-		$this->load->view('encuestas/encuestador/estudiosParticular',$data);
-	}
-
 	public function estudiosAsignadosE(){
 		$idLogin['idLogin'] = $this->session->userdata('idLogin');
 		$data1['idEstudio'] = $this->Encuestas_model->getEncuestaLogin($idLogin);
 		$data['estudios'] = $this->Encuestas_model->getEstudioId($data1);
 		$this->load->view('encuestas/encuestador/estudiosAsignados',$data);
 	}
+	public function recibirDatosEstudiosAsignados(){
+		if($this->input->post('Seleccionar')){
+			$this->form_validation->set_rules('idEstudio', 'Estudio', 'required');
+			$this->form_validation->set_message('required','Seleccione un  %s');
+			if($this->form_validation->run()!=false){ 
+            	$data = array('idEstudio' => $this->input->post('idEstudio'));
+            	$data1['cuestionarios'] = $this->Encuestas_model->getCuestionarios($data);
+            	$data2 = array('nombreEstudio' => $this->Encuestas_model->getEstudioNombre($data));
+				$this->load->view('encuestas/encuestador/estudiosParticular',$data1+$data2);
+        	}else{
+        		$idLogin['idLogin'] = $this->session->userdata('idLogin');
+				$data1['idEstudio'] = $this->Encuestas_model->getEncuestaLogin($idLogin);
+				$data2['estudios'] = $this->Encuestas_model->getEstudioId($data1);
+            	$datos["error"]="Error Al Registrar";
+            	$this->load->view('encuestas/encuestador/estudiosAsignados',$datos+$data2);
+       		}      
+        	
+		}	
+	}
 
-	public function responderReactivo(){
-		$idLogin['idLogin'] = $this->session->userdata('idLogin');
-		$data1['idEstudio'] = $this->Encuestas_model->getEncuestaLogin($idLogin);
-		$data['estudios'] = $this->Encuestas_model->getEstudioId($data1);
- 		$this->load->view('encuestas/encuestador/responderReactivo',$data);
+	public function contestarCuestionario(){
+		if($this->input->post('Contestar')){
+			$this->form_validation->set_rules('idCuestionario', 'Cuestionario', 'required');
+			$this->form_validation->set_message('required','Seleccione un  %s');
+			if($this->form_validation->run()!=false){ 
+            	$data = array('idCuestionario' => $this->input->post('idCuestionario'));
+            	$data1['reactivos'] = $this->Encuestas_model->getReactivosCuestionario($data);
+				$this->load->view('encuestas/encuestador/responderReactivo',$data1);
+        	}else{
+        		$idLogin['idLogin'] = $this->session->userdata('idLogin');
+				$data1['idEstudio'] = $this->Encuestas_model->getEncuestaLogin($idLogin);
+				$data2['estudios'] = $this->Encuestas_model->getEstudioId($data1);
+            	$datos["error"]="Error Al Registrar";
+            	$this->load->view('encuestas/encuestador/estudiosAsignados',$datos+$data2);
+       		}      
+        	
+		}		
 	}
 
 	public function recibirRespuesta(){

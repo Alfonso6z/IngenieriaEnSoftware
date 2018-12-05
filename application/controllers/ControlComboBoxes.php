@@ -28,9 +28,11 @@ class ControlComboBoxes extends CI_Controller{
             $reactivos = $this->AdminEncuesta_model->getReactivoCuestionario($data);
             echo '<option value="0">Pregunta</option>';
             foreach($reactivos as $fila){
-              echo '<option value="'. $fila->idReactivo.'">'. $fila->pregunta .'</option>';
-            }
-        }  else {
+                if($fila->idTipoReactivo=="2"){
+                     echo '<option value="'. $fila->idReactivo.'">'. $fila->pregunta .'</option>';
+                    }
+                }
+        }else{
              echo '<option value="0">Preguntas</option>';
         }
     }
