@@ -12,18 +12,25 @@ $var=site_url('login/iniciaSesion',NULL);
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   </head>
   <body>
-    <div class="container">
-      <header class="page-header">
+    <h4><img class="img-responsive" src="/IngenieriaEnSoftware/wolfG.png" alt="Wolf"></h4>
+      <div style="width: 93%">
         <ul class = "nav nav-pills pull-right">
-          <li class ="active"><a href="">Inicio</a></li>
-          <li><a href=" <?php echo $var; ?>">Iniciar Sesión</a></li>
+         <li class ="active"><a href="">Inicio</a></li>
+         <li><a href="<?php echo $var; ?>">Iniciar Sesión</a></li>
         </ul>
-        <h3><strong> Wolfgang </strong></h3>
-      </header>
+      </div>  
+         <header class="page-header"><div> 
+        <h4>
+
+        </h4> 
+
+      </div></header>
+    <header class="page-header">
+    <div class="container">  
       <div class="jumbotron">
-        <h1>Ingenieria en Software</h1><br>
+        <h1>Ingeniería en Software</h1><br>
         <p>Sistema de encuesta<p>
-      </div>
+      </div></header>
       <div class="text-right">
         <p>&copy;Alfonso González Zempoalteca</p>
       </div>

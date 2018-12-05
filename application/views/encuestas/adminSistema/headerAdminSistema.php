@@ -8,7 +8,6 @@ $bajaTipoDeUsuario=site_url('adminSistema/bajaTipoDeUsuario',NULL);
 $altaTipoReactivo=site_url('adminSistema/altaTipoReactivo',NULL);
 $actualizaTipoReactivo=site_url('adminSistema/actualizaTipoReactivo',NULL);
 $bajaTipoDeReactivo=site_url('adminSistema/bajaTipoDeReactivo',NULL);
-
 $cerrarSesion=site_url('login/logout',NULL);
 $inicio=site_url('adminSistema',NULL);
 $rol = $this->session->userdata('rol'); 
@@ -29,7 +28,7 @@ $apell = $this->session->userdata('apellido');
   <body>
   <div class="container">
       <header class="page-header">
-        <h3><strong> Wolfgang </strong></h3>
+        <h3><img class="img-responsive" src="/IngenieriaEnSoftware/wolf.png" alt="Wolf"></h3>
       <div>
         <ul class = "nav nav-pills pull-right">
          <li class ="active"><a href="<?php echo $inicio; ?>">Inicio</a></li>
