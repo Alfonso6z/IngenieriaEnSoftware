@@ -23,10 +23,12 @@ class AdminSistema extends CI_Controller{
  	public function index(){
 		$this->load->view('encuestas/adminSistema/inicioAdminSistema');
 	}
+//Usuarios	
 	public function altaUsuarios(){
 		$data['roles'] = $this->adminSistema_model->getRoles();
 		$this->load->view('encuestas/adminSistema/altaUsuario',$data);
 	}
+
 	public function recibirDatosUsuario(){
 		$roles['roles'] = $this->adminSistema_model->getRoles();
 		if($this->input->post('Registrarse')){
@@ -65,14 +67,48 @@ class AdminSistema extends CI_Controller{
             	$this->load->view('encuestas/adminSistema/altaUsuario',$roles+$datos);
        		}      
         	
-		}
-		
-		
+		}	
 	}
 
+	public function actualizaUsuario(){
+		$data['idLogin'] = $this->adminSistema_model->getUsuario();
+		$rdata['roles'] = $this->adminSistema_model->getRoles();
+		$this->load->view('encuestas/adminSistema/actualizaUsuario',$data+$rdata);
+	}
+	
+	public function modificarUsuario(){
+		$data['idLogin'] = $this->adminSistema_model->getUsuario();
+		$rdata['roles'] = $this->adminSistema_model->getRoles();
+
+		if($this->input->post('Actualizar')){
+			$this->form_validation->set_rules('nombre', 'Nombre', 'required|min_length[3]|trim');
+		    $this->form_validation->set_rules('apellido', 'Apellido', 'required|min_length[3]|trim');
+			$this->form_validation->set_rules('email', 'Email', 'required|min_length[3]|valid_email|trim');
+			$this->form_validation->set_rules('tipoUsuario', 'Tipo Usuario', 'required|trim');
+			$this->form_validation->set_message('valid_email','El campo %s debe ser un email correcto');
+			$this->form_validation->set_message('required','El campo %s es obligatorio');
+			if($this->form_validation->run()!=false){ 
+            	$data = array(
+            	'idLogin'=> $this->input->post('idLogin'),	
+				'nombre' => $this->input->post('nombre'),
+				'apellido' => $this->input->post('apellido'),
+				'email' => $this->input->post('email'),
+				'tipoUsuario' => $this->input->post('tipoUsuario')
+				);
+				$datos["correcto"]="Usuario modificado";
+				$this->adminSistema_model->actualizaUsuario($data);
+				$this->load->view('encuestas/adminSistema/actualizaUsuario',$data+$rdata+$datos);
+			}else{
+			$datos["error"]="ERROR AL MODIFICAR";
+            	$this->load->view('encuestas/adminSistema/actualizaUsuario',$data+$datos+$rdata);
+			}
+		}
+	}
+//Tipo de Usuarios
 	public function altaTipoUsuario(){
 		$this->load->view('encuestas/adminSistema/altaTipoUsuario');
 	}
+
 	public function recibirDatosTipoUsuario(){
 
 		$this->form_validation->set_rules('nombre', 'Tipo de Usuario', 'required|is_unique[roles.idRol]|trim|alpha');
@@ -94,27 +130,30 @@ class AdminSistema extends CI_Controller{
 		$data['roles'] = $this->adminSistema_model->getRoles();
 		$this->load->view('encuestas/adminSistema/actualizaTipoUsuario',$data);
 	}
+
 	public function modificarTipoUsuario(){
 		$data['roles'] = $this->adminSistema_model->getRoles();
 		$this->form_validation->set_rules('nombre', 'Tipo de Usuario', 'required|is_unique[roles.idRol]|trim');
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 		$this->form_validation->set_message('is_unique','El %s ya esta registrado');
 		if($this->form_validation->run()!=false){
-			$datos["correcto"]="Se Ha Actualizado Con Éxito";
+			$datos["correcto"]="Tipo de usuario modificado";
 			$data = array(
 				'nombre' => $this->input->post('nombre'),
 				'tipoUsuario'=> $this->input->post('tipoUsuario'));
 			$this->adminSistema_model->actualizaTipoDeUsuario($data);
 			$this->load->view('encuestas/adminSistema/actualizaTipoUsuario',$data+$datos);
 		}else{
-			$datos["error"]="Error Al Actualizar";
+			$datos["error"]="ERROR AL MODIFICAR";
             	$this->load->view('encuestas/adminSistema/actualizaTipoUsuario',$data+$datos);
 		}
 	}
+
 	public function bajaTipoDeUsuario(){
 		$data['roles'] = $this->adminSistema_model->getRoles();
 		$this->load->view('encuestas/adminSistema/bajaTipoDeUsuario',$data);
 	}
+
 	public function eliminarTipoDeUsuario(){
 		$data = array(
 				'idRol'=> $this->input->post('tipoUsuario'));
@@ -123,6 +162,7 @@ class AdminSistema extends CI_Controller{
 		$data['roles'] = $this->adminSistema_model->getRoles();
 		$this->load->view('encuestas/adminSistema/bajaTipoDeUsuario',$data+$datos);
 	}
+//Tipo de Reactivos
 	public function altaTipoReactivo(){
 		$this->load->view('encuestas/adminSistema/altaTipoReactivo');
 	}
@@ -132,26 +172,28 @@ class AdminSistema extends CI_Controller{
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 		$this->form_validation->set_message('is_unique','El reactivo %s ya esta registrado');
 		if($this->form_validation->run()!=false){
-			$datos["correcto"]="Agregado con éxito";
+			$datos["correcto"]="Tipo de reactivo agregado";
 			$data = array('nombre' => $this->input->post('nombre'));
 			$this->adminSistema_model->insertarTipoReactivo($data);
 			$this->load->view('encuestas/adminSistema/altaTipoReactivo',$datos);
 		}else{
-			$datos["error"]="Error de reactivo";
+			$datos["error"]="ERROR AL AGREGAR";
             	$this->load->view('encuestas/adminSistema/altaTipoReactivo',$datos);
 		}
 	}
+
 	public function actualizaTipoReactivo(){
 		$data['tiporeactivo'] = $this->adminSistema_model->getTreactivos();
 		$this->load->view('encuestas/adminSistema/actualizaTipoReactivo',$data);
 	}
+
 	public function modificarTipoReactivo(){
 		$data1['tiporeactivo'] = $this->adminSistema_model->getTreactivos();
 		$this->form_validation->set_rules('nombre', 'Nuevo Tipo De Reactivo', 'required|is_unique[tiporeactivo.nombre]|trim');
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 		$this->form_validation->set_message('is_unique','El %s ya esta registrado');
         if($this->form_validation->run()!=false){
-			$datos["correcto"]="Se Ha Actualizado Con Éxito";
+			$datos["correcto"]="Tipo de reactivo modificado";
 			$data = array(
 				'nombre' => $this->input->post('nombre'),
 				'tipoReactivo'=> $this->input->post('tipoReactivo'));
@@ -159,56 +201,23 @@ class AdminSistema extends CI_Controller{
 			$data1['tiporeactivo'] = $this->adminSistema_model->getTreactivos();
 			$this->load->view('encuestas/adminSistema/actualizaTipoReactivo',$data1+$datos);
 		}else{
-			$datos["error"]="Error Al Actualizar";
+			$datos["error"]="ERROR AL MODIFICAR";
             	$this->load->view('encuestas/adminSistema/actualizaTipoReactivo',$data1+$datos);
 		}
 	}
+
 	public function bajaTipoDeReactivo(){
 		$data['tiporeactivo'] = $this->adminSistema_model->getTreactivos();
 		$this->load->view('encuestas/adminSistema/bajaTipoDeReactivo',$data);
 	}
+
 	public function eliminarTipoDeReactivo(){
 		$data = array(
 				'nombre'=> $this->input->post('tipoReactivo'));
-		$datos["error"]="Se ha Eliminado ". $data['nombre'];
+		$datos["error"]="Tipo de reactivo eliminado". $data['nombre'];
 		$this->adminSistema_model->eliminaTipoDeReactivo($data);
 		$data['tiporeactivo'] = $this->adminSistema_model->getTreactivos();
 		$this->load->view('encuestas/adminSistema/bajaTipoDeReactivo',$data+$datos);
-	}
-
-	public function actualizaUsuario(){
-		$data['idLogin'] = $this->adminSistema_model->getUsuario();
-		$rdata['roles'] = $this->adminSistema_model->getRoles();
-		$this->load->view('encuestas/adminSistema/actualizaUsuario',$data+$rdata);
-	}
-	public function modificarUsuario(){
-		$data['idLogin'] = $this->adminSistema_model->getUsuario();
-		$rdata['roles'] = $this->adminSistema_model->getRoles();
-
-		if($this->input->post('Actualizar')){
-			$this->form_validation->set_rules('nombre', 'Nombre', 'required|min_length[3]|alpha|trim');
-		    $this->form_validation->set_rules('apellido', 'Apellido', 'required|min_length[3]|trim');
-			$this->form_validation->set_rules('email', 'Email', 'required|min_length[3]|valid_email|trim');
-			$this->form_validation->set_rules('tipoUsuario', 'Tipo Usuario', 'required|trim');
-			$this->form_validation->set_message('alpha','El campo %s debe estar compuesto solo por letras sin tildes');
-			$this->form_validation->set_message('valid_email','El campo %s debe ser un email correcto');
-			$this->form_validation->set_message('required','El campo %s es obligatorio');
-			if($this->form_validation->run()!=false){ 
-            	$data = array(
-            	'idLogin'=> $this->input->post('idLogin'),	
-				'nombre' => $this->input->post('nombre'),
-				'apellido' => $this->input->post('apellido'),
-				'email' => $this->input->post('email'),
-				'tipoUsuario' => $this->input->post('tipoUsuario')
-				);
-				$datos["correcto"]="Ha modificado el usuario con éxito";
-				$this->adminSistema_model->actualizaUsuario($data);
-				$this->load->view('encuestas/adminSistema/actualizaUsuario',$data+$rdata+$datos);
-			}else{
-			$datos["error"]="Error en la modificación";
-            	$this->load->view('encuestas/adminSistema/actualizaUsuario',$data+$datos+$rdata);
-			}
-		}
 	}
 
 }
