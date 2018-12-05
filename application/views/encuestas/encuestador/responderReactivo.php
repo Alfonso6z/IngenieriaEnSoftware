@@ -36,16 +36,20 @@
                 <table class="table table-hover">
                         <thead>
                         <tr>
+                            <th class="text-center">#</th>
                             <th class="text-center">Selección</th>
                             <th class="text-center">Nombre</th>
+                            <th class="text-center">Respuesta</th>
 
                         </tr>
                         </thead>
                         <tbody>
                          <?php
+                            $l = 1;
                              if($reactivos){
                                 foreach ($reactivos as $i){ 
-                                echo "<tr><td><label><input type='radio' id='idReactivo' name='idReactivo' value = ".$i->idReactivo."></td><td>".$i->pregunta." </label></td></tr>";
+                                echo "<tr><td>".$l."</td><td><label><input type='checkbox' id='idReactivo' name='idReactivo' value = ".$i->idReactivo."></td><td>".$i->pregunta."</label></td><td>".$i->idTipoReactivo." </td></tr>";
+                                  $l++;
                                 }
                             }else{
                                 echo "<h2>No hay Reactivos </h2>";
