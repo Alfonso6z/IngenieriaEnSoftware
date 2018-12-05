@@ -22,7 +22,8 @@ $apell = $this->session->userdata('apellido');
 <body>
 <div class="container">
     <header class="page-header">
-   <h3>Wolfgang   <?php echo "$rol" ?>: <?php echo "$user" ?>  <?php echo "$apell" ?></h3>
+    <h3><img class="img-responsive" src="/IngenieriaEnSoftware/wolf.png" alt="Wolf"></h3>
+      <h4><?php echo "$rol" ?>: <?php echo "$user" ?>  <?php echo "$apell" ?></h4>
       <ul class = "nav nav-pills pull-left">
         <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Estudios

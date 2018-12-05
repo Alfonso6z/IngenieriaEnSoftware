@@ -5,7 +5,7 @@
 		'name' => 'email','placeholder' => ' email de Usuario','maxlength'=>'25');
 	$contrasena = array(
 		'name' => 'contrasena','placeholder' => ' Contraseña','maxlength'=>'25');
-	$var=site_url('login');
+	$var=site_url('login',NULL);
 ?>
 <html>
   <head>
@@ -16,14 +16,21 @@
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   </head>
   <body>
-    <div class="container">
-      <header class="page-header">
-          <ul class = "nav nav-pills pull-right">
-            <li><a href=" <?php echo $var; ?>">Inicio</a></li>
-            <li class = "active"><a href="">Iniciar Sesión</a></li>
-          </ul>  
-        <h3><strong>Wolfgang</strong></h3>
-      </header>
+        <h4><img class="img-responsive" src="/IngenieriaEnSoftware/wolfG.png" alt="Wolf"></h4>
+      <div style="width: 93%">
+        <ul class = "nav nav-pills pull-right">
+         <li ><a href="<?php echo $var; ?>">Inicio</a></li>
+         <li class ="active"><a href="">Iniciar Sesión</a></li>
+        </ul>
+      </div>  
+         <header class="page-header"><div> 
+        <h4>
+
+        </h4> 
+
+      </div></header>
+    <header class="page-header">
+    <div class="container">  
       <div class="jumbotron">
          <?php if(isset($error)){?>
           <div class="alert alert-danger alert-dismissible">
@@ -32,16 +39,17 @@
           </div>
         <?php } ?>
       		<h3 class = "text-center"><strong> Inicio de Sesión </strong></h3><br>
-      		<h4 class = "text-center"><?=  form_label('Email ','email') ?>
+      		<h4 class = "text-center"><?=  form_label('Email: ','email') ?>
       		  <?= form_input($email) ?>  
           </h4><h3> </h3>
-      		<h4 style="width: 94%" class = "text-center"><?=  form_label('Contraseña: ','contrasena') ?>
+      		<h4 style="width: 95%" class = "text-center"><?=  form_label('Contraseña: ','contrasena') ?>
       		  <?= form_password($contrasena) ?>  
           </h4><h3> </h3>
       		<h5 class = "text-center"><?= form_submit('','Iniciar',"class='btn btn-primary'")?>
 			     <?= form_close() ?>     
           </h5>
       </div>
+      </header>
       <div class="text-right">
         <p>&copy;Alfonso González Zempoalteca</p>
       </div>

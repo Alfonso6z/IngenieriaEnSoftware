@@ -33,7 +33,7 @@ $apell = $this->session->userdata('apellido');
 <body>
 <div class="container">
     <header class="page-header">
-     <h3><strong> Wolfgang </strong></h3>
+     <h3><img class="img-responsive" src="/IngenieriaEnSoftware/wolf.png" alt="Wolf"></h3>
       <div>
         <ul class = "nav nav-pills pull-right">
          <li class ="active"><a href="<?php echo $inicio; ?>">Inicio</a></li>
