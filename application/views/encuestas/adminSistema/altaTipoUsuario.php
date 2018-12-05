@@ -1,13 +1,13 @@
 <?= form_open('/adminSistema/recibirDatosTipoUsuario')?>
 <?php
-$nombre=array('name' => 'nombre','placeholder' => ' Tipo De Usuario','maxlength'=>'20');
+$nombre=array('name' => 'nombre','placeholder' => 'Escriba el rol de usuario','maxlength'=>'20');
 $rol = $this->session->userdata('rol');
 $user = $this->session->userdata('user');
 $apell = $this->session->userdata('apellido');
 ?>
 <html>
 <head>
-  <title>Alta Tipo Usuario</title>
+  <title>Agregar tipo de usuario</title>
   <!-- Insertamos el archivo CSS compilado y comprimido -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
    <!-- Theme opcional -->
@@ -28,11 +28,14 @@ $apell = $this->session->userdata('apellido');
           <h5 class = "text-center"> <?= validation_errors('*');?></h5>
         </div>
       <?php } ?>
-    		<h3 class = "text-center">Alta Tipo De Usuario</h3>
-    		<h5 class = "text-center"><?=  form_label('Tipo De Usuario','nombre') ?>
-    		<?= form_input($nombre) ?></h5>
+    		<h3 class = "text-center"><strong>Agregar un tipo de usuario</strong>
+        </h3><br>
+    		<h4 class = "text-center"><?=  form_label('Tipo De Usuario: ','nombre') ?>
+    		  <?= form_input($nombre) ?>  
+        </h4><br>
     		<h5 class = "text-center"><?= form_submit('Registrar','Registrar',"class='btn btn-success'")?>
-		<?= form_close() ?></h5>
+		      <?= form_close() ?>  
+        </h5>
     </div>
     <div class="text-right">
       <p>&copy;Alfonso González Zempoalteca</p>

@@ -1,7 +1,4 @@
 <?= form_open("adminEncuesta/borrarRespuesta") ?>
-<?php
-$respuesta=array('name' => 'respuesta');
-?>
 <html>
   <head><!-- Insertamos el archivo CSS compilado y comprimido -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -20,40 +17,43 @@ $respuesta=array('name' => 'respuesta');
     <?php } ?>
         <?php if(isset($correcto)){?>
       <div class="alert alert-success alert-dismissible"> 
-        <h5 class="text-center"><a class="close" data-dismiss='alert' arial-label="close">&times;</a><strong class="text-center"><?php echo $correcto; ?></strong></h5><h5 class="text-center"><?= validation_errors('☻');?></h5>
+        <h5 class="text-center"><a class="close" data-dismiss='alert' arial-label="close">&times;</a><strong class="text-center"><?php echo $correcto; ?></strong></h5><h5 class="text-center"><?= validation_errors('*');?></h5>
       </div>
     <?php } ?>
-          <h3 class = "text-center"><?=  form_label(' Eliminar Respuesta '); ?></h3> 
+          <h3 class = "text-center"><strong>Eliminar respuesta</strong></h3> 
           <br> 
           <div class="text-center">
-            <select style="margin-left: 20px;" name= "idEstudio" id="idEstudio">
-              <option value="0" >Selecciona Estudio</option>
-              <?php
-                foreach ($estudio as $i){
-                  //if ($i->idTipoReactivo == 2){ 
-                   echo '<option value="'. $i->idEstudio .'">'. $i->nombre .'</option>';
-                  //}
-                 } 
-              ?>
-            </select>
-            <select style="margin-left: 20px;" id="idCuestionario" name="idCuestionario">
-                <option value="0">Cuestionarios</option>
-            </select> 
-            <select style="margin-left: 20px;" id="idReactivo" name="idReactivo">
-                <option value="0">Reactivos</option>
-            </select>
+            <h4>
+              <select style="margin-left: 20px;" name= "idEstudio" id="idEstudio">
+                <option value="0" >Selecciona Estudio</option>
+                <?php
+                  foreach ($estudio as $i){
+                    //if ($i->idTipoReactivo == 2){ 
+                     echo '<option value="'. $i->idEstudio .'">'. $i->nombre .'</option>';
+                    //}
+                   } 
+                ?>
+              </select>
+              <select style="margin-left: 20px;" id="idCuestionario" name="idCuestionario">
+                  <option value="0">Cuestionarios</option>
+              </select> 
+              <select style="margin-left: 20px;" id="idReactivo" name="idReactivo">
+                  <option value="0">Reactivos</option>
+              </select>
+            </h4>
           </div>
           <br>
           <div class="text text-center">
- 			<select id="idRespuesta" name="idRespuesta">
+            <h4>
+ 			        <select id="idRespuesta" name="idRespuesta">
                 <option value="0">Respuestas</option>
-            </select>
-            </div>	
-          <br>
-  	<br>
-  <h4 class = "text-center">
-  <h5 class = "text-center"><?= form_submit('','Borrar',"class='btn btn-danger'")?></h5></h4>
-  <?= form_close() ?>
+              </select>
+            </h4>   
+          </div>	
+        <br>
+        <h4 class = "text-center">
+        <h5 class = "text-center"><?= form_submit('','Eliminar',"class='btn btn-danger'")?></h5></h4>
+      <?= form_close() ?>
    </div> 
    <div class="text-left">  
         <p>&copy; Valverde Cruz Marisol </p>

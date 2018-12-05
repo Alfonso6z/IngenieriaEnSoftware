@@ -13,12 +13,12 @@ class ControlComboBoxes extends CI_Controller{
         $data =array( 'idEstudio' => $this->input->post('idEstudio'));
         if($data){
             $cuestionarios = $this->AdminEncuesta_model->getCuestionarioEstudio($data);
-            echo '<option value="0">Cuestionarios</option>';
+            echo '<option value="0"> Cuestionario </option>';
             foreach($cuestionarios as $i){
                 echo '<option value="'. $i->idCuestionario .'">'. $i->cuenombre .'</option>';
             }
         }  else {
-            echo '<option value="0">Cuestionarios</option>';
+            echo '<option value="0">Error</option>';
         }
     }
 
@@ -26,7 +26,7 @@ class ControlComboBoxes extends CI_Controller{
         $data =array( 'idCuestionario' => $this->input->post('idCuestionario'));
         if($data){
             $reactivos = $this->AdminEncuesta_model->getReactivoCuestionario($data);
-            echo '<option value="0">Preguntas</option>';
+            echo '<option value="0">Pregunta</option>';
             foreach($reactivos as $fila){
               echo '<option value="'. $fila->idReactivo.'">'. $fila->pregunta .'</option>';
             }

@@ -1,6 +1,6 @@
 <?= form_open('/adminSistema/modificarTipoUsuario')?>
 <?php
-$nombre=array('name' => 'nombre','placeholder' => ' Tipo De Usuario','maxlength'=>'20');
+$nombre=array('name' => 'nombre','placeholder' => 'Tipo de rol','maxlength'=>'20');
 $rol = $this->session->userdata('rol');
 $user = $this->session->userdata('user');
 $apell = $this->session->userdata('apellido');
@@ -28,20 +28,25 @@ $apell = $this->session->userdata('apellido');
           <h5 class = "text-center"> <?= validation_errors('*');?></h5>
         </div>
       <?php } ?>
-    		<h3 class = "text-center">Modificar Tipo De Usuario</h3>
+    		<h3 class = "text-center"><strong>Modificar tipo de usuario</strong></h3><br>
         <div class = "text-center">
+          <h4>
             <select name= "tipoUsuario" id="tipoUsuario">
-              <option value="select" selected>Tipo de usuario a Modificar</option>
+              <option value="select" selected>Tipo de usuario a modificar</option>
               <?php
                 foreach ($roles as $i){
                    echo '<option value="'. $i->idRol .'">'. $i->idRol .'</option>';
                  } 
               ?>
-            </select></div>
-    		<h5 class = "text-center"><?=  form_label('Nuevo Tipo De Usuario','nombre') ?>
-    		<?= form_input($nombre) ?></h5>
+            </select>
+          </h4> 
+          </div><br>
+    		<h4 class = "text-center"><?=  form_label('Nuevo tipo de usuario: ','nombre') ?><br>
+    		  <?= form_input($nombre)?>  
+        </h4><br>
     		<h5 class = "text-center"><?= form_submit('Actualizar','Actualizar',"class='btn btn-warning'")?>
-		<?= form_close() ?></h5>
+		      <?= form_close() ?>  
+        </h5>
     </div>
     <div class="text-right">
       <p>&copy;Alfonso González Zempoalteca</p>

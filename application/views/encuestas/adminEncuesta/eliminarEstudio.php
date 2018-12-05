@@ -25,8 +25,9 @@ $nombre=array('name' => 'nombre');
           <h5 class = "text-center"> <?= validation_errors('*');?></h5>
         </div>
       <?php } ?>
-        <h3 class = "text-center">Eliminar Estudio</h3>
+        <h3 class = "text-center"><strong> Eliminar Estudio </strong></h3><h2> </h2>
         <div class = "text-center">
+          <h4>
             <select name= "idEstudio" id="idEstudio">
               <option value="" selected>Selecciona el estudio</option>
               <?php
@@ -34,18 +35,20 @@ $nombre=array('name' => 'nombre');
                    echo '<option value="'. $i->idEstudio.'">'. $i->nombre .'</option>';
                  } 
               ?>
-            </select></div>
-            <br>
-        <h5 class = "text-center"><?= form_submit('Borrar','Borrar',"class='btn btn-danger'")?>
-    <?= form_close() ?></h5>
+            </select>
+          </h4>  
+        </div><h3> </h3>
+        <h5 class = "text-center"><?= form_submit('Borrar','Eliminar',"class='btn btn-danger'")?>
+          <?= form_close() ?>    
+        </h5>
     </div>
     <div class="text-left">
       <p>&copy;Unedgaro</p>
     </div>
   </div>
-  <!--Insertamos jQuery dependencia de Bootstrap--> 
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-   <!--Insertamos el archivo JS compilado y comprimido -->
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!--Insertamos jQuery dependencia de Bootstrap--> 
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+     <!--Insertamos el archivo JS compilado y comprimido -->
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>

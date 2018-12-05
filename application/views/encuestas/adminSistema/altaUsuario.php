@@ -25,15 +25,16 @@
             <h5 class = "text-center"> <?= validation_errors('*');?></h5>
           </div>
         <?php } ?>
-      		<h3 class = "text-center">Crea tu cuenta</h3>
-      		<h5 class = "text-center"><?=  form_label('Usuario: ','nombre') ?>
+        <container class="text-center">
+      		<h3><strong class = "text-center" >Crear una cuenta</strong></h3><br>
+      		<h5><?=  form_label('Usuario: ','nombre') ?>
       		<?= form_input($nombre) ?></h5>
-          <h5 class = "text-center"><?=  form_label('Apellido: ','apellido') ?>
+          <h5><?=  form_label('Apellido: ','apellido') ?>
           <?= form_input($apellido) ?></h5>
-          <h5 class = "text-center"><?=  form_label('Em@il: ','email') ?>
-          <?= form_input($email) ?></h5>
-      		<h5 class = "text-center"><?=  form_label('Contraseña: ','contrasena') ?>
-      		<?= form_password($contrasena) ?></h5>
+          <div style="width: 101%" class="text-center"><h5><?=  form_label('Em@il: ','email')?> 
+          <?= form_input($email) ?></h5></div>
+      		<div style="width: 97.5%" class="text-center"><h5><?=  form_label('Contraseña: ','contrasena') ?>
+      		<?= form_password($contrasena) ?></h5></div><br>
           <div class = "text-center">
             <select name= "tipoUsuario" id="tipoUsuario">
               <option value="select" selected>Selecciona tipo de usuario</option>
@@ -43,9 +44,10 @@
                    echo '<option value="'. $i->idRol .'">'. $i->idRol .'</option>';
                  } 
               ?>
-            </select></div>
+            </select></div><br>
       		<h5 class = "text-center"><?= form_submit('Registrarse','Registrarse',"class='btn btn-success'")?>
 			<?= form_close() ?></h5>
+      </container>
       </div>
       <div class="text-right">
         <p>&copy;Maribel Garcia Bautista</p>

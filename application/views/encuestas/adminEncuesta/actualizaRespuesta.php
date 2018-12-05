@@ -3,7 +3,9 @@
 $respuesta=array('name' => 'respuesta','placeholder' => ' Reescribe respuesta', 'maxlength'=>'20');
 ?>
 <html>
-  <head><!-- Insertamos el archivo CSS compilado y comprimido -->
+  <head>
+    <title>Modificar respuesta</title>
+    <!-- Insertamos el archivo CSS compilado y comprimido -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Theme opcional -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
@@ -20,31 +22,32 @@ $respuesta=array('name' => 'respuesta','placeholder' => ' Reescribe respuesta', 
     <?php } ?>
         <?php if(isset($correcto)){?>
       <div class="alert alert-success alert-dismissible"> 
-        <h5 class="text-center"><a class="close" data-dismiss='alert' arial-label="close">&times;</a><strong class="text-center"><?php echo $correcto; ?></strong></h5><h5 class="text-center"><?= validation_errors('☻');?></h5>
+        <h5 class="text-center"><a class="close" data-dismiss='alert' arial-label="close">&times;</a><strong class="text-center"><?php echo $correcto; ?></strong></h5><h5 class="text-center"><?= validation_errors('*');?></h5>
       </div>
     <?php } ?>
-          <h3 class = "text-center"><?=  form_label(' Modificar Respuesta ');#,'respuesta') ?></h3> 
-          <br> 
+          <h3 class = "text-center"><strong>Modificar Respuesta</strong></h3><br> 
           <div  class = "text-center">
-            <select name= "idEstudio" id="idEstudio">
-              <option value="0" >Selecciona Estudio</option>
-              <?php
-                foreach ($estudio as $i){
-                  //if ($i->idTipoReactivo == 2){ 
-                   echo '<option value="'. $i->idEstudio .'">'. $i->nombre .'</option>';
-                  //}
-                 } 
-              ?>
-            </select>
-            <select style="margin-left: 25px;" id="idCuestionario" name="idCuestionario">
+            <h4>
+              <select name= "idEstudio" id="idEstudio">
+                <option value="0" >Selecciona Estudio</option>
+                  <?php
+                    foreach ($estudio as $i){
+                      //if ($i->idTipoReactivo == 2){ 
+                       echo '<option value="'. $i->idEstudio .'">'. $i->nombre .'</option>';
+                      //}
+                     } 
+                  ?>
+              </select> &nbsp;
+              <select  id="idCuestionario" name="idCuestionario">
                 <option value="0">Cuestionarios</option>
-            </select> 
-            <select style="margin-left: 25px;" id="idReactivo" name="idReactivo">
+              </select> &nbsp;
+              <select  id="idReactivo" name="idReactivo">
                 <option value="0">Reactivos</option>
-            </select>
-            <select style="margin-left: 25px;" id="idRespuesta" name="idRespuesta">
+              </select> &nbsp;
+              <select id="idRespuesta" name="idRespuesta">
                 <option value="0">Respuestas</option>
-            </select> 
+              </select>
+            </h4>   
           </div>
           <br>
           <br>

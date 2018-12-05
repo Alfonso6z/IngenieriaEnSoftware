@@ -28,16 +28,19 @@ $apell = $this->session->userdata('apellido');
           <h5 class = "text-center"> <?= validation_errors('*');?></h5>
         </div>
       <?php } ?>
-    		<h3 class = "text-center">Eliminar Tipo De Usuario</h3>
+    		<h3 class = "text-center"><strong> Eliminar tipo de usuario</strong></h3><br>
         <div class = "text-center">
+          <h4>
             <select name= "tipoUsuario" id="tipoUsuario">
-              <option value="select" selected>Tipo de usuario a Modificar</option>
+              <option value="select" selected>Elija el usuario a eliminar</option>
               <?php
                 foreach ($roles as $i){
                    echo '<option value="'. $i->idRol .'">'. $i->idRol .'</option>';
                  } 
               ?>
-            </select></div>
+            </select>
+          </h4>
+        </div><br>
     		<h5 class = "text-center"><?= form_submit('Eliminar','Eliminar',"class='btn btn-danger'")?>
 		<?= form_close() ?></h5>
     </div>

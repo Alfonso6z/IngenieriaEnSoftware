@@ -1,6 +1,6 @@
 <?= form_open('/AdminEncuesta/modificarEstudio')?>
 <?php
-$nombre=array('name' => 'nombre','placeholder' => 'Escribe nuevo Estudio','maxlength'=>'50');
+$nombre=array('name' => 'nombre','placeholder' => 'Escribe el nuevo nombre','maxlength'=>'50');
 ?>
 <html>
 <head>
@@ -15,8 +15,11 @@ $nombre=array('name' => 'nombre','placeholder' => 'Escribe nuevo Estudio','maxle
     <div class="jumbotron">
       <?php if(isset($error)){?>
         <div class="alert alert-danger alert-dismissible">
-          <h5 class= "text-center"><a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong class = "text-center"><?php echo $error; ?></strong></h5>
-          <h5 class = "text-center"> <?= validation_errors('*');?></h5>
+          <h5 class= "text-center"><a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong class = "text-center"><?php echo $error; ?></strong>
+          </h5>
+          <h5 class = "text-center"> 
+            <?= validation_errors('*');?>
+          </h5>
         </div>
       <?php } ?>
       <?php if(isset($correcto)){?>
@@ -25,8 +28,9 @@ $nombre=array('name' => 'nombre','placeholder' => 'Escribe nuevo Estudio','maxle
           <h5 class = "text-center"> <?= validation_errors('*');?></h5>
         </div>
       <?php } ?>
-        <h3 class = "text-center">Modificar Estudio</h3>
+        <h3 class = "text-center"><strong> Modificar Estudio </strong></h3><h2> </h2>
         <div class = "text-center">
+          <h4>
             <select name= "idEstudio" id="idEstudio">
               <option value="" selected>Selecciona el Estudio</option>
               <?php
@@ -35,11 +39,12 @@ $nombre=array('name' => 'nombre','placeholder' => 'Escribe nuevo Estudio','maxle
                  } 
               ?>
             </select></div>
-            <br>
-             <h4 class = "text-center">
-        <h5 class = "text-center" required>
-        <?=  form_input($nombre) ?></h5>
-        <h5 class = "text-center"><?= form_submit('Actualizar','Actualizar',"class='btn btn-warning'")?>
+          </h4><h3> </h3>
+        <h4 class = "text-center"><?= form_label('Nuevo estudio')?></h4>  
+        <h4 class = "text-center" required>
+          <?=  form_input($nombre) ?>
+        </h4><br>
+        <h5 class = "text-center"><?= form_submit('Actualizar','Modificar',"class='btn btn-warning'")?>
     <?= form_close() ?></h5>
     </div>
     <div class="text-left">

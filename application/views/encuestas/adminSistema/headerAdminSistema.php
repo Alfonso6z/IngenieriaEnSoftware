@@ -29,7 +29,16 @@ $apell = $this->session->userdata('apellido');
   <body>
   <div class="container">
       <header class="page-header">
-     <h3>Wolfgang   <?php echo "$rol" ?>: <?php echo "$user" ?>  <?php echo "$apell" ?></h3>
+        <h3><strong> Wolfgang </strong></h3>
+      <div>
+        <ul class = "nav nav-pills pull-right">
+         <li class ="active"><a href="<?php echo $inicio; ?>">Inicio</a></li>
+         <li><a href="<?php echo $cerrarSesion; ?>">Cerrar Sesión</a></li>
+        </ul>
+        <h4>
+          <?php echo "$rol" ?>: <?php echo "$user" ?>  <?php echo "$apell" ?>
+        </h4>     
+      </div>  
         <ul class = "nav nav-pills pull-left">
           <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuarios
@@ -59,10 +68,6 @@ $apell = $this->session->userdata('apellido');
             <li><a href="<?php echo $bajaTipoDeReactivo; ?>">Eliminar</a></li>
            </ul>
           </li>
-        </ul>
-        <ul class = "nav nav-pills pull-right">
-          <li class ="active"><a href="<?php echo $inicio; ?>">Inicio</a></li>
-          <li><a href="<?php echo $cerrarSesion; ?>">Cerrar Sesión</a></li>
         </ul>
       </header>
     </div>

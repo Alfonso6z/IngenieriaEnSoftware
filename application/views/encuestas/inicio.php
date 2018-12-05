@@ -18,10 +18,10 @@ $var=site_url('login/iniciaSesion',NULL);
           <li class ="active"><a href="">Inicio</a></li>
           <li><a href=" <?php echo $var; ?>">Iniciar Sesión</a></li>
         </ul>
-        <h3>Wolfgang</h3>
+        <h3><strong> Wolfgang </strong></h3>
       </header>
       <div class="jumbotron">
-        <h1>Ingenieria en Software</h1>
+        <h1>Ingenieria en Software</h1><br>
         <p>Sistema de encuesta<p>
       </div>
       <div class="text-right">

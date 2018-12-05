@@ -5,7 +5,7 @@ $cuenombre=array('name' => 'cuenombre');
 ?>
 <html>
 <head>
-  <title>Modifica Cuestionario</title>
+  <title>Elimina Cuestionario</title>
   <!-- Insertamos el archivo CSS compilado y comprimido -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
    <!-- Theme opcional -->
@@ -26,8 +26,9 @@ $cuenombre=array('name' => 'cuenombre');
           <h5 class = "text-center"> <?= validation_errors('*');?></h5>
         </div>
       <?php } ?>
-        <h3 class = "text-center">Eliminar Cuestionario</h3>
+        <h3 class = "text-center"><strong> Eliminar Cuestionario </strong></h3><h1> </h1>
         <div class = "text-center">
+          <h4>
             <select name= "idCuestionario" id="idCuestionario">
               <option value="" selected>Selecciona Cuestionario</option>
               <?php
@@ -35,7 +36,9 @@ $cuenombre=array('name' => 'cuenombre');
                    echo '<option value="'. $i->idCuestionario.'">'. $i->cuenombre .'</option>';
                  } 
               ?>
-            </select></div>
+            </select>
+          </h4>
+        </div><h1> </h1>
         <h5 class = "text-center"><?= form_submit('Eliminar','Eliminar',"class='btn btn-danger'")?>
     <?= form_close() ?></h5>
     </div>

@@ -5,10 +5,12 @@ $cuenombre=array('name' => 'cuenombre','placeholder' => 'Escriba cuestionario','
 <html>
 <head>
   <title>Modifica Cuestionario</title>
-  <!-- Insertamos el archivo CSS compilado y comprimido -->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-   <!-- Theme opcional -->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Theme opcional -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 </head>
 <body>
   <div class="container">
@@ -25,26 +27,48 @@ $cuenombre=array('name' => 'cuenombre','placeholder' => 'Escriba cuestionario','
           <h5 class = "text-center"> <?= validation_errors('*');?></h5>
         </div>
       <?php } ?>
-        <h3 class = "text-center">Modificar Cuestionario</h3>
+        <h3 class = "text-center"><Strong> Modificar Cuestionario </Strong>
+        </h3><p></p>
         <div class = "text-center">
-            <select name= "idCuestionario" id="idCuestionario">
-              <option value="" selected>Selecciona Cuestionario</option>
+            <h4>    
+              <select name= "idEstudio" id="idEstudio">
+              <option value="0" >Selecciona Estudio</option>
               <?php
-                foreach ($idCuestionario as $i){
-                   echo '<option value="'. $i->idCuestionario .'">'. $i->cuenombre .'</option>';
+                foreach ($estudio as $i){
+                   echo '<option value="'. $i->idEstudio .'">'. $i->nombre .'</option>';
                  } 
               ?>
-            </select></div>
-             <h4 class = "text-center">
+            </select> &nbsp; &nbsp;
+            <select id="idCuestionario" name="idCuestionario">
+                <option value="0">Cuestionarios</option>
+            </select>
+            </h4>
+        </div>  <h1> </h1>
+        <h4 class = "text-center"><?= form_label('Nuevo nombre:') ?>
         <h4 class = "text-center"> 
-        <?= form_input($cuenombre) ?></h4>
-        <h4 class = "text-center"> 
-        <h5 class = "text-center"><?= form_submit('Actualizar','Actualizar',"class='btn btn-warning'")?>
-    <?= form_close() ?></h5>
+          <?= form_input($cuenombre) ?>   
+        </h4><br>
+        <h5 class = "text-center"><?= form_submit('Actualizar','Modificar',"class='btn btn-warning'")?>
+          <?= form_close() ?>
+        </h5>
     </div>
     <div class="text-left">
       <p>&copy;Eliseo Mirafuentes Martinez</p>
     </div>
+    <script type="text/javascript">
+    /*funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
+    $(document).ready(function(){
+       $("#idEstudio").change(function () {
+               $("#idEstudio option:selected").each(function () {
+                idEstudio=$('#idEstudio').val();
+                $.post("<?php echo base_url('ControlComboBoxes/estudioCuestionario'); ?>", { idEstudio: idEstudio}, function(data){
+                $("#idCuestionario").html(data);
+                });            
+            });
+       })
+    });
+    /*fin de la funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
+    </script>
   </div>
   <!--Insertamos jQuery dependencia de Bootstrap-->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

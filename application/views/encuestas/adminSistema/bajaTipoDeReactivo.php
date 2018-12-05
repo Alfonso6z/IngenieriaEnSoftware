@@ -28,19 +28,21 @@ $apell = $this->session->userdata('apellido');
           <h5 class = "text-center"> <?= validation_errors('*');?></h5>
         </div>
       <?php } ?>
-    		<h3 class = "text-center">Eliminar Tipo De Reactivo</h3>
+    		<h3 class = "text-center"><strong>Eliminar un tipo de reactivo</strong></h3><br>
         <div class = "text-center">
+          <h4>
             <select name= "tipoReactivo" id="tipoReactivo">
-              <option value="select" selected>Tipo de Reactivo a Eliminar</option>
+              <option value="select" selected>Tipo de reactivo a eliminar</option>
               <?php
                 foreach ($tiporeactivo as $i){
                    echo '<option value="'. $i->nombre .'">'. $i->nombre .'</option>';
                  } 
               ?>
-            </select></div>
+            </select></div><br>
+          </h4>  
     		<h5 class = "text-center"><?= form_submit('Eliminar','Eliminar',"class='btn btn-danger'")?>
 		<?= form_close() ?></h5>
-    </div>
+    </div><br>
     <div class="text-right">
       <p>&copy;Maribel Garcia Bautista</p>
     </div>

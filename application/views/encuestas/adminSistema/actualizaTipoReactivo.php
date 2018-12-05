@@ -1,6 +1,6 @@
 <?= form_open('/adminSistema/modificarTipoReactivo')?>
 <?php
-$nombre=array('name' => 'nombre','placeholder' => ' Tipo De Reactivo','maxlength'=>'20');
+$nombre=array('name' => 'nombre','placeholder' => 'Modificar tipo de reactivo','maxlength'=>'20');
 $rol = $this->session->userdata('rol');
 $user = $this->session->userdata('user');
 $apell = $this->session->userdata('apellido');
@@ -28,18 +28,22 @@ $apell = $this->session->userdata('apellido');
           <h5 class = "text-center"> <?= validation_errors('*');?></h5>
         </div>
       <?php } ?>
-    		<h3 class = "text-center">Modificar Tipo De Reactivo</h3>
+    		<h3 class = "text-center"> <strong>Modificar tipo de reactivo</strong></h3><br>
         <div class = "text-center">
+          <h4>
             <select name= "tipoReactivo" id="tipoReactivo">
-              <option value="select" selected>Tipo De Reactivo a Modificar</option>
+              <option value="select" selected>Tipo de reactivo a modificar</option>
               <?php
                 foreach ($tiporeactivo as $i){
                    echo '<option value="'. $i->nombre .'">'. $i->nombre .'</option>';
                  } 
               ?>
-            </select></div>
-    		<h5 class = "text-center"><?=  form_label('Nuevo Tipo De Reactivo','nombre') ?>
-    		<?= form_input($nombre) ?></h5>
+            </select>
+          </h4>  
+        </div><br>
+    		<h4 class = "text-center"><?=  form_label('Nuevo tipo: ','nombre') ?><br>
+    		  <?= form_input($nombre) ?>  
+        </h4><br>
     		<h5 class = "text-center"><?= form_submit('Actualizar','Actualizar',"class='btn btn-warning'")?>
 		<?= form_close() ?></h5>
     </div>
