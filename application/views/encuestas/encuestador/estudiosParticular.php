@@ -11,6 +11,20 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+    <script type="text/javascript">
+        function habilitar(){
+            var radio = document.getElementById('idCuestionario').value;
+            var boton = document.getElementById('boton');
+            if(radio){
+                boton.disabled = false;
+            }else{
+                boton.disabled = true;
+            }
+             
+
+        }
+    </script>
+
     </head>
 
     <body>
@@ -35,7 +49,7 @@
                 foreach ($nombreEstudio as $i) {
                 $datos[]=$i->nombre;
                 }?>
-            <h2 class = "text-center">Cuestionarios del estudio <?php print_r($datos[0]) ?></h2>
+            <h2 class = "text-center" id = 'nombreEstudio' name = 'nombreEstudio' value = <?php $datos[0] ?>>Cuestionarios del estudio:<br> <?php print_r($datos[0]) ?></h2>
             <br>
                 <div class="text-center">
                 <table class="table table-hover">
@@ -50,7 +64,7 @@
                          <?php
                              if($cuestionarios){
                                 foreach ($cuestionarios as $i){ 
-                                echo "<tr><td><label><input type='radio' id='idCuestionario' name='idCuestionario' value = ".$i->idCuestionario."></td><td>".$i->cuenombre." </label></td></tr>";
+                                echo "<tr><td><label><input type='radio' id='idCuestionario' name='idCuestionario' value = ".$i->idCuestionario." onchange = 'return habilitar();'></td><td>".$i->cuenombre." </label></td></tr>";
                                 }
                             }else{
                                 echo "<h2>No hay Cuestionarios asignados</h2>";
@@ -58,12 +72,12 @@
                         ?>
                         </tbody>
                 </table>
-                <h5><?= form_submit('Contestar','Contestar',"class='btn btn-info'")?>
+                <h5><?= form_submit('Contestar','Contestar',"id = 'boton' class='btn btn-info for='disabled' disabled")?>
                 </div>
             </div>
         </div>
     <br>
-    <p>&copy; Eliseo Mirafuentes Martínez </p>
+    <p>&copy; Alfonso González Zempoalteca </p>
     <script type="text/javascript">
     /*funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
     $(document).ready(function(){

@@ -42,7 +42,7 @@ class Encuestador extends CI_Controller {
         		$idLogin['idLogin'] = $this->session->userdata('idLogin');
 				$data1['idEstudio'] = $this->Encuestas_model->getEncuestaLogin($idLogin);
 				$data2['estudios'] = $this->Encuestas_model->getEstudioId($data1);
-            	$datos["error"]="Error Al Registrar";
+            	$datos["error"]="Error";
             	$this->load->view('encuestas/encuestador/estudiosAsignados',$datos+$data2);
        		}      
         	
@@ -61,7 +61,7 @@ class Encuestador extends CI_Controller {
         		$idLogin['idLogin'] = $this->session->userdata('idLogin');
 				$data1['idEstudio'] = $this->Encuestas_model->getEncuestaLogin($idLogin);
 				$data2['estudios'] = $this->Encuestas_model->getEstudioId($data1);
-            	$datos["error"]="Error Al Registrar";
+            	$datos["error"]="Error";
             	$this->load->view('encuestas/encuestador/estudiosAsignados',$datos+$data2);
        		}      
         	

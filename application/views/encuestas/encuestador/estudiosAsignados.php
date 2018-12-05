@@ -60,7 +60,7 @@ $pregunta=array(
             </div>
         </div>
     <br>
-    <p>&copy; Eliseo Mirafuentes Martínez </p>
+    <p>&copy; Alfonso González Zempoalteca </p>
     <script type="text/javascript">
     /*funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
     $(document).ready(function(){
