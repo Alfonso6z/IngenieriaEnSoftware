@@ -1,14 +1,17 @@
 <?= form_open('/AdminEncuesta/modificarEstudio')?>
 <?php
 $nombre=array('name' => 'nombre','placeholder' => 'Escribe el nuevo nombre','maxlength'=>'50');
+$descripcion=array('name' => 'nombre','placeholder' => 'Escribe el nuevo nombre','maxlength'=>'100');
 ?>
 <html>
 <head>
-  <title>Modifica Estudio</title>
-  <!-- Insertamos el archivo CSS compilado y comprimido -->
+<!-- Insertamos el archivo CSS compilado y comprimido -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
    <!-- Theme opcional -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 </head>
 <body>
   <div class="container">
@@ -39,11 +42,13 @@ $nombre=array('name' => 'nombre','placeholder' => 'Escribe el nuevo nombre','max
                  } 
               ?>
             </select></div>
-          </h4><h3> </h3>
-        <h4 class = "text-center"><?= form_label('Nuevo estudio')?></h4>  
-        <h4 class = "text-center" required>
-          <?=  form_input($nombre) ?>
-        </h4><br>
+          </h4>
+          <div id = "campos">
+                <td>
+                  
+                </td>
+          </div>
+        <br>
         <h5 class = "text-center"><?= form_submit('Actualizar','Modificar',"class='btn btn-warning'")?>
     <?= form_close() ?></h5>
     </div>
@@ -51,6 +56,18 @@ $nombre=array('name' => 'nombre','placeholder' => 'Escribe el nuevo nombre','max
       <p>&copy;Unedgaro</p>
     </div>
   </div>
+  <script type="text/javascript">
+    $(document).ready(function(){
+       $("#idEstudio").change(function () {
+               $("#idEstudio option:selected").each(function () {
+                idEstudio=$('#idEstudio').val();
+                $.post("<?php echo base_url('ControlComboBoxes/llenarEstudio'); ?>", { idEstudio: idEstudio}, function(data){
+                $("#campos").html(data);
+                });            
+            });
+       })
+    });
+    </script>
   <!--Insertamos jQuery dependencia de Bootstrap-->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
    <!--Insertamos el archivo JS compilado y comprimido -->

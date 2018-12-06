@@ -81,6 +81,7 @@ class ControlComboBoxes extends CI_Controller{
         $data =array( 'idReactivo' => $this->input->post('idReactivo'));
         if($data){
             $respuestas = $this->AdminEncuesta_model->getRespuestas($data);
+            echo '<option value="0"> Respuestas </option>';
             foreach ($respuestas as $i) {
                 echo '<option value="'. $i->idRespuesta .'">'. $i->respuesta .'</option>';
             }   
@@ -125,5 +126,109 @@ class ControlComboBoxes extends CI_Controller{
         }  else {
             echo "<tr><td>Sin Cuestionario </td></tr>";;
         }
+    }
+
+    public function llenarUsuario(){
+        $data = array('idLogin' => $this->input->post('idLogin'));
+        if($data){
+            $respuestas = $this->AdminSistema_model->getUsuarioId($data);
+            if($respuestas){
+                 foreach ($respuestas as $i) {
+                    $nombre=array('name' => 'nombre','placeholder' => 'Nombre','maxlength'=>'20','value' => $i->user);
+                    $apellido=array('name' => 'apellido','placeholder' => ' Apellido','maxlength'=>'20','value' => $i->apellido);
+                    $email=array('name' => 'email','placeholder' => ' Em@il','maxlength'=>'25','value' => $i->email);
+                    echo " <h4 class = 'text-center'>".form_label('Usuario:','nombre')."".form_input($nombre)."</h4><h4 class='text-center'>".form_label('Apellido: ','apellido').form_input($apellido)."</h4><h4 class = 'text-center'>".form_label('Em@il: ','email').form_input($email),"</h4>";
+                }   
+            }else{
+             echo "<tr><td>Sin Respuestas</td></tr>";
+            }
+        }    
+    }
+    public function llenarTipoUsuario(){
+        $data = array('idRol' => $this->input->post('tipoUsuario'));
+        if($data){
+            $roles = $this->AdminSistema_model->getRolesId($data);
+            if($roles){
+                 foreach ($roles as $i) {
+                    $nombre=array('name' => 'nombre','placeholder' => 'Tipo de rol','maxlength'=>'20','value'=>$i->idRol);
+                    echo " <h4 class = 'text-center'>".form_label('Nuevo Tipo De Usuario :','nombre')."<br>".form_input($nombre)."</h4>";
+                }   
+            }else{
+             echo "<tr><td>Sin Rol </td></tr>";
+            }
+        }    
+    }
+
+    public function llenarTipoReactivo(){
+        $data = array('idTipoReactivo' => $this->input->post('tipoReactivo'));
+        if($data){
+            $reactivos = $this->AdminSistema_model->getReactivoId($data);
+            if($reactivos){
+                 foreach ($reactivos as $i) {
+                    $nombre=array('name' => 'nombre','placeholder' => 'Tipo de rol','maxlength'=>'20','value'=>$i->nombre);
+                    echo " <h4 class = 'text-center'>".form_label('Nuevo Tipo De Reactivo :','nombre')."<br>".form_input($nombre)."</h4>";
+                }   
+            }else{
+             echo "<tr><td>Sin Reactivo </td></tr>";
+            }
+        }
+    }
+    public function llenarEstudio(){
+        $data = array('idEstudio' => $this->input->post('idEstudio'));
+        if($data){
+            $estudio = $this->AdminEncuesta_model->getEstudioId($data);
+            if($estudio){
+                 foreach ($estudio as $i) {
+                    $nombre=array('name' => 'nombre','placeholder' => 'Escribe el nuevo nombre','maxlength'=>'50','value'=>$i->nombre);
+                    $descripcion=array('name' => 'nombre','placeholder' => 'Escribe el nuevo nombre','maxlength'=>'100','value'=>$i->descripcion);
+                    echo " <h4 class = 'text-center'>".form_label('Nombre:','nombre')."".form_input($nombre)."</h4><h4 class='text-center'>".form_label('Descripcion: ','descripcion'),"<br>".form_textarea($descripcion)."</h4>";
+                }   
+            }else{
+             echo "<tr><td>Sin Estudio</td></tr>";
+            }
+        }    
+    }
+
+    public function llenarCuestionario(){
+        $data = array('idCuestionario' => $this->input->post('idCuestionario'));
+        if($data){
+            $cuestionario = $this->AdminEncuesta_model->getCuestionarioId($data);
+            if($cuestionario){
+                 foreach ($cuestionario as $i) {
+                    $cuenombre=array('name' => 'cuenombre','placeholder' => 'Escriba cuestionario','maxlength'=>'20','value'=>$i->cuenombre);
+                    echo " <h4 class = 'text-center'>".form_label('Nombre:','cuenombre')."<br>".form_input($cuenombre)."</h4>";
+                }   
+            }else{
+             echo "<tr><td>Sin Cuestionario</td></tr>";
+            }
+        }    
+    }
+    public function llenarReactivo(){
+        $data = array('idReactivo' => $this->input->post('idReactivo'));
+        if($data){
+            $reactivo = $this->AdminEncuesta_model->getReactivoId($data);
+            if($reactivo){
+                 foreach ($reactivo as $i) {
+                    $pregunta=array('name' => 'pregunta','placeholder' => 'Escriba la pregunta nuevamente','maxlength'=>'100','value'=>$i->pregunta);
+                    echo " <h4 class = 'text-center'>".form_label('Preguanta:','pregunta')."<br>".form_textarea($pregunta)."</h4>";
+                }   
+            }else{
+             echo "<tr><td>Sin Reactivo </td></tr>";
+            }
+        }    
+    }
+    public function llenarRespuesta(){
+        $data = array('idRespuesta' => $this->input->post('idRespuesta'));
+        if($data){
+            $respuesta = $this->AdminEncuesta_model->getRespuestaId($data);
+            if($respuesta){
+                 foreach ($respuesta as $i) {
+                    $respuesta=array('name' => 'respuesta','placeholder' => ' Reescribe respuesta', 'maxlength'=>'20','value'=>$i->respuesta);
+                    echo " <h4 class = 'text-center'>".form_label('Respuesta:','respuesta')."<br>".form_input($respuesta)."</h4>";
+                }   
+            }else{
+             echo "<tr><td>Sin Reactivo </td></tr>";
+            }
+        }    
     }
 }

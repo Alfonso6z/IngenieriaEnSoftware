@@ -43,11 +43,13 @@ $cuenombre=array('name' => 'cuenombre','placeholder' => 'Escriba cuestionario','
                 <option value="0">Cuestionarios</option>
             </select>
             </h4>
+            <div id = "campos">
+                <td>
+                  
+                </td>
+            </div>
         </div>  <h1> </h1>
-        <h4 class = "text-center"><?= form_label('Nuevo nombre:') ?>
-        <h4 class = "text-center"> 
-          <?= form_input($cuenombre) ?>   
-        </h4><br>
+        <br>
         <h5 class = "text-center"><?= form_submit('Actualizar','Modificar',"class='btn btn-warning'")?>
           <?= form_close() ?>
         </h5>
@@ -63,6 +65,20 @@ $cuenombre=array('name' => 'cuenombre','placeholder' => 'Escriba cuestionario','
                 idEstudio=$('#idEstudio').val();
                 $.post("<?php echo base_url('ControlComboBoxes/estudioCuestionario'); ?>", { idEstudio: idEstudio}, function(data){
                 $("#idCuestionario").html(data);
+                });            
+            });
+       })
+    });
+    /*fin de la funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
+    </script>
+     <script type="text/javascript">
+    /*funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
+    $(document).ready(function(){
+       $("#idCuestionario").change(function () {
+               $("#idCuestionario option:selected").each(function () {
+                idCuestionario=$('#idCuestionario').val();
+                $.post("<?php echo base_url('ControlComboBoxes/llenarCuestionario'); ?>", { idCuestionario: idCuestionario}, function(data){
+                $("#campos").html(data);
                 });            
             });
        })

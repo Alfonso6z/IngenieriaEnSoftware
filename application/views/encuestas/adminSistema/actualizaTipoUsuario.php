@@ -7,11 +7,13 @@ $apell = $this->session->userdata('apellido');
 ?>
 <html>
 <head>
-  <title>Modifica Tipo Usuario</title>
   <!-- Insertamos el archivo CSS compilado y comprimido -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
    <!-- Theme opcional -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 </head>
 <body>
   <div class="container">
@@ -39,11 +41,13 @@ $apell = $this->session->userdata('apellido');
                  } 
               ?>
             </select>
+            <div id = "campos">
+                <td>
+                  
+                </td>
+          </div>
           </h4> 
-          </div><br>
-    		<h4 class = "text-center"><?=  form_label('Nuevo tipo de usuario: ','nombre') ?><br>
-    		  <?= form_input($nombre)?>  
-        </h4><br>
+        <br>
     		<h5 class = "text-center"><?= form_submit('Actualizar','Actualizar',"class='btn btn-warning'")?>
 		      <?= form_close() ?>  
         </h5>
@@ -52,6 +56,18 @@ $apell = $this->session->userdata('apellido');
       <p>&copy;Alfonso González Zempoalteca</p>
     </div>
   </div>
+  <script type="text/javascript">
+    $(document).ready(function(){
+       $("#tipoUsuario").change(function () {
+               $("#tipoUsuario option:selected").each(function () {
+                tipoUsuario=$('#tipoUsuario').val();
+                $.post("<?php echo base_url('ControlComboBoxes/llenarTipoUsuario'); ?>", { tipoUsuario: tipoUsuario}, function(data){
+                $("#campos").html(data);
+                });            
+            });
+       })
+    });
+    </script>
   <!--Insertamos jQuery dependencia de Bootstrap-->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
    <!--Insertamos el archivo JS compilado y comprimido -->

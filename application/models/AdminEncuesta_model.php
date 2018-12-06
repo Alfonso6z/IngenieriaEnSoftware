@@ -241,5 +241,35 @@ class AdminEncuesta_model extends CI_Model {
 		$this->db->delete('asignarestudio',$datos);
 		$query= $this->db->query("SET foreign_key_checks = 1;");
 	}
+
+	function getEstudioId($data){
+		$this->db->where('idEstudio',$data['idEstudio']);
+		$estudio = $this->db->get('estudios');
+		if ($estudio->num_rows() > 0){
+			return $estudio->result();
+		}
+	}
+
+	function getCuestionarioId($data){
+		$this->db->where('idCuestionario',$data['idCuestionario']);
+		$cuestiionario = $this->db->get('cuestionarios');
+		if ($cuestiionario->num_rows() > 0){
+			return $cuestiionario->result();
+		}
+	}
+	function getReactivoId($data){
+		$this->db->where('idReactivo',$data['idReactivo']);
+		$reactivo = $this->db->get('reactivos');
+		if ($reactivo->num_rows() > 0){
+			return $reactivo->result();
+		}
+	}
+	function getRespuestaId($data){
+		$this->db->where('idRespuesta',$data['idRespuesta']);
+		$respuesta = $this->db->get('respuestas');
+		if ($respuesta->num_rows() > 0){
+			return $respuesta->result();
+		}
+	}
 }
 ?>

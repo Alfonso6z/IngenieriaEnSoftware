@@ -77,9 +77,8 @@ class AdminSistema extends CI_Controller{
 	}
 	
 	public function modificarUsuario(){
-		$data['idLogin'] = $this->adminSistema_model->getUsuario();
-		$rdata['roles'] = $this->adminSistema_model->getRoles();
-
+		$data1['idLogin'] = $this->adminSistema_model->getUsuario();
+		$rdata1['roles'] = $this->adminSistema_model->getRoles();
 		if($this->input->post('Actualizar')){
 			$this->form_validation->set_rules('nombre', 'Nombre', 'required|min_length[3]|trim');
 		    $this->form_validation->set_rules('apellido', 'Apellido', 'required|min_length[3]|trim');
@@ -97,7 +96,8 @@ class AdminSistema extends CI_Controller{
 				);
 				$datos["correcto"]="Usuario modificado";
 				$this->adminSistema_model->actualizaUsuario($data);
-				$this->load->view('encuestas/adminSistema/actualizaUsuario',$data+$rdata+$datos);
+				$data1['idLogin'] = $this->adminSistema_model->getUsuario();
+				$this->load->view('encuestas/adminSistema/actualizaUsuario',$data1+$rdata1+$datos);
 			}else{
 			$datos["error"]="ERROR AL MODIFICAR";
             	$this->load->view('encuestas/adminSistema/actualizaUsuario',$data+$datos+$rdata);
@@ -140,7 +140,7 @@ class AdminSistema extends CI_Controller{
 			$datos["correcto"]="Tipo de usuario modificado";
 			$data = array(
 				'nombre' => $this->input->post('nombre'),
-				'tipoUsuario'=> $this->input->post('tipoUsuario'));
+				'idTipoReactivo'=> $this->input->post('tipoUsuario'));
 			$this->adminSistema_model->actualizaTipoDeUsuario($data);
 			$this->load->view('encuestas/adminSistema/actualizaTipoUsuario',$data+$datos);
 		}else{
@@ -196,7 +196,7 @@ class AdminSistema extends CI_Controller{
 			$datos["correcto"]="Tipo de reactivo modificado";
 			$data = array(
 				'nombre' => $this->input->post('nombre'),
-				'tipoReactivo'=> $this->input->post('tipoReactivo'));
+				'idTipoReactivo'=> $this->input->post('tipoReactivo'));
 			$this->adminSistema_model->actualizaTipoDeReactivo($data);
 			$data1['tiporeactivo'] = $this->adminSistema_model->getTreactivos();
 			$this->load->view('encuestas/adminSistema/actualizaTipoReactivo',$data1+$datos);

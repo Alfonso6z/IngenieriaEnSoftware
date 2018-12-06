@@ -48,8 +48,9 @@ class AdminSistema_model extends CI_Model {
 	}
 	function actualizaTipoDeReactivo($data){
 		$datos = array(
-			'nombre'=> $data['nombre']);
-		$this->db->where('nombre',$data['tipoReactivo']);
+			'nombre'=> $data['nombre'],
+			'idTipoReactivo'=>$data['idTipoReactivo']);
+		$this->db->where('idTipoReactivo',$data['idTipoReactivo']);
 		$query = $this->db->update('tiporeactivo',$datos);
 
 	}
@@ -86,6 +87,29 @@ class AdminSistema_model extends CI_Model {
 		$query= $this->db->query("SET foreign_key_checks = 1;");
 	}
 
+	function getUsuarioId($data){
+		$this->db->where('idLogin',$data['idLogin']);
+		$user = $this->db->get('login');
+		if ($user->num_rows() > 0){
+			return $user->result();
+		}
+	}
+
+	function getRolesId($data){
+		$this->db->where('idRol',$data['idRol']);
+		$rol = $this->db->get('roles');
+		if ($rol->num_rows() > 0){
+			return $rol->result();
+		}
+	}
+
+	function getReactivoId($data){
+		$this->db->where('idTipoReactivo',$data['idTipoReactivo']);
+		$reactivo = $this->db->get('tiporeactivo');
+		if ($reactivo->num_rows() > 0){
+			return $reactivo->result();
+		}
+	}
 }
 
 ?>

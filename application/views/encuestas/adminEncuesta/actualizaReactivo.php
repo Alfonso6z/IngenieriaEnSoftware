@@ -44,9 +44,13 @@ $pregunta=array('name' => 'pregunta','placeholder' => 'Escriba la pregunta nueva
               <select id="idReactivo" name="idReactivo">
                 <option value="0">Pregunta</option>
               </select>
+              <div id = "campos">
+                <td>
+                  
+                </td>
+              </div>
             </h4>
           </div><br>
-        <h5 class = "text-center" required><?=  form_textarea($pregunta) ?></h5><br>
         <h5 class = "text-center"><?= form_submit('Actualizar','Actualizar',"class='btn btn-warning'")  ?> 
         </h5>
     <?= form_close() ?>
@@ -88,6 +92,18 @@ $pregunta=array('name' => 'pregunta','placeholder' => 'Escriba la pregunta nueva
                 idReactivo=$('#idReactivo').val();
                 $.post("<?php echo base_url('ControlComboBoxes/reactivoRespuesta'); ?>", { idReactivo: idReactivo}, function(data){
                 $("#idRespuesta").html(data);
+                });            
+            });
+       })
+    });
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+       $("#idReactivo").change(function () {
+               $("#idReactivo option:selected").each(function () {
+                idReactivo=$('#idReactivo').val();
+                $.post("<?php echo base_url('ControlComboBoxes/llenarReactivo'); ?>", { idReactivo: idReactivo}, function(data){
+                $("#campos").html(data);
                 });            
             });
        })

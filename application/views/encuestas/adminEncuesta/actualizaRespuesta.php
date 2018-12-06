@@ -51,9 +51,11 @@ $respuesta=array('name' => 'respuesta','placeholder' => ' Reescribe respuesta', 
           </div>
           <br>
           <br>
-
-  <h4 class = "text-center" >
-  <?= form_input($respuesta) ?></h4>
+          <div id = "campos">
+                <td>
+                  
+                </td>
+          </div>
   <br>
   <h4 class = "text-center">
   <h5 class = "text-center"><?= form_submit('','Modificar',"class='btn btn-warning'")?></h5>
@@ -95,6 +97,18 @@ $respuesta=array('name' => 'respuesta','placeholder' => ' Reescribe respuesta', 
                 idReactivo=$('#idReactivo').val();
                 $.post("<?php echo base_url('ControlComboBoxes/modificaReactivoRespuesta'); ?>", { idReactivo: idReactivo}, function(data){
                 $("#idRespuesta").html(data);
+                });            
+            });
+       })
+    });
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+       $("#idRespuesta").change(function () {
+               $("#idRespuesta option:selected").each(function () {
+                idRespuesta=$('#idRespuesta').val();
+                $.post("<?php echo base_url('ControlComboBoxes/llenarRespuesta'); ?>", { idRespuesta: idRespuesta}, function(data){
+                $("#campos").html(data);
                 });            
             });
        })
