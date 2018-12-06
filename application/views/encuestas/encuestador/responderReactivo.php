@@ -45,7 +45,7 @@
                                 <?php if($i->idTipoReactivo=="2"){
                                     foreach ($respuestas as $j){ 
                                         if($i->idReactivo==$j->idReactivo){
-                                            echo "<tr><td><label><input type='radio' id='idCuestionario' name='idCuestionario' value = ".$j->idRespuesta.">".$j->respuesta." </label></td></tr>";
+                                            echo "<tr><td><label><input type='radio' id=".$j->idRespuesta." name=".$i->idReactivo." value = ".$j->idRespuesta.">".$j->respuesta." </label></td></tr>";
                                         }
                                         
                                 }
