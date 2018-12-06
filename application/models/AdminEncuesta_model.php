@@ -269,6 +269,8 @@ class AdminEncuesta_model extends CI_Model {
 		$respuesta = $this->db->get('respuestas');
 		if ($respuesta->num_rows() > 0){
 			return $respuesta->result();
+		}
+	}
 	function estudioSelect($data){
 		print_r($data);
 		$this->db->select('idLogin')->from('asignarestudio')->where('idEstudio',$data['idEstudio']);
@@ -290,4 +292,5 @@ class AdminEncuesta_model extends CI_Model {
 		}
 	}
 }
+
 ?>
