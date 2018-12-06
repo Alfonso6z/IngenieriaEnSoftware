@@ -180,7 +180,7 @@ class ControlComboBoxes extends CI_Controller{
                  foreach ($estudio as $i) {
                     $nombre=array('name' => 'nombre','placeholder' => 'Escribe el nuevo nombre','maxlength'=>'50','value'=>$i->nombre);
                     $descripcion=array('name' => 'nombre','placeholder' => 'Escribe el nuevo nombre','maxlength'=>'100','value'=>$i->descripcion);
-                    echo " <h4 class = 'text-center'>".form_label('Nombre:','nombre')."".form_input($nombre)."</h4><h4 class='text-center'>".form_label('Descripcion: ','descripcion'),"<br>".form_textarea($descripcion)."</h4>";
+                    echo " <h4 class = 'text-center'>".form_label('Nombre:','nombre')."&nbsp;".form_input($nombre)."</h4><h3></h3><h4 class='text-center'>".form_label('Descripcion: ','descripcion'),"<br>".form_textarea($descripcion)."</h4>";
                 }   
             }else{
              echo "<tr><td>Sin Estudio</td></tr>";

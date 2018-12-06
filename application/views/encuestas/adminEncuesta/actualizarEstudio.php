@@ -1,6 +1,6 @@
 <?= form_open('/AdminEncuesta/modificarEstudio')?>
 <?php
-$nombre=array('name' => 'nombre','placeholder' => 'Escribe el nuevo nombre','maxlength'=>'50');
+$nombre=array('name' => 'nombre','placeholder' => 'Escribe el nuevo nombre ','maxlength'=>'50');
 $descripcion=array('name' => 'nombre','placeholder' => 'Escribe el nuevo nombre','maxlength'=>'100');
 ?>
 <html>
@@ -42,10 +42,10 @@ $descripcion=array('name' => 'nombre','placeholder' => 'Escribe el nuevo nombre'
                  } 
               ?>
             </select></div>
-          </h4>
-          <div id = "campos">
+          </h4><br>
+          <div style="width: 95%" id = "campos">
                 <td>
-                  
+
                 </td>
           </div>
         <br>
