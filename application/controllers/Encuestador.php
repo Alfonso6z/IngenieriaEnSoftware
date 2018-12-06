@@ -51,12 +51,13 @@ class Encuestador extends CI_Controller {
 
 	public function contestarCuestionario(){
 		if($this->input->post('Contestar')){
+			$respuestas['respuestas'] = $this->Encuestas_model->getRespuestas();
 			$this->form_validation->set_rules('idCuestionario', 'Cuestionario', 'required');
 			$this->form_validation->set_message('required','Seleccione un  %s');
 			if($this->form_validation->run()!=false){ 
             	$data = array('idCuestionario' => $this->input->post('idCuestionario'));
             	$data1['reactivos'] = $this->Encuestas_model->getReactivosCuestionario($data);
-				$this->load->view('encuestas/encuestador/responderReactivo',$data1);
+				$this->load->view('encuestas/encuestador/responderReactivo',$data1+$respuestas);
         	}else{
         		$idLogin['idLogin'] = $this->session->userdata('idLogin');
 				$data1['idEstudio'] = $this->Encuestas_model->getEncuestaLogin($idLogin);

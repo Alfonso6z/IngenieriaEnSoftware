@@ -95,6 +95,12 @@ class Encuestas_model extends CI_Model {
 			return $reactivos->result();
 		}
 	}
+	function getRespuestas(){
+		$respuestas = $this->db->get('respuestas');
+		if($respuestas->num_rows()>0){
+			return $respuestas->result();
+		}
+	}
 }
 
 ?>

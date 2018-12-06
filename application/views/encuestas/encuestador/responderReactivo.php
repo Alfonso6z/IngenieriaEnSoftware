@@ -1,6 +1,6 @@
 <?= form_open("encuestador/contestarCuestionario") ?>
 <?php
-  
+  $respuesta = array('name'=>'respuesta');  
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -33,30 +33,28 @@
             <h2 class = "text-center">Cuestionario </h2>
             <br>
                 <div class="text-center">
-                <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th class="text-center">#</th>
-                            <th class="text-center">Selección</th>
-                            <th class="text-center">Nombre</th>
-                            <th class="text-center">Respuesta</th>
-
-                        </tr>
-                        </thead>
-                        <tbody>
-                         <?php
-                            $l = 1;
-                             if($reactivos){
-                                foreach ($reactivos as $i){ 
-                                echo "<tr><td>".$l."</td><td><label><input type='checkbox' id='idReactivo' name='idReactivo' value = ".$i->idReactivo."></td><td>".$i->pregunta."</label></td><td>".$i->idTipoReactivo." </td></tr>";
-                                  $l++;
+                <?php $k = 1 ; if($reactivos){foreach ($reactivos as $i) {?>
+                    <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th class="text-center">Pregunta <?php echo $k;?></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><?php  echo $i->pregunta;?></td></tr><tr><td>
+                                <?php if($i->idTipoReactivo=="2"){
+                                    foreach ($respuestas as $j){ 
+                                        if($i->idReactivo==$j->idReactivo){
+                                            echo "<tr><td><label><input type='radio' id='idCuestionario' name='idCuestionario' value = ".$j->idRespuesta.">".$j->respuesta." </label></td></tr>";
+                                        }
+                                        
                                 }
-                            }else{
-                                echo "<h2>No hay Reactivos </h2>";
-                            }
-                        ?>
-                        </tbody>
-                </table>
+                                }else{
+                                    ?><?= form_input($respuesta) ?><?php
+                                } ?></td></tr>
+                            </tbody>
+                    </table>
+                <?php $k++;}}else{echo "No Hay Reactivos";} ?>
                 <h5><?= form_submit('Contestar','Contestar',"class='btn btn-info'")?>
                 </div>
             </div>
@@ -64,18 +62,16 @@
     <br>
     <p>&copy; Eliseo Mirafuentes Martínez </p>
     <script type="text/javascript">
-    /*funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
     $(document).ready(function(){
-       $("#idEstudio").change(function () {
-               $("#idEstudio option:selected").each(function () {
-                idEstudio=$('#idEstudio').val();
-                $.post("<?php echo base_url('ControlComboBoxes/estudioCuestionario'); ?>", { idEstudio: idEstudio}, function(data){
-                $("#idCuestionario").html(data);
+       $("#idReactivo").change(function () {
+               $("#idReactivo option:selected").each(function () {
+                idReactivo=$('#idReactivo').val();
+                $.post("<?php echo base_url('ControlComboBoxes/reactivoRespuestaSelect'); ?>", { idReactivo: idReactivo}, function(data){
+                $("#idRespuesta").html(data);
                 });            
             });
        })
     });
-    /*fin de la funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
     </script>
      <!--Insertamos jQuery dependencia de Bootstrap-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
