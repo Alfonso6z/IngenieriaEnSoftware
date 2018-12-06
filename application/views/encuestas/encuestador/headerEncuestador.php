@@ -22,8 +22,17 @@ $apell = $this->session->userdata('apellido');
 <body>
 <div class="container">
     <header class="page-header">
-    <h3><img class="img-responsive" src="/IngenieriaEnSoftware/wolf.png" alt="Wolf"></h3>
-      <h4><?php echo "$rol" ?>: <?php echo "$user" ?>  <?php echo "$apell" ?></h4>
+    <div class="row">
+        <div class="col-lg-2"><img class="img-responsive" align="middle"  vspace="0" hspace="10" align="bottom" src="/IngenieriaEnSoftware/wolfG.png" alt="Wolfy"></div><br><br>
+        <div class="col-lg-6 "><h4 class="text-left"><?php echo "$rol" ?>: <?php echo "$user" ?>  <?php echo "$apell" ?></h4>
+        </div>
+        <div class="col-lg-4">
+          <ul class = "nav nav-pills pull-right">
+           <li class ="active"><a href="<?php echo $inicio; ?>">Inicio</a></li>
+           <li><a href="<?php echo $cerrarSesion; ?>">Cerrar Sesión</a></li>
+          </ul> 
+       </div>  
+     </div>    
       <ul class = "nav nav-pills pull-left">
         <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Estudios
@@ -34,10 +43,6 @@ $apell = $this->session->userdata('apellido');
           <li><a href="<?php echo $respondeReactivo; ?>">Responder reactivo</a></li>
         </ul>
         </li>
-      </ul>
-      <ul class = "nav nav-pills pull-right">
-        <li class ="active"><a href="<?php echo $inicio; ?>">Inicio</a></li>
-        <li><a href="<?php echo $cerrarSesion; ?>">Cerrar Sesión</a></li>
       </ul>
     </header>
   </div>
