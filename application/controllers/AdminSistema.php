@@ -220,4 +220,26 @@ class AdminSistema extends CI_Controller{
 		$this->load->view('encuestas/adminSistema/bajaTipoDeReactivo',$data+$datos);
 	}
 
+	public function bajaUsuario(){
+		$data['idLogin'] = $this->adminSistema_model->getUsuario();
+		$this->load->view('encuestas/adminSistema/eliminarUsuario',$data);
+	}
+
+	public function eliminarUsuario(){
+		$data['idLogin'] = $this->adminSistema_model->getUsuario();
+		$this->form_validation->set_rules('idLogin', 'Selecciona Usuario', 'required|trim');
+		$this->form_validation->set_message('required','El campo %s es obligatorio');
+		if($this->form_validation->run()!=false){
+			$data1 = array(
+				'idLogin'=> $this->input->post('idLogin'));
+			$this->adminSistema_model->eliminaUsuario($data1);
+			$datos["correcto"]="Se Ha Eliminado Con Éxito     ".$data1['idLogin'];
+			$data['idLogin'] = $this->adminSistema_model->getUsuario();
+			$this->load->view('encuestas/adminSistema/eliminarUsuario',$datos+$data);
+	}else{
+			$datos["error"]="Error Al Eliminar";
+            	$this->load->view('encuestas/adminSistema/eliminarUsuario',$datos+$data);
+		}
+	}
+
 }

@@ -76,6 +76,16 @@ class AdminSistema_model extends CI_Model {
 		$this->db->where('idLogin',$data['idLogin']);
 		$query = $this->db->update('login',$datos);
 	}
+
+	function eliminarUsuario($data){
+		$query= $this->db->query("SET foreign_key_checks = 0;");
+		$datos = array(
+			'idLogin' => $data['idLogin']
+			);
+		$this->db->delete('login',$datos);
+		$query= $this->db->query("SET foreign_key_checks = 1;");
+	}
+
 }
 
 ?>

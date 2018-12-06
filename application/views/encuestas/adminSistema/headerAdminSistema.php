@@ -8,6 +8,7 @@ $bajaTipoDeUsuario=site_url('adminSistema/bajaTipoDeUsuario',NULL);
 $altaTipoReactivo=site_url('adminSistema/altaTipoReactivo',NULL);
 $actualizaTipoReactivo=site_url('adminSistema/actualizaTipoReactivo',NULL);
 $bajaTipoDeReactivo=site_url('adminSistema/bajaTipoDeReactivo',NULL);
+$eliminarUsuario=site_url('adminSistema/eliminarUsuario',NULL);
 $cerrarSesion=site_url('login/logout',NULL);
 $inicio=site_url('adminSistema',NULL);
 $rol = $this->session->userdata('rol'); 
@@ -45,7 +46,7 @@ $apell = $this->session->userdata('apellido');
             <ul class="dropdown-menu">
             <li><a href= "<?php echo $altaUsuario; ?>" >Registrar</a></li>
             <li><a href="<?php echo $actualizaUsuario; ?>">Modificar</a></li>
-            <li><a href="#">Eliminar</a></li>
+            <li><a href="<?php echo $eliminarUsuario; ?>">Eliminar</a></li>
             <li><a href="#">Cambio De Password</a></li>
           </ul>
           </li>        
