@@ -5,7 +5,9 @@
 		'name' => 'email','placeholder' => ' email de Usuario','maxlength'=>'25');
 	$contrasena = array(
 		'name' => 'contrasena','placeholder' => ' Contraseña','maxlength'=>'25');
-	$var=site_url('login',NULL);
+  $var=site_url('login',NULL);
+  
+  $recpass=site_url('login/recContrasenia',NULL);
 ?>
 <html>
   <head>
@@ -32,12 +34,18 @@
     <header class="page-header">
     <div class="container">  
       <div class="jumbotron">
-         <?php if(isset($error)){?>
-          <div class="alert alert-danger alert-dismissible">
-            <h6 class= "text-center"><a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong class = "text-center"><?php echo $error; ?></strong></h6>
-            <h5 class = "text-center"> <?= validation_errors('*');?></h5>
-          </div>
-        <?php } ?>
+          <?php if(isset($error)){?>
+                    <div class="alert alert-danger alert-dismissible">
+                        <h5 class= "text-center"><a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong class = "text-center"><?php echo $error; ?></strong></h5>
+                        <h5 class = "text-center"> <?= validation_errors('*');?></h5>
+                    </div>
+                <?php } ?>
+                <?php if(isset($correcto)){?>
+                    <div class="alert alert-success alert-dismissible">
+                        <h5 class= "text-center"><a class="close" data-dismiss="alert" aria-label="close">&times;</a><strong class = "text-center"><?php echo $correcto; ?></strong></h5>
+                        <h5 class = "text-center"> <?= validation_errors('*');?></h5>
+                    </div>
+                <?php } ?>
       		<h3 class = "text-center"><strong> Inicio de Sesión </strong></h3><br>
       		<h4 class = "text-center"><?=  form_label('Email: ','email') ?>
       		  <?= form_input($email) ?>  
@@ -45,6 +53,7 @@
       		<h4 style="width: 95%" class = "text-center"><?=  form_label('Contraseña: ','contrasena') ?>
       		  <?= form_password($contrasena) ?>  
           </h4><h3> </h3>
+          <h5 class = "text-center"><a href=" <?php echo $recpass; ?>">Recuperar Contraseña</a>
       		<h5 class = "text-center"><?= form_submit('','Iniciar',"class='btn btn-primary'")?>
 			     <?= form_close() ?>     
           </h5>
