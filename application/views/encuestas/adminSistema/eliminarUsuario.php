@@ -1,7 +1,4 @@
-<?= form_open('/adminSistema/eliminarUsuario')?>
-<?php
-
-?>
+<?= form_open('/adminSistema/recibirEliminarUsuario')?>
 <html>
 <head>
   <title>Eliminar Usuario</title>

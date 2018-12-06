@@ -225,18 +225,18 @@ class AdminSistema extends CI_Controller{
 		$this->load->view('encuestas/adminSistema/eliminarUsuario',$data);
 	}
 
-	public function eliminarUsuario(){
+	public function recibirEliminarUsuario(){
 		$data['idLogin'] = $this->adminSistema_model->getUsuario();
 		$this->form_validation->set_rules('idLogin', 'Selecciona Usuario', 'required|trim');
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 		if($this->form_validation->run()!=false){
 			$data1 = array(
 				'idLogin'=> $this->input->post('idLogin'));
-			$this->adminSistema_model->eliminaUsuario($data1);
-			$datos["correcto"]="Se Ha Eliminado Con Éxito     ".$data1['idLogin'];
+			$this->adminSistema_model->eliminarUsuario($data1);
+			$datos["correcto"]="Se Ha Eliminado Con Éxito  ".$data1['user']."  ".$data1['apellido'];
 			$data['idLogin'] = $this->adminSistema_model->getUsuario();
 			$this->load->view('encuestas/adminSistema/eliminarUsuario',$datos+$data);
-	}else{
+			}else{
 			$datos["error"]="Error Al Eliminar";
             	$this->load->view('encuestas/adminSistema/eliminarUsuario',$datos+$data);
 		}
