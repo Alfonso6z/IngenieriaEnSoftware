@@ -18,7 +18,7 @@
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   </head>
   <body>
-        <h4><img class="img-responsive" src="/IngenieriaEnSoftware/wolfG.png" alt="Wolf"></h4>
+     <h4><img class="img-responsive" align="left"  vspace="0" hspace="20" width="212"  hight="110" src="/IngenieriaEnSoftware/wolfG.png" alt="Wolfy"></h4><br><br><br>
       <div style="width: 93%">
         <ul class = "nav nav-pills pull-right">
          <li ><a href="<?php echo $var; ?>">Inicio</a></li>
