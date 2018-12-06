@@ -53,28 +53,11 @@
                  } 
               ?>
           </select>&nbsp;&nbsp;
-          <select id="idCuestionario" name="idCuestionario">
-              <option value="0">Cuestionarios</option>
-          </select>
         </h4>
       </div><br>
       <h5 class = "text-center"><?= form_submit('','Aceptar',"class='btn btn-success'")?>
       <?= form_close() ?></h5>
     </div>
-  <script type="text/javascript">
-      /*funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
-      $(document).ready(function(){
-         $("#idEstudio").change(function () {
-                 $("#idEstudio option:selected").each(function () {
-                  idEstudio=$('#idEstudio').val();
-                  $.post("<?php echo base_url('ControlComboBoxes/estudioCuestionario'); ?>", { idEstudio: idEstudio}, function(data){
-                  $("#idCuestionario").html(data);
-                  });            
-              });
-         })
-      });
-      /*fin de la funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
-  </script>
   <script type="text/javascript">
       /*funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
       $(document).ready(function(){

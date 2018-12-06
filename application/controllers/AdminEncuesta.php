@@ -310,68 +310,60 @@ class AdminEncuesta extends CI_Controller{
 
 	public function seleccionPart(){
 		$data1['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
-		$data2['idCuestionario'] = $this->AdminEncuesta_model->getCuestionarioAsignados();
 		$data3['roles'] = $this->AdminEncuesta_model->getRoles();
 		$data4['idLogin'] = $this->AdminEncuesta_model->getEncuestadores();
-		$this->load->view('encuestas/adminEncuesta/seleccionarParticipante',$data1+$data2+$data3+$data4);
+		$this->load->view('encuestas/adminEncuesta/seleccionarParticipante',$data1+$data3+$data4);
 	}
 
 	public function recibirDatosseleccionPart(){
 		$data1['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
-		$data2['idCuestionario'] = $this->AdminEncuesta_model->getCuestionarioAsignados();
 		$data3['roles'] = $this->AdminEncuesta_model->getRoles();
 		$data4['idLogin'] = $this->AdminEncuesta_model->getEncuestadores();
 
 		//$this->form_validation->set_rules('roles', 'Selecciona rol', 'required|min_length[1]|trim');
 		$this->form_validation->set_rules('idLogin', 'Selecciona Analista', 'required|min_length[1]|trim');
 		$this->form_validation->set_rules('idEstudio', 'Selecciona Estudio', 'required|min_length[1]|trim');
-		$this->form_validation->set_rules('idCuestionario', 'Selecciona Cuestionario', 'required|min_length[1]|trim');
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 
 		if($this->form_validation->run()!=false){
 			$data = array(
 				'idLogin' => $this->input->post('idLogin'),
-				'idEstudio' => $this->input->post('idEstudio'),
-				'idCuestionario' => $this->input->post('idCuestionario'));
+				'idEstudio' => $this->input->post('idEstudio'));
 				$datos['correcto'] = 'Asignación correcta';
 				$this->AdminEncuesta_model->insertaAsignacion($data);
-				$this->load->view('encuestas/adminEncuesta/seleccionarParticipante',$datos+$data1+$data2+$data3+$data4);
+				$this->load->view('encuestas/adminEncuesta/seleccionarParticipante',$datos+$data1+$data3+$data4);
 		}else{
 			$datos['error'] = 'ERROR DE SELECCIÓN';
-			$this->load->view('encuestas/AdminEncuesta/seleccionarParticipante',$datos+$data1+$data2+$data3+$data4);
+			$this->load->view('encuestas/AdminEncuesta/seleccionarParticipante',$datos+$data1+$data3+$data4);
 		}		
 	}
 //Deselección Participantes
 	public function deseleccionPart(){
 		$data1['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
-		$data2['idCuestionario'] = $this->AdminEncuesta_model->getCuestionarioAsignados();
 		$data3['idLogin'] = $this->AdminEncuesta_model->getEncuestadores();
-		$this->load->view('encuestas/adminEncuesta/deseleccionarParticipante',$data1+$data2+$data3);
+		$this->load->view('encuestas/adminEncuesta/deseleccionarParticipante',$data1+$data3);
 	}
 
 	public function recibirDatosdeseleccionPart(){
 		$data1['idEstudio'] = $this->AdminEncuesta_model->getEncuesta();
-		$data2['idCuestionario'] = $this->AdminEncuesta_model->getCuestionarioAsignados();
 		$data3['idLogin'] = $this->AdminEncuesta_model->getEncuestadores();
 	
 
 		$this->form_validation->set_rules('idLogin', 'Selecciona Encuestador', 'required|min_length[1]|trim');
 		$this->form_validation->set_rules('idEstudio', 'Selecciona Estudio', 'required|min_length[1]|trim');
-		$this->form_validation->set_rules('idCuestionario', 'Selecciona Cuestionario', 'required|min_length[1]|trim');
 
 		$this->form_validation->set_message('required','El campo %s es obligatorio');
 
 		if($this->form_validation->run()!=false){
 			$data = array(
 				'idLogin' => $this->input->post('idLogin'),
-				'idUsuario' => $this->input->post('idUsuario'),
-				'idCuestionario' => $this->input->post('idCuestionario'));
+				'idUsuario' => $this->input->post('idUsuario'));
 				$datos['correcto'] = 'Deselección completada';
 				$this->AdminEncuesta_model->eliminarAsignacion($data);
-				$this->load->view('encuestas/AdminEncuesta/deseleccionarParticipante',$datos+$data1+$data2+$data3);
+				$this->load->view('encuestas/AdminEncuesta/deseleccionarParticipante',$datos+$data1+$data3);
 		}else{
-			$datos['error'] = 'ERROR EN LA DESELECCIÓN';
-			$this->load->view('encuestas/AdminEncuesta/deseleccionarParticipante',$datos+$data1+$data2+$data3);
+			$datos['error'] = 'ERROR EN LA ELIMINACION';
+			$this->load->view('encuestas/AdminEncuesta/deseleccionarParticipante',$datos+$data1+$data3);
 		}	
 	}
 

@@ -98,7 +98,7 @@ class ControlComboBoxes extends CI_Controller{
         }  else {
             echo '<value="0">Usuario</option>';
         }
-    }
+    }   
 
     public function estudioCuestionarioRespuestas() {
         $data =array( 'idEstudio' => $this->input->post('idEstudio'));
@@ -126,4 +126,21 @@ class ControlComboBoxes extends CI_Controller{
             echo "<tr><td>Sin Cuestionario </td></tr>";;
         }
     }
+
+    public function estudioParticipantes(){
+        $data =array( 'idEstudio' => $this->input->post('idEstudio'));
+        if($data){
+            $estudioSelect = $this->AdminEncuesta_model->estudioSelect($data);
+            $estudio = $this->AdminEncuesta_model->estudioNombre($estudioSelect);
+            echo '<option value="0">Participantes</option>';
+            foreach($estudio as $i){
+                echo '<option value="'. $i->idLogin .'">'. $i->user .' ('.$i->rol.')'.'</option>';
+               //echo  "<tr><td>".$i->user."</td></tr>";
+            }
+        }  else {
+            echo "<tr><td>Sin Participantes </td></tr>";;
+        }
+    }
+
+    
 }
