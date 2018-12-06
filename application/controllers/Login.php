@@ -65,7 +65,7 @@ class Login extends CI_Controller {
 
 	public function envioCorreo(){
 		$setcorreo['email'] = $this->input->post('email');
-		echo $setcorreo['email'];
+		//echo $setcorreo['email'];
 		$getcorreo = $this->login_model->existeCorreo($setcorreo);
 		if(!$getcorreo){
 			$correo["error"]="No exite el usuario";

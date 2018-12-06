@@ -14,7 +14,7 @@ class Login_model extends CI_Model {
 			return $q->row(); 
 		}else{
 			return false;
-		}
+		} 
 	}
 
 	public function existeCorreo($dataCorreo){

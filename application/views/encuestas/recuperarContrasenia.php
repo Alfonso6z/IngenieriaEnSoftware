@@ -16,14 +16,18 @@
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   </head>
   <body>
-    <div class="container"> 
-      <header class="page-header">
+  <h4><img class="img-responsive" align="left"  vspace="0" hspace="20" width="212"  hight="110" src="/IngenieriaEnSoftware/wolfG.png" alt="Wolfy"></h4><br><br><br>
+  <div style="width: 93%">
         <ul class = "nav nav-pills pull-right">
-          <li><a href=" <?php echo $var; ?>">Inicio</a></li>
-          <li class = "active"><a href=" <?php echo $varIni; ?>">Iniciar Sesión</a></li>
+         <li class ="active"><a href="">Inicio</a></li>
+         <li><a href="<?php echo $var; ?>">Iniciar Sesión</a></li>
         </ul>
-        <h3>Wolfgang</h3>
-      </header>
+      </div>  
+         <header class="page-header"><div> 
+        <h4>
+
+</h4> 
+</div>  </header>
       <div class="jumbotron">
          <?php if(isset($error)){?>
           <div class="alert alert-danger alert-dismissible">
