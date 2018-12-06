@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 29-11-2018 a las 10:45:40
--- Versión del servidor: 5.7.24-0ubuntu0.18.04.1
--- Versión de PHP: 7.2.10-0ubuntu0.18.04.1
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 06-12-2018 a las 12:38:38
+-- Versión del servidor: 10.1.36-MariaDB
+-- Versión de PHP: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -28,8 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `asignarestudio` (
   `idLogin` int(11) NOT NULL,
-  `idEstudio` int(11) NOT NULL,
-  `idCuestionario` int(11) NOT NULL
+  `idEstudio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -165,7 +166,6 @@ INSERT INTO `tiporeactivo` (`idTipoReactivo`, `nombre`) VALUES
 -- Indices de la tabla `asignarestudio`
 --
 ALTER TABLE `asignarestudio`
-  ADD KEY `idCuestionario` (`idCuestionario`),
   ADD KEY `idLogin` (`idLogin`),
   ADD KEY `idEstudio` (`idEstudio`);
 
@@ -229,31 +229,37 @@ ALTER TABLE `tiporeactivo`
 --
 ALTER TABLE `cuestionarios`
   MODIFY `idCuestionario` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `estudios`
 --
 ALTER TABLE `estudios`
   MODIFY `idEstudio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT de la tabla `login`
 --
 ALTER TABLE `login`
   MODIFY `idLogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT de la tabla `reactivos`
 --
 ALTER TABLE `reactivos`
   MODIFY `idReactivo` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `respuestas`
 --
 ALTER TABLE `respuestas`
   MODIFY `idRespuesta` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `tiporeactivo`
 --
 ALTER TABLE `tiporeactivo`
   MODIFY `idTipoReactivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- Restricciones para tablas volcadas
 --
@@ -263,8 +269,7 @@ ALTER TABLE `tiporeactivo`
 --
 ALTER TABLE `asignarestudio`
   ADD CONSTRAINT `asignarestudio_ibfk_1` FOREIGN KEY (`idLogin`) REFERENCES `login` (`idLogin`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `asignarestudio_ibfk_2` FOREIGN KEY (`idEstudio`) REFERENCES `estudios` (`idEstudio`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `asignarestudio_ibfk_3` FOREIGN KEY (`idCuestionario`) REFERENCES `cuestionarios` (`idCuestionario`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `asignarestudio_ibfk_2` FOREIGN KEY (`idEstudio`) REFERENCES `estudios` (`idEstudio`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `cuestionarios`
@@ -290,6 +295,7 @@ ALTER TABLE `reactivos`
 --
 ALTER TABLE `respuestas`
   ADD CONSTRAINT `respuestas_ibfk_1` FOREIGN KEY (`idReactivo`) REFERENCES `reactivos` (`idReactivo`) ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

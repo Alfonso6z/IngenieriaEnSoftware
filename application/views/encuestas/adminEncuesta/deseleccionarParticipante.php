@@ -40,9 +40,6 @@
                  } 
               ?>
         </select>&nbsp;
-        <select style="margin-left: 25px;" id="idCuestionario" name="idCuestionario">
-                <option value="0">Cuestionarios</option>
-        </select>&nbsp;
         <select style="margin-left: 25px;" name= "idLogin" id="idLogin">
             <option value="0">Participantes</option>
         </select>
@@ -58,21 +55,7 @@
        $("#idEstudio").change(function () {
                $("#idEstudio option:selected").each(function () {
                 idEstudio=$('#idEstudio').val();
-                $.post("<?php echo base_url('ControlComboBoxes/estudioCuestionario'); ?>", { idEstudio: idEstudio}, function(data){
-                $("#idCuestionario").html(data);
-                });            
-            });
-       })
-    });
-    /*fin de la funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
-</script>
-<script type="text/javascript">
-    /*funcion ajax que llena el combo dependiendo de la categoria seleccionada*/
-    $(document).ready(function(){
-       $("#idCuestionario").change(function () {
-               $("#idCuestionario option:selected").each(function () {
-                idCuestionario=$('#idCuestionario').val();
-                $.post("<?php echo base_url('ControlComboBoxes/cuestionarioEncuestador()'); ?>", { idCuestionario: idCuestionario}, function(data){
+                $.post("<?php echo base_url('ControlComboBoxes/estudioParticipantes'); ?>", { idEstudio: idEstudio}, function(data){
                 $("#idLogin").html(data);
                 });            
             });
