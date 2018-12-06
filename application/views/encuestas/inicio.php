@@ -29,7 +29,7 @@ $var=site_url('login/iniciaSesion',NULL);
     <div class="container">  
       <div class="jumbotron">
         <h1>Ingeniería en Software</h1><br>
-        <p>Sistema de encuesta<p>
+        <p>Sistema de encuestas<p>
       </div></header>
       <div class="text-right">
         <p>&copy;Alfonso González Zempoalteca</p>

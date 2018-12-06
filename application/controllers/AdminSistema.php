@@ -233,7 +233,7 @@ class AdminSistema extends CI_Controller{
 			$data1 = array(
 				'idLogin'=> $this->input->post('idLogin'));
 			$this->adminSistema_model->eliminarUsuario($data1);
-			$datos["correcto"]="Se Ha Eliminado Con Éxito  ".$data1['user']."  ".$data1['apellido'];
+			$datos["correcto"]="Se Ha Eliminado Con Éxito  ";
 			$data['idLogin'] = $this->adminSistema_model->getUsuario();
 			$this->load->view('encuestas/adminSistema/eliminarUsuario',$datos+$data);
 			}else{

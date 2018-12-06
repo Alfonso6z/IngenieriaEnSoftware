@@ -12,7 +12,7 @@
     <div class="container">
       <div class="jumbotron">
         <h1>Ingeniería en Software</h1>
-        <p>Vista Encuestas Encuestador<p>
+        <p>Vista Encuestador<p>
       </div>
       <div class="text-right">
         <p>&copy;Unedgaro</p>

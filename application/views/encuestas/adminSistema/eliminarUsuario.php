@@ -22,8 +22,9 @@
           <h5 class = "text-center"> <?= validation_errors('*');?></h5>
         </div>
       <?php } ?>
-        <h3 class = "text-center">Eliminar Usuario</h3>
+        <h3 class = "text-center"><strong> Eliminar Usuario </strong></h3><h3></h3>
         <div class = "text-center">
+          <h4>
             <select name= "idLogin" id="idLogin">
               <option value="" selected>Selecciona un usuario</option>
               <?php
@@ -31,7 +32,9 @@
                    echo '<option value="'. $i->idLogin .'">'. $i->user.'  '.$i->apellido.'</option>';
                  } 
               ?>
-            </select></div>
+            </select>
+          </h4>
+        </div>
             <br>
         <h5 class = "text-center"><?= form_submit('Borrar','Borrar',"class='btn btn-danger'")?>
     <?= form_close() ?></h5>
@@ -40,7 +43,6 @@
       <p>&copy; Mirafuentes Eliseo</p>
     </div>
 </div>
-  <script type="text/javascript">
   <!--Insertamos jQuery dependencia de Bootstrap-->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
    <!--Insertamos el archivo JS compilado y comprimido -->
