@@ -36,6 +36,6 @@ $apell = $this->session->userdata('apellido');
         </li>
       </ul>
     </header>
-  </div>
+  </div> 
 </body>
 </html>

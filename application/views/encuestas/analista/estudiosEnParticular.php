@@ -9,7 +9,7 @@
     <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
     </head>
 
-    <body>
+    <body> 
 
         <div class="container">
         <br>

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Analista extends CI_Controller{
 	
-	function __construct(){
+	function __construct(){ 
 		parent::__construct();
 		$this->load->helper('form');
 		$this->load->helper('url');
@@ -11,6 +11,9 @@ class Analista extends CI_Controller{
 		$this->load->model('Encuestas_model');
 		$this->load->library('session');
 		$this->load->library('form_validation');
+
+		$this->load->library('export_excel');
+
 		$this->load->view('encuestas/analista/headerAnalista');
 		if (!$this->session->userdata("login")){
 			redirect(site_url('login',NULL));
@@ -29,5 +32,10 @@ class Analista extends CI_Controller{
 		$data1['idEstudio'] = $this->Encuestas_model->getEncuestaLogin($idLogin);
 		$data['estudios'] = $this->Encuestas_model->getEstudioId($data1);
 		$this->load->view('encuestas/analista/estudiosEnParticular',$data);
+	}
+
+	public function dExcel(){
+		$result = $this->Analista_model->getEstudiosAna();
+		$this->export_excel->to_excel($result,'lista de Estudios.xlsx');
 	}
 }
