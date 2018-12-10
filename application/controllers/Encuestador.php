@@ -56,8 +56,14 @@ class Encuestador extends CI_Controller {
 			$this->form_validation->set_message('required','Seleccione un  %s');
 			if($this->form_validation->run()!=false){ 
             	$data = array('idCuestionario' => $this->input->post('idCuestionario'));
-            	$data1['reactivos'] = $this->Encuestas_model->getReactivosCuestionario($data);
-				$this->load->view('encuestas/encuestador/responderReactivo',$data1+$respuestas);
+            	$data1 = $this->Encuestas_model->getReactivosCuestionario($data);
+            	$max = sizeof($data1);
+            	for ($i=0; $i < $max; $i++) { 
+            		$data4['reactivo'] = $data1[$i];
+            		$this->load->view('encuestas/encuestador/responderReactivo',$data4+$respuestas);
+            	}
+         
+				
         	}else{
         		$idLogin['idLogin'] = $this->session->userdata('idLogin');
 				$data1['idEstudio'] = $this->Encuestas_model->getEncuestaLogin($idLogin);
@@ -70,23 +76,8 @@ class Encuestador extends CI_Controller {
 	}
 
 	public function recibirRespuesta(){
-		$this->load->view('encuestas/encuestador/inicioEncuestador');
-		/*$data1['estudio'] = $this->Encuestas_model->getEncuesta();
-		$this->form_validation->set_rules('respuesta', 'Respuesta', 'required|min_length[1]|trim');
-		$this->form_validation->set_rules('idReactivo', 'Selecciona Pregunta', 'required|min_length[1]|trim');
-
-		$this->form_validation->set_message('required','El campo %s es obligatorio');
-		if($this->form_validation->run()!=false){ //Si la validación es correcta
-                $data = array(
-					'respuesta' => $this->input->post('respuesta'),
-                	'idReactivo' => $this->input->post('idReactivo'));
-                $datos['correcto'] = '' ;
-                $this->Encuestas_model->insertaRespuesta($data);
-                $this->load->view('encuestas/encuestador/estudiosAsignados',$data1+$datos);
-             }else{                    
-             	$datos['error'] = 'Debe escribir una respuesta válida' ;
-                $this->load->view('encuestas/encuestador/estudiosAsignados',$data1+$datos);
-             }*/
+		$data = $this->input->post('respuesta');
+		print_r($data);
 		
 	}
 

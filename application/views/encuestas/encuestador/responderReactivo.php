@@ -32,34 +32,31 @@
             <h2 class = "text-left">Cuestionario </h2>
             <br>
                 <div style="max-width: 90%" class="text-center">
-                <?php $k = 1 ; if($reactivos){foreach ($reactivos as $i) {?>
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th class="text-center">Pregunta <?php echo $k;?></th>
+                                <th class="text-center">Pregunta </th>
                             </tr>
                         </thead>
                         <tbody class="text-left">
                             <tr>
-                                <td><?php  echo $i->pregunta;?></td>
+                                <td><?php  echo $reactivo->pregunta; ?></td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <?php if($i->idTipoReactivo=="2"){
-                                            foreach ($respuestas as $j){ 
-                                                if($i->idReactivo==$j->idReactivo){
-                                                    echo "<tr><td><label><input type='checkbox' id=".$j->idRespuesta."name=".$i->idReactivo." value = ".$j->idRespuesta.">".$j->respuesta." </label></td></tr>";
-                                                }         
-                                            }
-                                            }else{
-                                    ?><?= form_input($respuesta) ?>
-                                    <?php
-                                    } ?>
-                                </td>       
+                            <tr> 
+                            <?php if($respuestas){
+
+                                foreach($respuestas as $i){
+                                    if($reactivo->idReactivo == $i->idReactivo){
+                                        echo $i->respuesta;
+                                    }
+                                    
+                                }
+                            }else{
+                                echo "No tiene respuestas";
+                            } ?>      
                             </tr>
                         </tbody>
                     </table>
-                <?php $k++;}}else{echo "No Hay Reactivos";} ?>
                 <h5><?= form_submit('Contestar','Contestar',"class='btn btn-info'")?></h5>
             </div>
         </div><br>
