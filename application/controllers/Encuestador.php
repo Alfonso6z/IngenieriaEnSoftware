@@ -70,7 +70,8 @@ class Encuestador extends CI_Controller {
 	}
 
 	public function recibirRespuesta(){
-		$data1['estudio'] = $this->Encuestas_model->getEncuesta();
+		$this->load->view('encuestas/encuestador/inicioEncuestador');
+		/*$data1['estudio'] = $this->Encuestas_model->getEncuesta();
 		$this->form_validation->set_rules('respuesta', 'Respuesta', 'required|min_length[1]|trim');
 		$this->form_validation->set_rules('idReactivo', 'Selecciona Pregunta', 'required|min_length[1]|trim');
 
@@ -81,11 +82,11 @@ class Encuestador extends CI_Controller {
                 	'idReactivo' => $this->input->post('idReactivo'));
                 $datos['correcto'] = '' ;
                 $this->Encuestas_model->insertaRespuesta($data);
-                $this->load->view('encuestas/adminEncuesta/altaRespuesta',$data1+$datos);
+                $this->load->view('encuestas/encuestador/estudiosAsignados',$data1+$datos);
              }else{                    
              	$datos['error'] = 'Debe escribir una respuesta válida' ;
-                $this->load->view('encuestas/adminEncuesta/altaRespuesta',$data1+$datos);
-             }
+                $this->load->view('encuestas/encuestador/estudiosAsignados',$data1+$datos);
+             }*/
 		
 	}
 

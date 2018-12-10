@@ -360,7 +360,7 @@ class AdminEncuesta extends CI_Controller{
 				'idUsuario' => $this->input->post('idUsuario'));
 				$datos['correcto'] = 'Deselección completada';
 				$this->AdminEncuesta_model->eliminarAsignacion($data);
-				$this->load->view('encuestas/AdminEncuesta/deseleccionarParticipante',$datos+$data1+$data3);
+				$this->load->view('encuestas/adminEncuesta/deseleccionarParticipante',$datos+$data1+$data3);
 		}else{
 			$datos['error'] = 'ERROR EN LA ELIMINACION';
 			$this->load->view('encuestas/AdminEncuesta/deseleccionarParticipante',$datos+$data1+$data3);
