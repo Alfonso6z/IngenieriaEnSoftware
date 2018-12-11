@@ -20,8 +20,8 @@ $apell = $this->session->userdata('apellido');
 <div class="container">
     <header class="page-header">
     <div class="row">
-        <div class="col-lg-2"><img class="img-responsive" align="middle"  vspace="0" hspace="10" align="bottom" src="/IngenieriaEnSoftware/wolfG.png" alt="Wolfy"></div><br><br>
-        <div class="col-lg-6 "><h4 class="text-left"><?php echo "$rol" ?>: <?php echo "$user" ?>  <?php echo "$apell" ?></h4>
+        <div class="col-sm-2 col-lg-2"><img class="img-responsive" align="middle"  vspace="0" hspace="10" align="bottom" src="/IngenieriaEnSoftware/wolfG.png" alt="Wolfy"></div><br><br>
+        <div class="col-sm-6 col-lg-6 "><h4 class="text-left"><?php echo "$rol" ?>: <?php echo "$user" ?>  <?php echo "$apell" ?></h4>
         </div>
         <div class="col-lg-4">
           <ul class = "nav nav-pills pull-right">
