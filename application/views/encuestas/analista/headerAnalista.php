@@ -1,4 +1,3 @@
-<?= form_open('/Analista/dExcel')?>
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $estudiosParAna=site_url('analista/estudiosParticularAnalista',NULL);
@@ -42,7 +41,7 @@ $apell = $this->session->userdata('apellido');
           </li>
 
            <li class="dropdown">
-           <li><?= form_submit('','Generar Excel',"class='btn btn-success'")?><?= form_close() ?></li>
+           <li><a href="<?php echo base_url(); ?>analista/dExcel">Exportar Excel</a></li>
 
             </li>
              </ul>

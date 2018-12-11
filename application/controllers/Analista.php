@@ -12,7 +12,7 @@ class Analista extends CI_Controller{
 		$this->load->library('session');
 		$this->load->library('form_validation');
 
-		$this->load->library('export_excel');
+		$this->load->library('Export_excel');
 
 		$this->load->view('encuestas/analista/headerAnalista');
 		if (!$this->session->userdata("login")){
@@ -36,6 +36,6 @@ class Analista extends CI_Controller{
 
 	public function dExcel(){
 		$result = $this->Analista_model->getEstudiosAna();
-		$this->export_excel->to_excel($result,'lista de Estudios.xlsx');
+		$this->export_excel->to_excel($result,'lista de Estudios');
 	}
 }

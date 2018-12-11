@@ -1,10 +1,9 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');  
 
-class export_excel{
+class Export_excel{
 
     function to_excel($array, $filename) {
-        header('Content-type: application/vnd.ms-excel;');
-        header('Content-Disposition: attachment; filename='.$filename);
+        header('Content-Disposition: attachment; filename='.$filename.'.xls');
         header('Content-type: application/force-download');
         header('Content-Transfer-Encoding: binary');
         header('Pragma: public');

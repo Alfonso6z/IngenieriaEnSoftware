@@ -33,12 +33,10 @@ class Analista_model extends CI_Model {
 		}
 	}
 
-	public function getEstudiosAna(){
+	function getEstudiosAna(){
 		$this->db->select('nombre, descripcion');
 		$this->db->from('estudios');
-		//$this->db->join('cuestionarios', 'cuestionarios.id = estudios.id');
-		$query = $this->db->get();
-					
+		$query = $this->db->get();			
 		return $query;
 	}
 
