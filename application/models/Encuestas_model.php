@@ -30,9 +30,24 @@ class Encuestas_model extends CI_Model {
 
 	function getEncuestaLogin($data){
 		$this->db->select('idEstudio')->from('asignarestudio')->where('idLogin',$data['idLogin']);
+		$this->db->select('idAsignacion')->where('idLogin',$data['idLogin']);
 		$estudios = $this->db->get();
 		if ($estudios->num_rows() > 0){
 			return $estudios->result();
+		}
+	}
+
+	function getEncuestaLogin2($data,$data2){
+		$datos = array();
+		foreach ($data2 as $i) {
+			$datos[]=$i->idEstudio;
+		}
+		$this->db->order_by('idAsignacion','desc');
+		$this->db->where('idLogin',$data['idLogin']);
+		$this->db->where('idEstudio',$datos[0]);
+		$asignacion = $this->db->get('asignarestudio');
+		if ($asignacion->num_rows() > 0){
+			return $asignacion->result();
 		}
 	}
 
@@ -76,6 +91,7 @@ class Encuestas_model extends CI_Model {
 	}
 
 	function cuestionarioNombre($data){
+		print_r($data);
 		$datos = array();
 		foreach ($data as $i) {
 			$datos[]=$i->idCuestionario;
@@ -87,9 +103,16 @@ class Encuestas_model extends CI_Model {
 		}
 	}
 
-	function getReactivosCuestionario($data){
+	function getReactivosCuestionario($data,$dataC){
 		$this->db->where('idCuestionario',$data['idCuestionario']);
-		$this->db->order_by('idReactivo','asc');
+		if($dataC){
+			$datos = array();
+			foreach ($dataC as $i) {
+				$datos[]=$i->idReactivo;
+			}
+			$this->db->where_not_in('idReactivo',($datos));
+		}
+		$this->db->order_by('idReactivo','desc');
 		$reactivos = $this->db->get('reactivos');
 		if($reactivos->num_rows()>0){
 			return $reactivos->result();
@@ -102,7 +125,36 @@ class Encuestas_model extends CI_Model {
 		}
 	}
 
+	function getPreguntasContestadas($asig){
+		$this->db->order_by('idReactivo','asc');
+		$this->db->where('idAsignacion',$asig->idAsignacion );
+		$cuestionarioContestado = $this->db->get('cuestionarioContestado');
+		if ($cuestionarioContestado->num_rows() > 0){
+			return $cuestionarioContestado->result();
+		}
+	}
+	function dameNombre($data){
+		$this->db->where('idCuestionario',$data['idCuestionario']);
+		$estudios = $this->db->get('cuestionarios');
+		if ($estudios->num_rows() > 0){
+			return $estudios->result();
+		}
+	}
 	
+	function insertarRespuesta($respuestas,$reactivo,$asignacion){
+		echo $asignacion->idAsignacion;
+		$this->db->insert('cuestionarioContestado',array('idAsignacion'=>$asignacion->idAsignacion,'idReactivo'=>$reactivo['idReactivo'],'respuesta'=>$respuestas['respuesta']));
+	}
+
+	function getAsignacion($data,$data1){
+		$this->db->where('idLogin',$data['idLogin']);
+	}
+
+	function eliminaAsignacion($data){
+		$query= $this->db->query("SET foreign_key_checks = 0;");
+		$this->db->delete('asignarestudio',array('idAsignacion'=>$data->idAsignacion));
+		$query= $this->db->query("SET foreign_key_checks = 1;");
+	}
 }
 
 ?>

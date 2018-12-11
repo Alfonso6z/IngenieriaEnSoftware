@@ -14,7 +14,7 @@
     <script type="text/javascript">
         function habilitar(){
             var radio = document.getElementById('idCuestionario').value;
-            var boton = document.getElementById('boton');
+            var boton = document.getElementById('boton');      
             if(radio){
                 boton.disabled = false;
             }else{
